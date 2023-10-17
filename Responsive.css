@@ -3,7 +3,19 @@
 
 /* // `sm` applies to x-small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
+    .home-hero-text h1{
+        padding-left: 7rem;
+        font-size: 25px;
+        font-style: oblique;
+      }
 
+      .banner {
+        display: none;
+      }
+
+      .home-image {
+        display: none;
+      }
 }
 
 /* // `md` applies to small devices (landscape phones, less than 768px) */
