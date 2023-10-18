@@ -58,7 +58,7 @@ nav div ul li a:hover::after {
 
 
 h1 {
-  font-size: 50px;
+  font-size: 100px;
   padding-bottom: 7rem;
   /* margin-left: 110px;
   line-height: 300px; */
@@ -67,6 +67,8 @@ h1 {
 .socials{
   padding-right: 5rem;
 }
+
+
 /* Home */
 
 
@@ -94,6 +96,16 @@ h1 {
 }
 
 
+.home-image img {
+  display: block;
+}
+
+
+.home-hero-text .home-image{
+  margin-inline: auto;
+}
+
+
 .about-home{
   /* display: grid; */
   grid-template-columns: repeat(2, 1fr);
@@ -111,14 +123,6 @@ h1 {
   padding-bottom: 6rem;
   padding-right: 6rem;
   padding-top: 6rem;
-}
-
-.home-image img {
-  display: block;
-}
-
-.home-hero-text .home-image{
-  margin-inline: auto;
 }
 
 
@@ -204,16 +208,37 @@ p a:hover {
 /* Contact */
 
 .contact-content{
-/* display: flex;
-margin-inline: auto; */
+display: flex;
+margin-inline: auto;
 padding-left: 5rem;
 padding-top: 6rem;
-padding-bottom: 10rem;
+/* padding-bottom: 2rem; */
 }
 
 .contact-content h1{
   padding-bottom: 3rem;
 }
+
+.contact-content img{
+  width: 400x;
+  height: 400px;
+  /* display: block; */
+}
+
+.contact-image{
+  display: block;
+  /* width: 100%; */
+}
+
+.contact-content .contact-image{
+  margin-inline: auto;
+}
+
+.contact-list{
+  padding-left: 6rem;
+}
+
+
 
 /* Portfolio */
 
