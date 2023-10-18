@@ -101,7 +101,7 @@ h1 {
   align-items: start;
   padding-top: 5rem; 
   /* background-color: #000; */
-  border: 1px color red;
+  /* border: 1px color red; */
   
 }
 
@@ -349,18 +349,18 @@ h2 {
   color: #fcfcfc;
   margin: 5px 95px;
   display: inline-block;
-  align-items: start;
+  align-items: center;
   justify-content: left;
 }
 
 .skills-text{
-  padding-left: 6rem;
+  /* padding-left: 6rem; */
   padding-top: 5rem;
 }
 
 .skills-container ul li:hover{
   opacity: 0.7;
-  zoom: 50px;
+  /* zoom: 50px; */
 }
 
 /* # Footer */
