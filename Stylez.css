@@ -406,3 +406,22 @@ align-items: center;
   /* align-items: center;
   justify-content: center; */
 }
+
+@media screen and (max-width: 768px) {
+ .wrapper .nav {
+    display: block; 
+  }
+  .nav li {
+    line-height: 50px
+  }
+
+  .nav > div:nth-child(1) {
+    /* border: 1px solid red; */
+    width: 60%;
+    margin-inline: auto;
+  }
+
+  .home-hero-text {
+    display: block;
+  }
+}
