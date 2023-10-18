@@ -225,10 +225,10 @@ padding-top: 6rem;
   /* display: block; */
 }
 
-.contact-image{
+/* .contact-image{
   display: block;
-  /* width: 100%; */
-}
+  width: 100%;
+} */
 
 .contact-content .contact-image{
   margin-inline: auto;
@@ -239,7 +239,18 @@ padding-top: 6rem;
   padding-bottom: 6rem;
 }
 
+.contact-content {
+  display: flex;
+  justify-content: space-between;
+}
 
+.contact-content > div {
+  width: 48%; /* Adjust the width as needed */
+}
+
+.contact-image {
+  text-align: center; /* Center the image within its column */
+}
 
 /* Portfolio */
 
