@@ -198,12 +198,6 @@ p a:hover {
 }
 
 
-/* .titles-recent-works {
-  font-size: 30px;
-  font-style: italic;
-  line-height: 10;
-  padding: 10%;
-} */
 
 /* Contact */
 
@@ -223,7 +217,7 @@ padding-top: 6rem;
   width: 400x;
   height: 400px;
   /* display: block; */
-}
+} 
 
 /* .contact-image{
   display: block;
@@ -251,6 +245,9 @@ padding-top: 6rem;
 .contact-image {
   text-align: center; /* Center the image within its column */
 }
+
+
+
 
 /* Portfolio */
 
