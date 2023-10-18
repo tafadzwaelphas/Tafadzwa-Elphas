@@ -5,7 +5,7 @@
 @media (max-width: 575.98px) { 
     .home-hero-text h1{
         padding-left: 7rem;
-        font-size: 25px;
+        font-size: 50px;
         font-style: oblique;
       }
 
@@ -15,6 +15,15 @@
 
       .home-image {
         display: none;
+      }
+
+      .footer-container{
+        padding-left: 7rem;
+      }
+
+      .socials{
+        padding-left: 5rem;
+        margin-inline: auto;
       }
 }
 
