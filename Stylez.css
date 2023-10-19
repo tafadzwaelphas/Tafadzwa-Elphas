@@ -72,6 +72,7 @@ h1 {
 /* Home */
 
 
+
 .home-hero-text{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -188,13 +189,18 @@ p {
   /* text-decoration: underline; */
 }
 
-
-
-
-
 p a:hover {
   list-style: upper-alpha;
   text-decoration: underline;
+}
+
+
+#client-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
 }
 
 
@@ -373,7 +379,7 @@ h2 {
 #skills ul {
   list-style: none;
   padding: 0;
-  margin-left: 10px;
+  /* margin-left: 10px; */
   background-color: #242323;
   margin-top: 100px;
 }
