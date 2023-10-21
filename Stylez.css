@@ -68,6 +68,9 @@ h1 {
   padding-right: 5rem;
 }
 
+.socials ul a{
+  
+}
 
 /* Home */
 
@@ -96,12 +99,13 @@ h1 {
   justify-content: center;
   align-items: start;
   padding-top: 5rem;
-  border-bottom: 2px color black;
+  /* border-bottom: 2px color black; */
 }
 
 
 .home-hero-text h1{
   padding-left: 7rem;
+  padding-top: 7rem;
   font-size: 100px;
   font-style: oblique;
 }
@@ -278,8 +282,8 @@ padding-top: 6rem;
   display: flex;
   justify-content: center;
   /* align-items: start; */
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding-top: 7rem;
+  padding-bottom: 3rem;
 }
 
 .portfolio-text{
@@ -288,8 +292,8 @@ padding-top: 6rem;
 }
 
 .handwing-project-grid{
-  padding-bottom: 7rem;
-  padding-top: 3rem;
+  padding-bottom: 5rem;
+  padding-top: 2rem;
 }
 
 .image-grid {
@@ -319,6 +323,8 @@ padding-top: 6rem;
 .image-grid-row-2 {
 	grid-row: span 2;
 }
+
+
 
 /* Anything udner 1024px */
 
@@ -358,6 +364,18 @@ padding-top: 6rem;
   object-fit: contain;
 }
 
+.eyezwidopen-project-grid{
+  padding-bottom: 7rem;
+  padding-top: 3rem;
+}
+
+.eyezwidopen-title {
+  display: flex;
+  justify-content: center;
+  /* align-items: start; */
+  padding-top: 7rem;
+  /* padding-bottom: 5rem; */
+}
 
 /* Clock On Portfolio Page */
 
