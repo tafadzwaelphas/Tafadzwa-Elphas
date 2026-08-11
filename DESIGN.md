@@ -118,6 +118,13 @@ after the user has seen the local result and approved.
   mobile breakpoint now only adjusts position (`top`/`right` spacing).
   Files touched: `Stylez.css`, `Responsive.css`, `Menu.js`, cache-busting bumped `?v=1` → `?v=2`
   for all three across all 5 HTML pages.
+- **Logo split out of the scroll-animated menu**: user noticed the logo was sliding around on
+  scroll along with the nav — it used to live *inside* `.site-menu`, so it participated in the
+  stack→row flex transform. Pulled it into its own standalone `.site-logo` element, fixed
+  top-left, same `top` offset as `.site-menu` (top-right) so the two align as a header row.
+  Logo no longer reacts to scroll at all. Markup changed identically across all 5 HTML pages
+  (logo `<a>` moved from inside `.site-menu` to a sibling before it). Cache-busting bumped
+  `Stylez.css`/`Responsive.css` `?v=2` → `?v=3`.
 
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google

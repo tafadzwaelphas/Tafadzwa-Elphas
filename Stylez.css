@@ -61,7 +61,14 @@ h1,
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
 }
 
-.site-menu .menu-logo img {
+.site-logo {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 1000;
+}
+
+.site-logo img {
   width: 40px;
   display: block;
 }

@@ -20,6 +20,11 @@
         right: var(--space-xs);
       }
 
+      .site-logo {
+        top: var(--space-xs);
+        left: var(--space-xs);
+      }
+
       .project-filmstrip img {
         height: 200px;
       }
