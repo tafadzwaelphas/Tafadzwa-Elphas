@@ -5,64 +5,62 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="Stylez.css" type="text/css" media="all">
   <link rel="stylesheet" href="Responsive.css">
-  <script src="Movement.js" defer></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  
+  <script src="Movement.js" defer></script>  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio — Tafadzwa Choga</title>
   <meta name="description" content="Selected work by Tafadzwa Choga, including HandWing, EYEZWIDOPEN, the Fakugesi Poster Competition, and FRGHN Music.">
   <link rel="icon" href="Images/Tafadzwa-Choga-LOGO.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="Reveal.js" defer></script>
+    <script src="Menu.js" defer></script>
 </head>
        <body>
-              <nav>
-                <div class="wrapper">
-          
-                  <div class="nav">
-                    <div>
-                      <a href="./index.html">
-                        <img class="nav-logo" src="Images/Tafadzwa-Choga-LOGO.png" alt="Tafadzwa Choga logo">
-                      </a>
-                    </div>
-          
-          
-                          <div class="links">
-                            <ul>
-                              <li><a href="index.html">Home</a></li>
-                              <li><a href="About.html">About</a></li>
-                              <li><a href="Contact.html">Contact</a></li>
-                              <li><a href="Portfolio.html">Portfolio</a></li>
-                              <li><a href="Skills.html">Skills</a></li>
-                            </ul>
-                          </div>
-          
-                    <div class="socials">
-                      <ul>
-                        <li><a href="https://www.linkedin.com/in/tafadzwa-choga-b62993195/" class="fa fa-linkedin"></a></li>
-                        <li><a href="https://www.behance.net/tafadzwachoga" class="fa fa-behance"></a></li>
-                        <li><a href="https://github.com/tafadzwachoga" class="fa fa-github"></a></li>
-                        <li><a href="https://www.instagram.com/handwing_/" class="fa fa-instagram"></a></li>
-                      </ul>
-                    </div>
-                  </div>
-          
-                </div>
-          
-              </nav>
+              <div class="site-menu">
+          <a href="./index.html" class="menu-logo">
+            <img src="Images/Tafadzwa-Choga-LOGO.png" alt="Tafadzwa Choga logo">
+          </a>
+          <button class="menu-trigger" aria-expanded="false">Menu</button>
+        </div>
+
+        <div class="menu-overlay">
+          <nav class="menu-overlay-links">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="About.html">About</a></li>
+              <li><a href="Contact.html">Contact</a></li>
+              <li><a href="Portfolio.html">Portfolio</a></li>
+              <li><a href="Skills.html">Skills</a></li>
+            </ul>
+          </nav>
+          <div class="menu-overlay-socials">
+            <ul>
+              <li><a href="https://www.linkedin.com/in/tafadzwa-choga-b62993195/">LinkedIn</a></li>
+              <li><a href="https://www.behance.net/tafadzwachoga">Behance</a></li>
+              <li><a href="https://github.com/tafadzwachoga">GitHub</a></li>
+              <li><a href="https://www.instagram.com/handwing_/">Instagram</a></li>
+            </ul>
+          </div>
+        </div>
 
             <div class="portfolio-page">
-              <div class="portfolio-text">
+              <div class="portfolio-text reveal">
                 <h1>Portfolio</h1>
-              </div> 
-              <div>
-                <p>
-                  <a href="https://www.instagram.com/handwing_/">HandWing</a>
-                </p>
               </div>
             </div>
-                
+
+            <div class="project-header reveal">
+              <div class="project-header-title"><a href="https://www.instagram.com/handwing_/">HandWing</a></div>
+              <div class="project-header-year">2021–2023</div>
+              <div class="project-header-tags">Apparel Design<br>Branding<br>Typography</div>
+            </div>
+            <p class="project-header-description reveal">
+              Apparel and brand design for HandWing — typography, product photography, and identity work.
+            </p>
+
             <div class="handwing-project-grid">
-              <div class="image-grid">
-                <img class="image-grid-col-2 image-grid-row-2" src="Images/HANDYBLACK.png" alt="HandWing black apparel design">
+              <div class="project-filmstrip reveal">
+                <img src="Images/HANDYBLACK.png" alt="HandWing black apparel design">
                 <img src="Images/HW BIRDZ OF THE SAME BALANCE REACH FURTHER I.jpg" alt="HandWing 'Birdz of the Same Balance Reach Further I' artwork">
                 <img src="Images/N03-White-back (1).png" alt="HandWing N03 apparel, white back view">
                 <img src="Images/J265M-Black-front.png" alt="HandWing J265M apparel, black front view">
@@ -80,13 +78,13 @@
               <video src="Images/Hello.mp4" controls preload="metadata" playsinline></video>
             </div>
             
-            <div class="fakugesi-title">
-              <p>
-                Fakugesi Poster Competition
-              </p>
+            <div class="project-header reveal">
+              <div class="project-header-title">Fakugesi Poster Competition</div>
+              <div class="project-header-year">2023</div>
+              <div class="project-header-tags">Poster Design<br>Competition Entry</div>
             </div>
 
-                          <div class="poster-container">
+                          <div class="poster-container reveal">
                             <div class="fakugesi-poster">
                               <img src="Images/Fakugesi Poster 2023_2_page-0001.jpg" alt="Fakugesi Poster Competition 2023 entry">
                           </div>
@@ -95,16 +93,18 @@
                           </div>
                           </div>
 
-
-                          <div class="eyezwidopen-title">
-                            <p>
-                             <a href="https://www.instagram.com/eyezwidopen_/">EYEZWIDOPEN </a> (CONCEPT & GRAFRICAN)
-                            </p>
-                          </div>
+            <div class="project-header reveal">
+              <div class="project-header-title"><a href="https://www.instagram.com/eyezwidopen_/">EYEZWIDOPEN</a></div>
+              <div class="project-header-year">2021–2022</div>
+              <div class="project-header-tags">Concept Art<br>Illustration<br>Grafrican</div>
+            </div>
+            <p class="project-header-description reveal">
+              Concept art and Grafrican-style illustration for EYEZWIDOPEN.
+            </p>
 
                           <div class="eyezwidopen-project-grid">
-                            <div class="image-grid">
-                              <img class="image-grid-col-2 image-grid-row-2" src="Images/amira.png" alt="Amira illustration for EYEZWIDOPEN">
+                            <div class="project-filmstrip reveal">
+                              <img src="Images/amira.png" alt="Amira illustration for EYEZWIDOPEN">
                               <img src="Images/EWO LOGO BLCK.png" alt="EYEZWIDOPEN logo">
                               <img src="Images/Birth Of The Sun.png" alt="'Birth Of The Sun' artwork for EYEZWIDOPEN">
                               <img src="Images/GREY.png" alt="EYEZWIDOPEN grafrican artwork">
@@ -116,13 +116,13 @@
                             </div>
                           </div>
 
-            <div class="fakugesi-title">
-              <p>
-                FRGHN Music — Madube
-              </p>
+            <div class="project-header reveal">
+              <div class="project-header-title">FRGHN Music — Madube</div>
+              <div class="project-header-year">2021</div>
+              <div class="project-header-tags">Cover Art<br>Music</div>
             </div>
 
-                          <div class="poster-container">
+                          <div class="poster-container reveal">
                             <div class="fakugesi-poster">
                               <img src="Images/MADUBEFNLCVR.jpg" alt="Cover art for Madube on FRGHN Music, 'Madube | Foreighn'">
                           </div>
@@ -154,13 +154,20 @@
                   </svg>
               </div>
           </main>
-            <footer class="footer">
-              <div class="footer-container">
-                <div class="copyright">
-                  <p class="mb-1">&copy; Copyright Tafadzwa Choga. All Rights Reserved
-                  </p>
-                </div>
-              </div>
-            </footer>
+            <footer class="site-footer reveal">
+          <div class="site-footer-cta">
+            <p>Let's build something together.</p>
+            <a href="mailto:tafadzwchoga@gmail.com">tafadzwchoga@gmail.com</a>
+          </div>
+          <div class="site-footer-links">
+            <a href="https://www.linkedin.com/in/tafadzwa-choga-b62993195/">LinkedIn</a>
+            <a href="https://www.behance.net/tafadzwachoga">Behance</a>
+            <a href="https://github.com/tafadzwachoga">GitHub</a>
+            <a href="https://www.instagram.com/handwing_/">Instagram</a>
+          </div>
+          <div class="site-footer-bottom">
+            <p>&copy; Copyright Tafadzwa Choga. All Rights Reserved</p>
+          </div>
+        </footer>
         </body>
 </html>

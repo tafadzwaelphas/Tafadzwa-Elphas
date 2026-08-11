@@ -21,15 +21,17 @@
         padding-left: 0;
       }
 
-      nav .socials{
-        padding-left: 0;
-        padding-right: 0;
-        margin-inline: auto;
+      .site-menu {
+        top: 1rem;
+        left: 1rem;
       }
 
-      .image-grid {
-        --num-cols: 1;
-        --row-height: 280px;
+      .menu-overlay-links a {
+        font-size: 28px;
+      }
+
+      .project-filmstrip img {
+        height: 200px;
       }
 
       #skills li {
@@ -48,12 +50,12 @@
         padding-bottom: 3rem;
       }
 
-      .nav-logo {
-        margin-left: 0;
+      .menu-overlay-links a {
+        font-size: 36px;
       }
 
-      nav .socials {
-        padding-right: 0;
+      .home-hero-text {
+        display: block;
       }
 
       .home-hero-text h1 {
@@ -96,6 +98,23 @@
         padding-top: 3rem;
       }
 
+      .project-header {
+        padding: 3rem 2rem 1rem;
+        gap: 1rem;
+      }
+
+      .project-header-description {
+        padding: 0 2rem 2rem;
+      }
+
+      .project-filmstrip {
+        padding: 16px 2rem;
+      }
+
+      .project-filmstrip img {
+        height: 260px;
+      }
+
       .poster-container {
         grid-template-columns: 1fr;
         height: auto;
@@ -107,11 +126,6 @@
 
       #skills li {
         margin: 5px 20px;
-      }
-
-      .image-grid {
-        --num-cols: 2;
-        --row-height: 220px;
       }
  }
 

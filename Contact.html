@@ -5,53 +5,48 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="Stylez.css">
   <link rel="stylesheet" href="Responsive.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — Tafadzwa Choga</title>
   <meta name="description" content="Get in touch with Tafadzwa Choga — multimedia designer and artist.">
   <link rel="icon" href="Images/Tafadzwa-Choga-LOGO.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="Reveal.js" defer></script>
+    <script src="Menu.js" defer></script>
 </head>
 
 <body>
-        <nav>
-          <div class="wrapper">
-    
-            <div class="nav">
-              <div>
-                <a href="./index.html">
-                  <img class="nav-logo" src="Images/Tafadzwa-Choga-LOGO.png" alt="Tafadzwa Choga logo">
-                </a>
-              </div>
-    
-    
-              <div class="links">
-                <ul>
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="About.html">About</a></li>
-                  <li><a href="Contact.html">Contact</a></li>
-                  <li><a href="Portfolio.html">Portfolio</a></li>
-                  <li><a href="Skills.html">Skills</a></li>
-                </ul>
-              </div>
-    
-              <div class="socials">
-                <ul>
-                  <li><a href="https://www.linkedin.com/in/tafadzwa-choga-b62993195/" class="fa fa-linkedin"></a></li>
-                  <li><a href="https://www.behance.net/tafadzwachoga" class="fa fa-behance"></a></li>
-                  <li><a href="https://github.com/tafadzwachoga" class="fa fa-github"></a></li>
-                  <li><a href="https://www.instagram.com/handwing_/" class="fa fa-instagram"></a></li>
-                </ul>
-              </div>
-            </div>
-    
+        <div class="site-menu">
+          <a href="./index.html" class="menu-logo">
+            <img src="Images/Tafadzwa-Choga-LOGO.png" alt="Tafadzwa Choga logo">
+          </a>
+          <button class="menu-trigger" aria-expanded="false">Menu</button>
+        </div>
+
+        <div class="menu-overlay">
+          <nav class="menu-overlay-links">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="About.html">About</a></li>
+              <li><a href="Contact.html">Contact</a></li>
+              <li><a href="Portfolio.html">Portfolio</a></li>
+              <li><a href="Skills.html">Skills</a></li>
+            </ul>
+          </nav>
+          <div class="menu-overlay-socials">
+            <ul>
+              <li><a href="https://www.linkedin.com/in/tafadzwa-choga-b62993195/">LinkedIn</a></li>
+              <li><a href="https://www.behance.net/tafadzwachoga">Behance</a></li>
+              <li><a href="https://github.com/tafadzwachoga">GitHub</a></li>
+              <li><a href="https://www.instagram.com/handwing_/">Instagram</a></li>
+            </ul>
           </div>
-    
-        </nav>
+        </div>
 
 
 
         <div class="contact-content">
-          <div>
+          <div class="reveal">
             <h1>Contact</h1>
                 <p>
                   <a href="mailto:tafadzwchoga@gmail.com">tafadzwchoga@gmail.com</a><br>
@@ -62,7 +57,7 @@
                 </p>
           </div>
 
-          <div class="contact-image">
+          <div class="contact-image reveal">
             <img src="Images/ROBOTIK.png" alt="illustrationbyeyezwidopen">
           </div>
         </div>
@@ -73,14 +68,21 @@
 
 
 
-                  <footer class="footer">
-                    <div class="footer-container">
-                      <div class="copyright">
-                        <p class="mb-1">&copy; Copyright Tafadzwa Choga. All Rights Reserved
-                        </p>
-                      </div>
-                    </div>
-                  </footer>
+                  <footer class="site-footer reveal">
+          <div class="site-footer-cta">
+            <p>Let's build something together.</p>
+            <a href="mailto:tafadzwchoga@gmail.com">tafadzwchoga@gmail.com</a>
+          </div>
+          <div class="site-footer-links">
+            <a href="https://www.linkedin.com/in/tafadzwa-choga-b62993195/">LinkedIn</a>
+            <a href="https://www.behance.net/tafadzwachoga">Behance</a>
+            <a href="https://github.com/tafadzwachoga">GitHub</a>
+            <a href="https://www.instagram.com/handwing_/">Instagram</a>
+          </div>
+          <div class="site-footer-bottom">
+            <p>&copy; Copyright Tafadzwa Choga. All Rights Reserved</p>
+          </div>
+        </footer>
 
         </body>
 </html>
