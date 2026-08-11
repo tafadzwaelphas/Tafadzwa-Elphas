@@ -25,6 +25,52 @@
         left: var(--space-xs);
       }
 
+      .name-reveal {
+        padding-top: 12rem;
+      }
+
+      .site-menu-toggle {
+        display: none;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .site-menu-toggle img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+
+      .site-menu.scrolled .site-menu-toggle {
+        display: block;
+      }
+
+      .site-menu.scrolled .site-nav,
+      .site-menu.scrolled .site-nav-socials {
+        display: none;
+      }
+
+      .site-menu.scrolled.menu-open .site-nav,
+      .site-menu.scrolled.menu-open .site-nav-socials {
+        display: flex;
+      }
+
+      .site-menu.scrolled.menu-open .site-nav ul,
+      .site-menu.scrolled.menu-open .site-nav-socials {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      .site-menu.scrolled.menu-open {
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
       .project-slide {
         height: 60vh;
         min-height: 320px;

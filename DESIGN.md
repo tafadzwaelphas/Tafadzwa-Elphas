@@ -160,6 +160,33 @@ plus a mobile-friendly menu icon — being built in stages, this is stage 1.
   "Services" section, mobile-friendly menu icon (possibly reusing the homepage hero
   illustration). Single-image project sections (Fakugesi, FRGHN) left as-is for now.
 
+## Hero spacing + mobile menu icon (commit pending on `dev`)
+User reported (via screenshot at mobile width) that the "TAFADZWA / CHOGA" name-reveal text
+overlapped the stacked nav list on narrow viewports, and asked for the menu to collapse into an
+icon on scroll on mobile, reusing the homepage hero illustration (`Images/Number 7.png`, the
+decorative staircase graphic — already hidden on mobile via the `sm` breakpoint, so reusing it
+as a functional icon there doesn't compete with anything else).
+
+- **Hero spacing fix**: `.name-reveal` gets `padding-top: 12rem` at the `sm` breakpoint
+  (<576px), pushing the name text down clear of the (now taller, stacked) nav list.
+- **Mobile menu icon**: added a `.site-menu-toggle` button (containing the hero illustration,
+  `alt=""` since it's decorative-turned-functional with an `aria-label` on the button itself) as
+  the first child of `.site-menu` on all 5 pages. Hidden by default (`display:none` in
+  `Stylez.css`, unconditionally, so it never appears on desktop). At the `sm` breakpoint, once
+  `.site-menu` has `.scrolled`, the nav/socials are hidden and the toggle icon shows instead —
+  the existing glassmorphic pill background now just wraps a small icon instead of the full
+  row-of-links transform (which doesn't fit a narrow screen anyway). Tapping the icon adds
+  `.menu-open`, which re-shows the nav/socials as a right-aligned dropdown-style column below
+  the icon. `Menu.js` now also resets `.menu-open` whenever the page scrolls back above the
+  threshold, so it doesn't stay stuck open.
+  - **Debugging note**: while testing locally, `window.scrollTo()` correctly updated
+    `window.scrollY`, but the native `scroll` event never fired, so `.scrolled` never toggled
+    automatically in that automated tab. Same root cause as the slider's smooth-scroll
+    non-issue above — `document.hidden = true` in the backgrounded automation tab suppresses
+    more than just rAF-driven animations, apparently including scroll event dispatch. Confirmed
+    correct behavior by toggling the class manually and testing the icon/dropdown visually.
+    Real, focused-tab users won't hit this.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
