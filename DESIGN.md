@@ -317,6 +317,19 @@ no-ops gracefully when those elements aren't present (`querySelector` returns nu
 override) since no markup references them anymore. All 4 Portfolio projects now share one
 consistent visual pattern.
 
+## Project title font mismatch fix (commit pending on `dev`)
+User noticed the Portfolio project heading fonts were inconsistent — HandWing/EYEZWIDOPEN
+(Boldonse intended) actually rendered in Outfit, while Fakugesi/FRGHN rendered correctly. Root
+cause: HandWing/EYEZWIDOPEN wrap their title text in an `<a>` (they link out to Instagram);
+Fakugesi/FRGHN don't. The global `* { font-family: 'Outfit' }` rule matches every element
+directly, including that nested `<a>` — and a direct match on an element always beats an
+inherited value from a parent, regardless of the parent rule's specificity. So the `<a>` was
+getting Outfit straight from the universal selector, overriding the Boldonse inherited from
+`.project-header-title`. Fixed with `.project-header-title a { font-family: inherit; }`. Worth
+remembering as a general gotcha in this codebase: any heading class wrapping a nested `<a>`
+needs its own explicit `font-family: inherit` — inheritance doesn't reach through an element
+the universal selector also matches.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing

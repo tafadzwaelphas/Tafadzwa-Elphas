@@ -357,6 +357,7 @@ padding-top: var(--space-page);
 }
 
 .project-header-title a {
+  font-family: inherit;
   color: inherit;
   text-decoration: none;
 }
