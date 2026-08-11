@@ -304,6 +304,19 @@ new section its own classes rather than reusing `#skills`/`.skills-container`).
   documented earlier in this file (nav menu bug, twice) — third occurrence, same fix: explicit
   `display: block; line-height: normal;` on `.about-overview-col li`.
 
+## Single-image projects moved to the slider treatment (commit pending on `dev`)
+User compared a screenshot of the old Fakugesi 2-column `.poster-container` layout (image left,
+caption text right, lots of empty space) against HandWing's slider layout and asked to match it.
+Converted both single-image projects (Fakugesi, FRGHN) to the same `.project-slider` structure
+used by HandWing/EYEZWIDOPEN: caption moved into a `.project-header-description` paragraph
+(matching the other projects' pattern) above a single-slide `.project-slider`. No counter or
+prev/next buttons on these — nothing to paginate with one image, and `Slider.js` already
+no-ops gracefully when those elements aren't present (`querySelector` returns null, guarded by
+`if (!counter) return` and `?.` on the buttons). Removed the now-fully-dead
+`.poster-container`/`.fakugesi-poster` CSS (Stylez.css and its Responsive.css breakpoint
+override) since no markup references them anymore. All 4 Portfolio projects now share one
+consistent visual pattern.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing

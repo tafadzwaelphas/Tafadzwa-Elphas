@@ -568,26 +568,6 @@ padding-top: var(--space-page);
   padding-bottom: var(--space-lg);
 }
 
-.poster-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  /* border: 1px solid red; */
-  height: 90vh;
-}
-
-.fakugesi-poster {
-  /* width: 32rem; */
-  /* border: 1px solid red; */
-  height: 100%;
-  overflow: hidden;
-}
-
-.fakugesi-poster img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 .eyezwidopen-project-grid{
   padding-bottom: var(--space-xl);
   padding-top: var(--space-md);
