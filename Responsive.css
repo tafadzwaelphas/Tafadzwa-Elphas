@@ -182,6 +182,14 @@
         height: auto;
       }
 
+      .section-heading {
+        padding: 0 var(--space-sm);
+      }
+
+      .services-list {
+        padding: 0 var(--space-sm);
+      }
+
       #skills li {
         margin: 5px 20px;
       }

@@ -195,6 +195,31 @@ as a functional icon there doesn't compete with anything else).
   styling instead of inheriting the pill radius: `border-radius: 12px`, a solid
   near-opaque background (no blur), reading as a clean card rather than a blurry shape.
 
+## Homepage "Recent Projects" + "Services" sections (commit pending on `dev`)
+Final piece of the staged menu/slider/homepage request: a homepage section showcasing recent
+work (reusing the `.project-slider` component built for the Portfolio page) and a Services
+section.
+
+- **Recent Projects**: reuses `.project-slider`/`Slider.js` unchanged, but with a different
+  content shape — Portfolio.html's sliders show many images from *one* project (title stays
+  fixed, only the counter changes), while this one shows *one representative image per project*
+  across all 4 real projects (HandWing, EYEZWIDOPEN, Fakugesi, FRGHN), so the title needs to
+  change per slide. Solved by nesting `.project-slide-title` *inside* each `.project-slide`
+  instead of once outside the track — since it's `position: absolute` against the nearest
+  positioned ancestor, this works with zero CSS or JS changes, just a different markup
+  arrangement. Each slide is a full `<a>` (added `display:block` to the shared `.project-slide`
+  rule to support this) linking to that project's section on the Portfolio page — added
+  `id="handwing"`/`id="fakugesi"`/`id="eyezwidopen"`/`id="frghn"` anchors to the corresponding
+  `.project-header` elements in `Portfolio.html` for this. A "View all →" link in the section
+  heading points to `Portfolio.html`.
+- **Services**: a plain bordered list, numbered, reusing the *actual* skills already listed on
+  `Skills.html` (Multimedia Design, Motion Graphics, UX/UI, Digital Marketing) rather than
+  inventing a services list like the reference site's — keeps the homepage honest and in sync
+  with the real Skills page instead of introducing a second, different list of claims.
+- New shared `.section-heading` pattern (h2 + optional right-aligned link) used by both new
+  sections, reusable for future homepage sections.
+- `index.html` now also loads `Slider.js` (previously Portfolio-page-only).
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
