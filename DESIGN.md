@@ -46,6 +46,14 @@ tested and shown before moving to the next — do not chain multiple steps toget
   the font-weight/italic overrides that were tuned for Playfair Display's multiple weights and
   real italic face — Boldonse has neither, so those became dead/wrong CSS if left in place.
 - Steps 2–5: not started. See the plan file for scope of each.
+- **Ad-hoc change outside the step sequence (commit `16b1ab7`)**: user gave a direct request
+  with two reference screenshots — remove the "Hey, I'm Tafadzwa" homepage heading (redundant
+  with the big scroll-reveal name below it), move the menu trigger left of the logo, reduce
+  its corner radius from a full pill to 6px, and replace the full-screen dark menu overlay
+  with a compact anchored dropdown (fixed ~230px width, opens downward, stacked rows with
+  thin dividers) matching a screenshot of the reference site's own stacked nav-list styling.
+  This touches the same files Step 4 (menu/footer polish) would have — when Step 4 comes up,
+  check this is still what's there before assuming the old full-screen overlay design.
 
 ## Completed (commit 0d4f7af, pushed to origin/main)
 1. **Menu component** — fixed top-left "Menu" pill, full-screen overlay (nav links + socials),
