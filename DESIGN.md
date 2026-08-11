@@ -278,6 +278,10 @@ scroll made the mismatch visible. Removed the `transition` from the base `.site-
 to fall out of sync. Removed the now-redundant `transition: none` mobile override that was
 layered on top of this in the previous fix.
 
+## About page photo corners (commit pending on `dev`)
+Removed `border-radius: 15px` from `.about-content .about-image` per direct request — square
+corners on the About page profile photo instead of rounded.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
