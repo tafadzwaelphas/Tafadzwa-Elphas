@@ -235,6 +235,11 @@ all on the cover image.
   Recent Projects slides. Counter and prev/next controls stay; the covers are now plain images,
   matching the reference tile's plain-image treatment.
 
+## Slide letterbox color (commit pending on `dev`)
+Follow-up to the slider cover cleanup above: `.project-slide` background changed from `#1a1a1a`
+to `#f6f5f2` (the site's off-white, matching `body`) per direct request — the dark letterboxing
+around contained images didn't read as intended.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
