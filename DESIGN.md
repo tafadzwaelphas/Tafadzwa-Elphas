@@ -15,18 +15,17 @@ Reference site: https://www.olivergareis.com/ (design inspiration only — no co
   via automated scrolling in a reasonable amount of time; the current footer is an original
   design, not a copy)
 
-## Design-identity decision (as of 2026-08-11)
-User was asked: adopt the reference's visual identity (large serif display type, off-white
-minimal palette) vs. keep the site's existing monospace identity and only borrow the
-layout/motion *patterns*.
+## Design-identity decision (resolved 2026-08-11)
+User was asked twice: adopt the reference's visual identity (large serif display type,
+off-white minimal palette) vs. keep the site's existing monospace identity and only borrow
+the layout/motion *patterns*.
 
-**Decision at the time: keep the current monospace identity.** Layout/motion patterns were
-borrowed; typography and color palette were not changed.
-
-**Status: this decision is being revisited** — user asked "can my portfolio match the whole
-layout and the design of the reference site" in a later message, which may mean expanding
-scope to also match the reference's visual identity. Needs explicit reconfirmation before
-any typography/palette work starts, since it reverses the earlier explicit choice.
+- First answer: keep monospace, patterns only.
+- User then asked to "match the whole layout and the design" of the reference site, which
+  reopened the question — re-asked explicitly, and the **final decision is to switch to the
+  reference's visual identity**. Implemented in commit `d67f4f5`: Playfair Display (serif)
+  for headlines/big-statement text, Inter (sans-serif) for body/UI/nav, background lightened
+  to `#f6f5f2`, text softened from pure black to `#1a1a1a`. Monospace is fully removed.
 
 ## Completed (commit 0d4f7af, pushed to origin/main)
 1. **Menu component** — fixed top-left "Menu" pill, full-screen overlay (nav links + socials),
@@ -49,10 +48,20 @@ any typography/palette work starts, since it reverses the earlier explicit choic
    plain-text social links, copyright. Font Awesome CDN dependency removed site-wide since
    nothing uses `.fa` icon classes anymore (nav and footer both switched to plain text links).
 
+## Completed (commit d67f4f5, pushed to origin/main)
+6. **Full visual identity switch** — see decision note above. Playfair Display serif for
+   `h1`, `.name-reveal-line`, `.project-header-title`, `.site-footer-cta p`; Inter sans-serif
+   for everything else (loaded via Google Fonts CDN, both files updated: `ital,wght` axis
+   included for Playfair so real italics render, not synthetic-oblique). Background `#f6f5f2`,
+   primary text `#1a1a1a`, muted greys warmed slightly (e.g. `rgb(112,106,98)`) to sit better
+   against the warmer background. Also fixed a real pre-existing bug found while touching
+   this: the background-color rule targeted `#body`, an id that doesn't exist anywhere in the
+   HTML, so the intended background color had never actually been applying.
+
 ## Stack notes
-- No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger loaded via
-  CDN `<script>` tags (`gsap.min.js`, `ScrollTrigger.min.js`), same complexity level as the
-  pre-existing Font Awesome CDN link that was just removed.
+- No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
+  Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
+  Font Awesome CDN link that was removed this round.
 - New files this round: `Menu.js`, `Reveal.js`, `DESIGN.md` (this file).
 
 ## Known non-issues found during testing
