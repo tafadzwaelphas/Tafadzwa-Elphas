@@ -54,6 +54,15 @@ tested and shown before moving to the next — do not chain multiple steps toget
   thin dividers) matching a screenshot of the reference site's own stacked nav-list styling.
   This touches the same files Step 4 (menu/footer polish) would have — when Step 4 comes up,
   check this is still what's there before assuming the old full-screen overlay design.
+- **Superseded again (commit `918ec19`)**: the dropdown above was itself replaced after a
+  third reference screenshot showing the reference site's *plain, always-visible* nav list
+  (no button, no box, no click). Current state: **there is no menu button anymore.** Nav links
+  and socials render directly in the header at all times, top-left, muted grey with the
+  active/current page in solid dark. `Menu.js` now only does active-page highlighting — the
+  open/close/Escape logic is gone. Mobile has a near-invisible background chip on `.site-menu`
+  (page-color at ~92% opacity) since the always-visible nav collides with the homepage's
+  fixed-position home-hero-text/name-reveal scrolling underneath it at narrow widths; desktop
+  has no such background, matching the reference screenshot exactly.
 
 ## Completed (commit 0d4f7af, pushed to origin/main)
 1. **Menu component** — fixed top-left "Menu" pill, full-screen overlay (nav links + socials),
