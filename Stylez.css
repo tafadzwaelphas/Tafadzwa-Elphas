@@ -193,7 +193,6 @@ h1 {
   grid-template-columns: repeat(2, 1fr);
   justify-content: center;
   align-items: start;
-  padding-top: var(--space-lg); 
   /* background-color: #000; */
   /* border: 1px color red; */
   

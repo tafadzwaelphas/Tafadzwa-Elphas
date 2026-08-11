@@ -250,6 +250,14 @@ one-line revert once new logos are ready — markup and `#client-logos` CSS unto
 Swapped the order of the `.banner` (HW Pattern decorative image) and `.about-home` (bio text)
 sections in `index.html` — banner now comes first, bio text follows. No CSS/content changes.
 
+## Bio section top padding fix (commit pending on `dev`)
+User flagged excess whitespace above the bio text on the homepage, disproportionate to the side
+padding. Cause: two stacking top offsets — `.about-home` had its own `padding-top: var(--space-lg)`
+*and* its child `.about-home-text` had `padding-top: var(--space-page)`, plus a stray `<br>` right
+after the text div opened, adding a third source of vertical gap. Removed `.about-home`'s
+padding-top (the child's padding-top alone now matches the left/right/bottom padding exactly)
+and removed the stray `<br>`.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
