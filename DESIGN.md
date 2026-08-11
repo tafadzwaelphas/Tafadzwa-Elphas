@@ -240,6 +240,12 @@ Follow-up to the slider cover cleanup above: `.project-slide` background changed
 to `#f6f5f2` (the site's off-white, matching `body`) per direct request — the dark letterboxing
 around contained images didn't read as intended.
 
+## Client logos hidden (commit pending on `dev`)
+User wants to provide updated client logos before this section goes live again — current ones
+(HandWing, EYEZWIDOPEN, FRGHN, Design Lotus) are outdated/placeholder. Hidden via
+`style="display: none;"` on the `.container` wrapper in `index.html` (not deleted) so it's a
+one-line revert once new logos are ready — markup and `#client-logos` CSS untouched.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
