@@ -2,15 +2,20 @@ const HOURHAND = document.querySelector("#hour");
 const MINUTEHAND = document.querySelector("#minute");
 const SECONDHAND = document.querySelector("#second");
 
-let hrPosition = 20, minPosition = 130, secPosition = 267;
+function setClock() {
+  const date = new Date();
+  const hr = date.getHours();
+  const min = date.getMinutes();
+  const sec = date.getSeconds();
 
+  const hrDeg = (hr % 12) * 30 + min * 0.5;
+  const minDeg = min * 6 + sec * 0.1;
+  const secDeg = sec * 6;
 
-var date = new Date();
+  HOURHAND.style.transform = "rotate(" + hrDeg + "deg)";
+  MINUTEHAND.style.transform = "rotate(" + minDeg + "deg)";
+  SECONDHAND.style.transform = "rotate(" + secDeg + "deg)";
+}
 
-let hr = date.getHours();
-let min = date.getMinutes();
-let sec = date.getSeconds();
-
-HOURHAND.style.transform = "rotate(" + hrPosition + "deg)";
-MINUTEHAND.style.transform = "rotate(" + minPosition + "deg)";
-SECONDHAND.style.transform = "rotate(" + secPosition + "deg)";
+setClock();
+setInterval(setClock, 1000);
