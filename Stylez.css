@@ -752,6 +752,50 @@ padding-top: var(--space-page);
   /* zoom: 50px; */
 }
 
+.about-overview {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  padding: var(--space-xl) var(--space-page);
+}
+
+.about-overview-col h3 {
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgb(112, 106, 98);
+  margin-bottom: var(--space-sm);
+}
+
+.about-overview-col ul {
+  list-style: none;
+}
+
+.about-overview-col li {
+  display: block;
+  line-height: normal;
+  font-size: 18px;
+  padding: var(--space-2xs) 0;
+}
+
+.about-overview-role {
+  margin-bottom: var(--space-sm);
+}
+
+.about-overview-date {
+  display: block;
+  font-size: 13px;
+  font-style: italic;
+  color: rgb(112, 106, 98);
+  margin-bottom: var(--space-2xs);
+}
+
+.about-overview-role p {
+  font-size: 18px;
+  line-height: 1.4;
+}
+
 /* # Footer */
 
 .site-footer {

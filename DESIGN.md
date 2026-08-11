@@ -282,6 +282,28 @@ layered on top of this in the previous fix.
 Removed `border-radius: 15px` from `.about-content .about-image` per direct request — square
 corners on the About page profile photo instead of rounded.
 
+## About page 4-column overview (commit pending on `dev`)
+Replaced the dark "Adobe Illustrator / Photoshop / After Effects / Figma" tools bar on
+`About.html` with a 4-column layout, following a screenshot of the reference site's
+"Clients / Services / Work Experience / date-role timeline" section. New `.about-overview`
+section, `About.html` only (Skills.html's own tools bar/`#skills` styling untouched — gave this
+new section its own classes rather than reusing `#skills`/`.skills-container`).
+
+- **Clients I've worked with**: HandWing, EYEZWIDOPEN, FRGHN Music, Design Lotus Boutique
+  Studio, TMI Collective — drawn from the real bio text and the (currently hidden) client logos,
+  not invented.
+- **Services**: same real list as `Skills.html` (Multimedia Design, Motion Graphics, UX/UI,
+  Digital Marketing).
+- **Tools**: the exact same 4 tools that were in the bar being replaced (Adobe Illustrator,
+  Photoshop, After Effects, Figma) — unchanged content, just restyled/relocated.
+- **Experience**: two roles from the bio text (Creative Consultant & Business Partner at Design
+  Lotus; Designer at TMI Collective, Cape Town) — the bio only gives relative timing ("recently",
+  "one year ago"), not exact years, so dates are explicit `[Add dates]` placeholders rather than
+  invented years. **User should fill these in.**
+- Hit the same recurring `ul li { display: inline-block; line-height: 100px; }` legacy CSS trap
+  documented earlier in this file (nav menu bug, twice) — third occurrence, same fix: explicit
+  `display: block; line-height: normal;` on `.about-overview-col li`.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing

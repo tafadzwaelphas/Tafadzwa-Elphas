@@ -184,6 +184,12 @@
         padding: 0 var(--space-sm);
       }
 
+      .about-overview {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+        padding: var(--space-md) var(--space-sm);
+      }
+
       #skills li {
         margin: 5px 20px;
       }
