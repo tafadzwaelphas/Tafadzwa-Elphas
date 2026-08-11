@@ -100,6 +100,14 @@ tested and shown before moving to the next — do not chain multiple steps toget
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
   Font Awesome CDN link that was removed this round.
 - New files this round: `Menu.js`, `Reveal.js`, `DESIGN.md` (this file).
+- **Cache-busting**: `Stylez.css`, `Responsive.css`, `Menu.js`, `Reveal.js`, and `Movement.js`
+  are all referenced with a `?v=1` query string across all 5 pages. GitHub Pages doesn't send
+  strong cache invalidation for static assets, so without this, browsers can keep serving a
+  stale CSS/JS file after a deploy — this caused real confusion mid-session (a screenshot of
+  a stale-cached nav looked like a live bug; a hard refresh proved the deployed code was
+  already correct). **Bump the version number in all 5 HTML files whenever `Stylez.css`,
+  `Responsive.css`, `Menu.js`, or `Reveal.js` changes** — a quick way is
+  `perl -pi -e 's/\?v=1/\?v=2/g' *.html` (adjust the numbers each time).
 
 ## Known non-issues found during testing
 - GSAP animations appear "stuck" mid-fade when checked via browser automation — this is
