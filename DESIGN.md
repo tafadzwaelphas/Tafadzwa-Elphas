@@ -268,6 +268,16 @@ mismatched, glitchy-looking pop. Fixed by setting `transition: none` on `.site-m
 mobile breakpoint, so the icon/dropdown toggle snaps cleanly instead. Desktop's scroll transition
 is untouched.
 
+## Menu background glitch — desktop too (commit pending on `dev`)
+The mobile-only fix above wasn't enough — user confirmed (screen recording) the same glitch on
+desktop when scrolling fast: `flex-direction: column → row` snaps instantly (not animatable),
+while `background-color`/`box-shadow`/`backdrop-filter` were fading over 0.4s, so a hard/fast
+scroll made the mismatch visible. Removed the `transition` from the base `.site-menu` rule in
+`Stylez.css` entirely, rather than special-casing it further — the whole scrolled-state change
+(row layout + glass background) is now an instant snap on both desktop and mobile, no animation
+to fall out of sync. Removed the now-redundant `transition: none` mobile override that was
+layered on top of this in the previous fix.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing

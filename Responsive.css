@@ -46,10 +46,6 @@
         display: block;
       }
 
-      .site-menu {
-        transition: none;
-      }
-
       .site-menu.scrolled {
         background-color: transparent;
         backdrop-filter: none;
