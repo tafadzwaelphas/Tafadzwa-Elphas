@@ -25,8 +25,31 @@
         left: var(--space-xs);
       }
 
-      .project-filmstrip img {
-        height: 200px;
+      .project-slide {
+        height: 60vh;
+        min-height: 320px;
+      }
+
+      .project-slide-title {
+        left: var(--space-sm);
+        bottom: var(--space-sm);
+        font-size: clamp(2rem, 12vw, 3.5rem);
+      }
+
+      .project-slider-counter {
+        top: var(--space-xs);
+        left: var(--space-sm);
+      }
+
+      .project-slider-nav {
+        bottom: var(--space-sm);
+        right: var(--space-sm);
+      }
+
+      .project-slider-nav button {
+        width: 36px;
+        height: 36px;
+        font-size: 15px;
       }
 
       #skills li {
@@ -90,14 +113,6 @@
 
       .project-header-description {
         padding: 0 var(--space-sm) var(--space-sm);
-      }
-
-      .project-filmstrip {
-        padding: 16px var(--space-sm);
-      }
-
-      .project-filmstrip img {
-        height: 260px;
       }
 
       .poster-container {

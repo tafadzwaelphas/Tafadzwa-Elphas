@@ -126,6 +126,40 @@ after the user has seen the local result and approved.
   (logo `<a>` moved from inside `.site-menu` to a sibling before it). Cache-busting bumped
   `Stylez.css`/`Responsive.css` `?v=2` → `?v=3`.
 
+## Portfolio project slider (started 2026-08-11)
+User wants the Portfolio page's multi-image projects restyled to match a reference-site detail
+they inspected via DevTools: a full-bleed horizontal slider per case study, with the project
+name in huge bold overlaid type, a slide counter ("01 / 09"), and prev/next controls. Requested
+alongside a homepage "Recent projects" section (same treatment) and homepage "Services" section,
+plus a mobile-friendly menu icon — being built in stages, this is stage 1.
+
+- **New `.project-slider` component (commit pending on `dev`)**: replaces the old
+  `.project-filmstrip` (plain horizontal-scroll thumbnail strip) for HandWing and EYEZWIDOPEN
+  (the two multi-image projects — Fakugesi and FRGHN each have a single image and keep their
+  existing `.poster-container` 2-column layout, since a slider doesn't apply to one image).
+  Each slide is full-bleed (`height: 78vh`, `object-fit: cover`), with the project name overlaid
+  bottom-left in Boldonse using the site's existing accent color (now tokenized as
+  `--color-accent: rgb(0, 255, 213)`, previously only used inline for hover states), a
+  glassmorphic slide counter top-left, and glassmorphic prev/next circular buttons bottom-right
+  — reusing the blur/translucency language already established by the scroll-responsive nav.
+  CSS scroll-snap (`scroll-snap-type: x mandatory`) drives the actual scrolling; a new
+  `Slider.js` (`?v=1`) handles the counter text and prev/next button clicks via
+  `track.scrollTo({ behavior: "smooth" })`.
+  - **Debugging note**: while testing locally via browser automation, next/prev clicks appeared
+    to silently do nothing. Traced it to the same root cause as the already-documented GSAP
+    "stuck animation" non-issue below — `document.hidden = true` in the automated/backgrounded
+    tab suppresses rAF-driven animations, and native smooth-scroll is apparently also
+    rAF-driven, so `behavior: "smooth"` no-ops in that environment specifically. Confirmed the
+    listener and target math are correct (`scrollTo` was called with the right arguments every
+    time) and that `behavior: "instant"` works immediately in the same backgrounded tab — so
+    this is an automation-only artifact, not a real bug. Works normally in a real, focused tab.
+  - Removed the now-dead `.project-filmstrip`/`.project-filmstrip img` rules from `Stylez.css`
+    and their `Responsive.css` breakpoint overrides, replaced with `.project-slide`/
+    `.project-slide-title`/`.project-slider-counter`/`.project-slider-nav` responsive rules.
+- Still to do: homepage "Recent projects" section (reusing `.project-slider`), homepage
+  "Services" section, mobile-friendly menu icon (possibly reusing the homepage hero
+  illustration). Single-image project sections (Fakugesi, FRGHN) left as-is for now.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
