@@ -4,9 +4,8 @@
 /* // `sm` applies to x-small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .home-hero-text h1{
-        padding-left: 2rem;
+        padding-left: var(--space-sm);
         font-size: 50px;
-        font-style: oblique;
       }
 
       .banner {
@@ -22,8 +21,8 @@
       }
 
       .site-menu {
-        top: 1rem;
-        left: 1rem;
+        top: var(--space-xs);
+        left: var(--space-xs);
       }
 
       .menu-overlay-links a {
@@ -47,7 +46,7 @@
 
       h1 {
         font-size: 48px;
-        padding-bottom: 3rem;
+        padding-bottom: var(--space-md);
       }
 
       .menu-overlay-links a {
@@ -59,17 +58,17 @@
       }
 
       .home-hero-text h1 {
-        padding-left: 2rem;
-        padding-top: 3rem;
+        padding-left: var(--space-sm);
+        padding-top: var(--space-md);
         font-size: 64px;
       }
 
       .about-content,
       .contact-content {
         display: block;
-        padding-left: 2rem;
-        padding-right: 2rem;
-        padding-top: 3rem;
+        padding-left: var(--space-sm);
+        padding-right: var(--space-sm);
+        padding-top: var(--space-md);
       }
 
       .about-content .about-text,
@@ -83,7 +82,7 @@
         max-width: 400px;
         height: auto;
         aspect-ratio: 1 / 1;
-        margin-top: 2rem;
+        margin-top: var(--space-sm);
       }
 
       .contact-content img {
@@ -94,21 +93,21 @@
 
       .portfolio-text,
       .skills-text {
-        padding-left: 2rem;
-        padding-top: 3rem;
+        padding-left: var(--space-sm);
+        padding-top: var(--space-md);
       }
 
       .project-header {
-        padding: 3rem 2rem 1rem;
-        gap: 1rem;
+        padding: var(--space-md) var(--space-sm) var(--space-xs);
+        gap: var(--space-xs);
       }
 
       .project-header-description {
-        padding: 0 2rem 2rem;
+        padding: 0 var(--space-sm) var(--space-sm);
       }
 
       .project-filmstrip {
-        padding: 16px 2rem;
+        padding: 16px var(--space-sm);
       }
 
       .project-filmstrip img {
