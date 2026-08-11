@@ -17,10 +17,7 @@
 
       .site-menu {
         top: var(--space-xs);
-        left: var(--space-xs);
-        background-color: rgba(246, 245, 242, 0.92);
-        padding: var(--space-2xs);
-        border-radius: 6px;
+        right: var(--space-xs);
       }
 
       .project-filmstrip img {

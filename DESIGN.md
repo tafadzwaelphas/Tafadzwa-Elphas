@@ -95,6 +95,30 @@ tested and shown before moving to the next — do not chain multiple steps toget
    this: the background-color rule targeted `#body`, an id that doesn't exist anywhere in the
    HTML, so the intended background color had never actually been applying.
 
+## Branch workflow (started 2026-08-11)
+User asked for a review step before design changes reach `main`/the live site. Working
+agreement: design work happens on a `dev` branch, reviewed **locally only** (no live preview
+URL — GitHub Pages' Actions workflow only deploys on push to `main`, so `dev` alone has no
+public URL without extra Pages/Actions setup, which wasn't wanted). Merge `dev` → `main` only
+after the user has seen the local result and approved.
+
+- **Menu: moved to top-right, scroll-responsive, glassmorphic (commit pending on `dev`)**:
+  following a video of the reference site's fixed nav behavior, plus explicit answers to two
+  clarifying questions (branch review = local-only; scroll behavior = "Stack → row on
+  scroll"). `.site-menu` repositioned from `left` to `right: 1.5rem`, logo/nav/socials still
+  render as a plain transparent vertical stack at the top of the page. `Menu.js` now also adds
+  a scroll listener (threshold 24px) toggling a `.scrolled` class on `.site-menu`. When
+  `.scrolled` is present, `Stylez.css` switches `.site-menu` and its inner `ul`s from
+  `flex-direction: column` to `row`, and adds a glassmorphic pill: `backdrop-filter: blur(14px)`
+  + `rgba(246,245,242,0.55)` background + soft shadow, all cross-faded via `transition`.
+  Reverts automatically when scrolled back near the top. This also **replaced** the old
+  mobile-only static background chip in `Responsive.css` (flat 92%-opacity color, no blur) —
+  the new scroll-triggered glass effect covers the same legibility need (nav overlapping
+  scrolled content) more elegantly on all screen sizes, so the static chip was removed and the
+  mobile breakpoint now only adjusts position (`top`/`right` spacing).
+  Files touched: `Stylez.css`, `Responsive.css`, `Menu.js`, cache-busting bumped `?v=1` → `?v=2`
+  for all three across all 5 HTML pages.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
