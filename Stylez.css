@@ -40,93 +40,54 @@ h1,
   left: 1.5rem;
   z-index: 1000;
   display: flex;
-  align-items: center;
-  gap: var(--space-xs);
+  flex-direction: column;
+  gap: var(--space-2xs);
 }
 
 .site-menu .menu-logo img {
   width: 40px;
   display: block;
+  margin-bottom: var(--space-2xs);
 }
 
-.menu-trigger {
-  font-weight: 600;
-  background-color: #000;
-  color: #fff;
-  border: none;
-  padding: 0.6rem 1.4rem;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.menu-trigger:hover {
-  opacity: 0.8;
-}
-
-.menu-overlay {
-  position: fixed;
-  top: 4.4rem;
-  left: 1.5rem;
-  width: 230px;
-  background-color: #111;
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-8px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  z-index: 999;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-body.menu-open .menu-overlay {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-.menu-overlay-links ul,
-.menu-overlay-socials ul {
+.site-nav ul,
+.site-nav-socials {
   list-style: none;
 }
 
-.menu-overlay-links li,
-.menu-overlay-socials li {
+.site-nav li,
+.site-nav-socials li {
   display: block;
   line-height: normal;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.menu-overlay-links li:last-child,
-.menu-overlay-socials li:last-child {
-  border-bottom: none;
-}
-
-.menu-overlay-links a,
-.menu-overlay-socials a {
+.site-nav a,
+.site-nav-socials a {
   display: block;
-  padding: 14px 18px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
-  color: #fff;
+  color: rgba(26, 26, 26, 0.55);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  line-height: 1.8;
 }
 
-.menu-overlay-links a:hover,
-.menu-overlay-links a.active,
-.menu-overlay-socials a:hover {
-  color: rgb(0, 255, 213);
+.site-nav a:hover,
+.site-nav a.active {
+  color: #1a1a1a;
 }
 
-.menu-overlay-socials a:hover {
-  color: rgb(0, 255, 213);
+.site-nav-socials {
+  margin-top: var(--space-2xs);
+}
+
+.site-nav-socials a {
+  font-size: 11px;
+}
+
+.site-nav-socials a:hover {
+  color: #1a1a1a;
 }
 
 

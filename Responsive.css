@@ -18,12 +18,9 @@
       .site-menu {
         top: var(--space-xs);
         left: var(--space-xs);
-      }
-
-      .menu-overlay {
-        top: 4rem;
-        left: var(--space-xs);
-        max-width: calc(100vw - 2rem);
+        background-color: rgba(246, 245, 242, 0.92);
+        padding: var(--space-2xs);
+        border-radius: 6px;
       }
 
       .project-filmstrip img {
