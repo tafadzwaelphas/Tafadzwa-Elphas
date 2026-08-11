@@ -361,6 +361,17 @@ grouped with `.skills-text` in a shared selector). No sitemap/robots.txt existed
 **Note**: if anything external links directly to `/Skills.html` (resume, LinkedIn, etc.), that
 link will now 404 — worth checking.
 
+## Hero image centering fix (commit pending on `dev`)
+User flagged the homepage hero illustration (`Images/Number 7.png`) sitting right-of-center,
+close to the nav, instead of centered. Cause: leftover 2-column grid (`.home-hero-text`) from
+when the "Hey, I'm Tafadzwa" heading occupied column 1 (removed earlier this session, per the
+"ad-hoc change" note further up this file) — the image was still explicitly pinned to
+`grid-column: 2`, so with column 1 now empty it sat in the right half instead of centered on
+the page. Removed the grid entirely (unnecessary now with only one child) and centered the
+image directly with `margin-inline: auto` on the `img` itself, which works the same way
+regardless of the parent's `display` mode — including the `md` breakpoint's `display: block`
+override, no separate responsive fix needed.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
