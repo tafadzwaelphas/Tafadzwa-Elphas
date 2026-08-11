@@ -1,14 +1,23 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: monospace;
+  font-family: 'Inter', sans-serif;
   box-sizing: border-box;
   /* border: 1px solid red; */
 }
 
-#body {
-  background-color: #eee;
+body {
+  background-color: #f6f5f2;
+  color: #1a1a1a;
   position: relative;
+}
+
+h1,
+.name-reveal-line,
+.project-header-title,
+.site-footer-cta p {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: -0.01em;
 }
 
 
@@ -30,7 +39,7 @@
 }
 
 .menu-trigger {
-  font-family: monospace;
+  font-weight: 600;
   background-color: #000;
   color: #fff;
   border: none;
@@ -84,7 +93,7 @@ body.menu-open .menu-overlay {
 }
 
 .menu-overlay-links a {
-  font-family: monospace;
+  font-weight: 700;
   font-size: 48px;
   color: #fff;
   text-decoration: none;
@@ -105,7 +114,7 @@ body.menu-open .menu-overlay {
 
 .menu-overlay-socials a {
   color: #fff;
-  font-family: monospace;
+  font-weight: 500;
   text-decoration: none;
   font-size: 14px;
   letter-spacing: 0.05em;
@@ -119,6 +128,7 @@ body.menu-open .menu-overlay {
 
 h1 {
   font-size: 100px;
+  font-weight: 800;
   padding-bottom: 7rem;
   /* margin-left: 110px;
   line-height: 300px; */
@@ -140,7 +150,8 @@ h1 {
   padding-left: 7rem;
   padding-top: 7rem;
   font-size: 100px;
-  font-style: oblique;
+  font-style: italic;
+  font-weight: 700;
 }
 
 
@@ -167,8 +178,7 @@ h1 {
 }
 
 .name-reveal-line {
-  font-family: monospace;
-  font-weight: 700;
+  font-weight: 900;
   font-size: clamp(60px, 14vw, 220px);
   line-height: 0.95;
   margin: 0;
@@ -207,7 +217,7 @@ ol {
   font-style: normal;
   font-size: 20px;
   margin-left: 110px;
-  color: rgb(59, 59, 59);
+  color: rgb(74, 68, 62);
 }
 
 
@@ -245,7 +255,7 @@ p {
   text-align: left;
   text-transform: none;
   /* margin-left: 110px; */
-  color: rgb(105, 104, 104);
+  color: rgb(112, 106, 98);
   /* text-decoration: underline; */
 }
 
@@ -343,8 +353,8 @@ padding-top: 6rem;
 }
 
 .project-header-title {
-  font-size: 40px;
-  font-weight: 700;
+  font-size: 44px;
+  font-weight: 800;
 }
 
 .project-header-title a {
@@ -359,7 +369,7 @@ padding-top: 6rem;
 .project-header-year,
 .project-header-tags {
   font-size: 14px;
-  color: rgb(105, 104, 104);
+  color: rgb(112, 106, 98);
   line-height: 1.6;
 }
 
@@ -367,7 +377,7 @@ padding-top: 6rem;
   padding: 0 6rem 2rem;
   max-width: 700px;
   font-size: 16px;
-  color: rgb(105, 104, 104);
+  color: rgb(112, 106, 98);
 }
 
 .project-filmstrip {
@@ -619,14 +629,15 @@ padding-top: 6rem;
 
 .site-footer-cta p {
   font-size: clamp(36px, 6vw, 80px);
-  font-weight: 700;
-  color: #000;
+  font-weight: 900;
+  font-style: italic;
+  color: #1a1a1a;
   margin-bottom: 1rem;
 }
 
 .site-footer-cta a {
   font-size: 20px;
-  color: #000;
+  color: #1a1a1a;
   text-decoration: underline;
 }
 
@@ -640,7 +651,7 @@ padding-top: 6rem;
   font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #000;
+  color: #1a1a1a;
   text-decoration: none;
 }
 
@@ -650,7 +661,7 @@ padding-top: 6rem;
 
 .site-footer-bottom p {
   font-size: 12px;
-  color: rgb(105, 104, 104);
+  color: rgb(112, 106, 98);
 }
 
 
