@@ -402,7 +402,7 @@ padding-left) on `.site-menu.scrolled .site-nav-socials`, so the horizontal scro
 has a clear visual break between the page links (Home/About/Contact/Portfolio) and the social
 links (LinkedIn/Behance/GitHub/Instagram) instead of relying on gap spacing alone. Scoped to the
 scrolled row state only — doesn't apply to the default vertical stack, where a vertical divider
-wouldn't make sense.
+wouldn't make sense. Thickness bumped from 1px to 3px per direct follow-up request.
 
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
