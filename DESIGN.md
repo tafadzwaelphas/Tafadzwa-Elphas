@@ -22,10 +22,30 @@ the layout/motion *patterns*.
 
 - First answer: keep monospace, patterns only.
 - User then asked to "match the whole layout and the design" of the reference site, which
-  reopened the question — re-asked explicitly, and the **final decision is to switch to the
-  reference's visual identity**. Implemented in commit `d67f4f5`: Playfair Display (serif)
+  reopened the question — re-asked explicitly, and the decision became: switch to the
+  reference's visual identity. Implemented in commit `d67f4f5`: Playfair Display (serif)
   for headlines/big-statement text, Inter (sans-serif) for body/UI/nav, background lightened
-  to `#f6f5f2`, text softened from pure black to `#1a1a1a`. Monospace is fully removed.
+  to `#f6f5f2`, text softened from pure black to `#1a1a1a`.
+- **Superseded again in commit `9fb9805`** (Step 1 of the redesign-process plan below): user
+  gave explicit font direction — primary heading font is now **Boldonse** (single weight 400,
+  no italic face; https://fonts.google.com/specimen/Boldonse), body font is **Outfit**
+  (variable weight 100–900; https://fonts.google.com/specimen/Outfit). Playfair Display/Inter
+  are gone. Monospace is fully removed either way.
+
+## Redesign process (started 2026-08-11, after feedback that changes were happening "too much
+all at once")
+Full plan lives at `/Users/linnet/.claude/plans/woolly-munching-squirrel.md` (5 steps: spacing/
+type foundation → homepage intro sequence → Portfolio project section refinement → menu/footer
+polish → cross-page consistency + final deploy). Working agreement: one step per commit,
+tested and shown before moving to the next — do not chain multiple steps together.
+
+- **Step 1 — done (commit `9fb9805`)**: added a shared spacing token scale (`--space-2xs`
+  through `--space-xl`, plus `--space-page` for the recurring `6rem` horizontal margin) to
+  `Stylez.css`, replacing scattered one-off `rem` values across `Stylez.css` and
+  `Responsive.css`. Switched fonts to Boldonse/Outfit as described above, including removing
+  the font-weight/italic overrides that were tuned for Playfair Display's multiple weights and
+  real italic face — Boldonse has neither, so those became dead/wrong CSS if left in place.
+- Steps 2–5: not started. See the plan file for scope of each.
 
 ## Completed (commit 0d4f7af, pushed to origin/main)
 1. **Menu component** — fixed top-left "Menu" pill, full-screen overlay (nav links + socials),
