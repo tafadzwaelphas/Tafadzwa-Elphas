@@ -372,6 +372,30 @@ image directly with `margin-inline: auto` on the `img` itself, which works the s
 regardless of the parent's `display` mode — including the `md` breakpoint's `display: block`
 override, no separate responsive fix needed.
 
+## Code review pass before merge (commit pending on `dev`)
+User asked for a review of the accumulated `dev` branch work before merging to `main`. Ran
+`/code-review dev`; it surfaced 6 findings. Fixed the 3 real, currently-live bugs:
+
+- **Mobile heading/nav overlap on About/Contact/Portfolio**: the `padding-top: 12rem` fix
+  applied to `.name-reveal` earlier only covered the homepage — About.html, Contact.html, and
+  Portfolio.html share the same fixed, background-less stacked nav (~228px tall unscrolled) but
+  their headings only had `var(--space-md)` (48px) of clearance under 768px. Bumped
+  `.about-content`/`.contact-content`/`.portfolio-text`'s existing md-breakpoint `padding-top`
+  to the same `12rem`.
+- **Slider counter/nav chip contrast**: after the slide background changed from dark to
+  `#f6f5f2` (light), the counter/prev-next-button chips (`rgba(26,26,26,0.35)` bg + light text)
+  went nearly illegible against letterboxed light backgrounds — increased opacity to `0.75` so
+  the chip reads as solid-ish dark regardless of what's behind it.
+- **`.about-overview` tablet width**: 4 columns collapsed to 1 under 768px but had no
+  accommodation for 768–991.98px (a previously-empty breakpoint block) — added a 2-column
+  override there.
+
+Left 3 lower-priority code-quality nitpicks unaddressed (not real bugs, just DRY/robustness
+suggestions): repeated frosted-glass panel declarations across 4 rules with no shared token,
+`--color-accent` introduced without an equivalent token for the muted-gray color used
+alongside it, and `Slider.js` not null-checking `.project-slider-track` before use. Can revisit
+if it becomes annoying to maintain.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing

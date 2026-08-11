@@ -126,7 +126,7 @@
         display: block;
         padding-left: var(--space-sm);
         padding-right: var(--space-sm);
-        padding-top: var(--space-md);
+        padding-top: 12rem;
       }
 
       .about-content .about-text,
@@ -151,7 +151,7 @@
 
       .portfolio-text {
         padding-left: var(--space-sm);
-        padding-top: var(--space-md);
+        padding-top: 12rem;
       }
 
       .project-header {
@@ -180,7 +180,11 @@
  }
 
 /* // `lg` applies to medium devices (tablets, less than 992px) */
-@media (max-width: 991.98px) { 
+@media (max-width: 991.98px) {
+
+      .about-overview {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
  }
 
