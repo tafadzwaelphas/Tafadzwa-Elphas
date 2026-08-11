@@ -718,35 +718,6 @@ padding-top: var(--space-page);
 }
 
 
-/* Skills */
-
-#skills ul {
-  list-style: none;
-  padding: 0;
-  /* margin-left: 10px; */
-  background-color: #242323;
-  margin-top: 100px;
-}
-
-
-#skills li {
-  color: #fcfcfc;
-  margin: 5px 95px;
-  display: inline-block;
-  align-items: center;
-  justify-content: left;
-}
-
-.skills-text{
-  padding-left: var(--space-page);
-  padding-top: var(--space-lg);
-}
-
-.skills-container ul li:hover{
-  opacity: 0.7;
-  /* zoom: 50px; */
-}
-
 .about-overview {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

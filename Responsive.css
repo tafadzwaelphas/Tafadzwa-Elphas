@@ -104,9 +104,6 @@
         font-size: 15px;
       }
 
-      #skills li {
-        margin: 5px 12px;
-      }
 }
 
 /* // `md` applies to small devices (landscape phones, less than 768px) */
@@ -152,8 +149,7 @@
         height: auto;
       }
 
-      .portfolio-text,
-      .skills-text {
+      .portfolio-text {
         padding-left: var(--space-sm);
         padding-top: var(--space-md);
       }
@@ -181,9 +177,6 @@
         padding: var(--space-md) var(--space-sm);
       }
 
-      #skills li {
-        margin: 5px 20px;
-      }
  }
 
 /* // `lg` applies to medium devices (tablets, less than 992px) */

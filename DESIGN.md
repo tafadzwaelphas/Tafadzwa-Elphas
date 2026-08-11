@@ -349,6 +349,18 @@ invented).
   - `Movement.js` reference moved from `Portfolio.html`'s `<head>` to `Contact.html`'s;
     cache-busting bumped to `?v=2` since its logic changed.
 
+## Skills page removed (commit pending on `dev`)
+User flagged the standalone Skills page as redundant — its only content (Multimedia Design,
+Motion Graphics, UX/UI, Digital Marketing) now also appears on the homepage's Services section
+and the About page's 4-column overview, so the dedicated page was just repeating itself with a
+lot of empty space around it. Deleted `Skills.html` and removed the "Skills" nav item from the
+other 4 pages. Cleaned up now-fully-dead CSS: `#skills ul`/`#skills li`/`.skills-text`/
+`.skills-container ul li:hover` in `Stylez.css`, and the matching `#skills li` /`.skills-text`
+breakpoint overrides in `Responsive.css` (kept `.portfolio-text` where it was previously
+grouped with `.skills-text` in a shared selector). No sitemap/robots.txt existed to update.
+**Note**: if anything external links directly to `/Skills.html` (resume, LinkedIn, etc.), that
+link will now 404 — worth checking.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
