@@ -112,8 +112,9 @@ h1 {
 
 
 .home-hero-text img{
-  width: 400x;
+  width: 400px;
   height: 400px;
+  object-fit: contain;
   display: block;
 }
 
@@ -248,8 +249,9 @@ padding-top: 6rem;
 }
 
 .contact-content img{
-  width: 400x;
+  width: 400px;
   height: 400px;
+  object-fit: contain;
   /* display: block; */
 } 
 

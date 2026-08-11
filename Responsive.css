@@ -2,9 +2,9 @@
 // ... { ... } */
 
 /* // `sm` applies to x-small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) { 
+@media (max-width: 575.98px) {
     .home-hero-text h1{
-        padding-left: 7rem;
+        padding-left: 2rem;
         font-size: 50px;
         font-style: oblique;
       }
@@ -18,18 +18,101 @@
       }
 
       .footer-container{
-        padding-left: 7rem;
+        padding-left: 0;
       }
 
-      .socials{
-        padding-left: 5rem;
+      nav .socials{
+        padding-left: 0;
+        padding-right: 0;
         margin-inline: auto;
+      }
+
+      .image-grid {
+        --num-cols: 1;
+        --row-height: 280px;
+      }
+
+      #skills li {
+        margin: 5px 12px;
       }
 }
 
 /* // `md` applies to small devices (landscape phones, less than 768px) */
-@media (max-width: 767.98px) { 
+@media (max-width: 767.98px) {
+      html, body {
+        overflow-x: hidden;
+      }
 
+      h1 {
+        font-size: 48px;
+        padding-bottom: 3rem;
+      }
+
+      .nav-logo {
+        margin-left: 0;
+      }
+
+      nav .socials {
+        padding-right: 0;
+      }
+
+      .home-hero-text h1 {
+        padding-left: 2rem;
+        padding-top: 3rem;
+        font-size: 64px;
+      }
+
+      .about-content,
+      .contact-content {
+        display: block;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-top: 3rem;
+      }
+
+      .about-content .about-text,
+      .contact-content > div {
+        width: 100%;
+        padding-left: 0;
+      }
+
+      .about-content .about-image {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        margin-top: 2rem;
+      }
+
+      .contact-content img {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+      }
+
+      .portfolio-text,
+      .skills-text {
+        padding-left: 2rem;
+        padding-top: 3rem;
+      }
+
+      .poster-container {
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+
+      .fakugesi-poster {
+        height: auto;
+      }
+
+      #skills li {
+        margin: 5px 20px;
+      }
+
+      .image-grid {
+        --num-cols: 2;
+        --row-height: 220px;
+      }
  }
 
 /* // `lg` applies to medium devices (tablets, less than 992px) */
