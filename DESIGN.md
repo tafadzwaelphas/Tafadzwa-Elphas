@@ -330,6 +330,25 @@ remembering as a general gotcha in this codebase: any heading class wrapping a n
 needs its own explicit `font-family: inherit` — inheritance doesn't reach through an element
 the universal selector also matches.
 
+## Clock moved from Portfolio to Contact (commit pending on `dev`)
+User felt the analog clock at the bottom of the Portfolio page was orphaned — not tied to any
+project, just interrupting the flow before the footer. Brainstormed a few directions; user
+picked repurposing it as a "local time" indicator on the Contact page, next to the existing
+address ("Cairo 1, Nile House, Madina, Accra Ghana" — already real content on that page, not
+invented).
+
+- Moved the `#clock` SVG markup from `Portfolio.html` to `Contact.html`, shrunk from the old
+  full-`90vh` `.main`/`.clockbox` display down to a small 72×72px `.local-time-clock` widget
+  next to a `.local-time-label` reading "Currently in Accra, Ghana". Removed the now-dead
+  `.main`/`.clockbox, #clock { width: 100% }` CSS (the hand/face drawing rules like `.circle`,
+  `.hour-arm` etc. are unchanged and reused as-is).
+  - **`Movement.js` now shows Ghana time specifically, not the viewer's local time**: changed
+    `getHours()`/`getMinutes()`/`getSeconds()` to their UTC equivalents, since Ghana is UTC+0
+    year-round with no DST — otherwise a "Currently in Accra" label next to a clock showing the
+    *visitor's* own local time would be misleading for anyone outside GMT+0.
+  - `Movement.js` reference moved from `Portfolio.html`'s `<head>` to `Contact.html`'s;
+    cache-busting bumped to `?v=2` since its logic changed.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
