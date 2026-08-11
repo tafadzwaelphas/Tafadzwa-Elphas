@@ -246,6 +246,10 @@ User wants to provide updated client logos before this section goes live again �
 `style="display: none;"` on the `.container` wrapper in `index.html` (not deleted) so it's a
 one-line revert once new logos are ready — markup and `#client-logos` CSS untouched.
 
+## Homepage section order swap (commit pending on `dev`)
+Swapped the order of the `.banner` (HW Pattern decorative image) and `.about-home` (bio text)
+sections in `index.html` — banner now comes first, bio text follows. No CSS/content changes.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
