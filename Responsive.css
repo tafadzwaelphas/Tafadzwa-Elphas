@@ -31,8 +31,8 @@
 
       .site-menu-toggle {
         display: none;
-        width: 32px;
-        height: 32px;
+        width: 56px;
+        height: 56px;
         padding: 0;
         border: none;
         background: transparent;
@@ -44,6 +44,14 @@
         height: 100%;
         object-fit: contain;
         display: block;
+      }
+
+      .site-menu.scrolled {
+        background-color: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        box-shadow: none;
+        padding: 0;
       }
 
       .site-menu.scrolled .site-menu-toggle {
@@ -69,6 +77,10 @@
       .site-menu.scrolled.menu-open {
         flex-direction: column;
         align-items: flex-end;
+        background-color: rgba(246, 245, 242, 0.97);
+        border-radius: 12px;
+        padding: var(--space-sm) var(--space-md);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
       }
 
       .project-slide {

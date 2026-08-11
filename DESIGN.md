@@ -186,6 +186,14 @@ as a functional icon there doesn't compete with anything else).
     more than just rAF-driven animations, apparently including scroll event dispatch. Confirmed
     correct behavior by toggling the class manually and testing the icon/dropdown visually.
     Real, focused-tab users won't hit this.
+- **Follow-up cleanup (commit pending on `dev`)**: user flagged (via screenshot) that the
+  collapsed-icon state's glass pill background looked messy at small size, and the open dropdown
+  inherited the base `.site-menu` pill shape (`border-radius: 999px`) stretched into a large,
+  odd oval. Fixed: on mobile, `.site-menu.scrolled` (collapsed icon) now has no
+  background/blur/shadow at all — just the plain icon, bumped from 32px to 56px so it reads
+  clearly on its own. `.site-menu.scrolled.menu-open` (the open dropdown) gets its own explicit
+  styling instead of inheriting the pill radius: `border-radius: 12px`, a solid
+  near-opaque background (no blur), reading as a clean card rather than a blurry shape.
 
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
