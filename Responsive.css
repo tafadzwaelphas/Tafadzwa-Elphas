@@ -3,12 +3,7 @@
 
 /* // `sm` applies to x-small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-    .home-hero-text h1{
-        padding-left: var(--space-sm);
-        font-size: 50px;
-      }
-
-      .banner {
+    .banner {
         display: none;
       }
 
@@ -25,8 +20,10 @@
         left: var(--space-xs);
       }
 
-      .menu-overlay-links a {
-        font-size: 28px;
+      .menu-overlay {
+        top: 4rem;
+        left: var(--space-xs);
+        max-width: calc(100vw - 2rem);
       }
 
       .project-filmstrip img {
@@ -49,18 +46,8 @@
         padding-bottom: var(--space-md);
       }
 
-      .menu-overlay-links a {
-        font-size: 36px;
-      }
-
       .home-hero-text {
         display: block;
-      }
-
-      .home-hero-text h1 {
-        padding-left: var(--space-sm);
-        padding-top: var(--space-md);
-        font-size: 64px;
       }
 
       .about-content,

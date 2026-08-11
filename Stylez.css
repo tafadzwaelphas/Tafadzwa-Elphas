@@ -55,7 +55,7 @@ h1,
   color: #fff;
   border: none;
   padding: 0.6rem 1.4rem;
-  border-radius: 999px;
+  border-radius: 6px;
   cursor: pointer;
   font-size: 14px;
   letter-spacing: 0.05em;
@@ -68,22 +68,19 @@ h1,
 
 .menu-overlay {
   position: fixed;
-  inset: 0;
+  top: 4.4rem;
+  left: 1.5rem;
+  width: 230px;
   background-color: #111;
   color: #fff;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-md);
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-10px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(-8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
   z-index: 999;
-}
-
-body.menu-open {
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -93,43 +90,39 @@ body.menu-open .menu-overlay {
   transform: translateY(0);
 }
 
-.menu-overlay-links ul {
+.menu-overlay-links ul,
+.menu-overlay-socials ul {
   list-style: none;
-  text-align: center;
 }
 
-.menu-overlay-links li {
+.menu-overlay-links li,
+.menu-overlay-socials li {
   display: block;
-  line-height: 1.4;
+  line-height: normal;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.menu-overlay-links a {
-  font-weight: 700;
-  font-size: 48px;
+.menu-overlay-links li:last-child,
+.menu-overlay-socials li:last-child {
+  border-bottom: none;
+}
+
+.menu-overlay-links a,
+.menu-overlay-socials a {
+  display: block;
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 500;
   color: #fff;
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .menu-overlay-links a:hover,
-.menu-overlay-links a.active {
+.menu-overlay-links a.active,
+.menu-overlay-socials a:hover {
   color: rgb(0, 255, 213);
-}
-
-.menu-overlay-socials ul {
-  list-style: none;
-  display: flex;
-  gap: var(--space-sm);
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.menu-overlay-socials a {
-  color: #fff;
-  font-weight: 500;
-  text-decoration: none;
-  font-size: 14px;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 .menu-overlay-socials a:hover {
@@ -157,14 +150,6 @@ h1 {
 }
 
 
-.home-hero-text h1{
-  padding-left: var(--space-xl);
-  padding-top: var(--space-xl);
-  font-size: 100px;
-  font-weight: 400;
-}
-
-
 .home-hero-text img{
   width: 400px;
   height: 400px;
@@ -179,6 +164,7 @@ h1 {
 
 
 .home-hero-text .home-image{
+  grid-column: 2;
   margin-inline: auto;
 }
 
