@@ -396,6 +396,14 @@ suggestions): repeated frosted-glass panel declarations across 4 rules with no s
 alongside it, and `Slider.js` not null-checking `.project-slider-track` before use. Can revisit
 if it becomes annoying to maintain.
 
+## Nav divider between links and socials (commit pending on `dev`)
+Added a subtle vertical divider (`border-left: 1px solid rgba(26,26,26,0.15)` + small
+padding-left) on `.site-menu.scrolled .site-nav-socials`, so the horizontal scrolled-state row
+has a clear visual break between the page links (Home/About/Contact/Portfolio) and the social
+links (LinkedIn/Behance/GitHub/Instagram) instead of relying on gap spacing alone. Scoped to the
+scrolled row state only — doesn't apply to the default vertical stack, where a vertical divider
+wouldn't make sense.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
