@@ -220,6 +220,21 @@ section.
   sections, reusable for future homepage sections.
 - `index.html` now also loads `Slider.js` (previously Portfolio-page-only).
 
+## Slider cover cleanup (commit pending on `dev`)
+User compared our slider to the actual reference screenshot again (a project tile from
+olivergareis.com) and pointed out two gaps: the reference image fits cleanly within its section
+box, while ours looked oversized/cropped, and the reference tile has no big overlaid text at
+all on the cover image.
+
+- `.project-slide img` changed from `object-fit: cover` to `object-fit: contain` — previously,
+  tall/square source images (product photos, square illustrations) got cropped and effectively
+  zoomed-in to fill the fixed `78vh` slide height; `contain` shows the whole image, letterboxed
+  against a new `background-color: #1a1a1a` on `.project-slide` instead of cropping.
+- Removed `.project-slide-title` (the huge Boldonse overlay name) entirely — both its CSS rule
+  and every instance of the markup, across the Portfolio page's two sliders and all 4 homepage
+  Recent Projects slides. Counter and prev/next controls stay; the covers are now plain images,
+  matching the reference tile's plain-image treatment.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing

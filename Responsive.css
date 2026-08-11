@@ -88,12 +88,6 @@
         min-height: 320px;
       }
 
-      .project-slide-title {
-        left: var(--space-sm);
-        bottom: var(--space-sm);
-        font-size: clamp(2rem, 12vw, 3.5rem);
-      }
-
       .project-slider-counter {
         top: var(--space-xs);
         left: var(--space-sm);

@@ -403,6 +403,7 @@ padding-top: var(--space-page);
   scroll-snap-align: start;
   height: 78vh;
   min-height: 380px;
+  background-color: #1a1a1a;
   color: inherit;
   text-decoration: none;
 }
@@ -410,21 +411,8 @@ padding-top: var(--space-page);
 .project-slide img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   display: block;
-}
-
-.project-slide-title {
-  position: absolute;
-  left: var(--space-page);
-  bottom: var(--space-md);
-  z-index: 2;
-  font-family: 'Boldonse', sans-serif;
-  font-size: clamp(2.5rem, 7vw, 5.5rem);
-  line-height: 0.92;
-  color: var(--color-accent);
-  text-transform: uppercase;
-  pointer-events: none;
 }
 
 .project-slider-counter {
