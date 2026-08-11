@@ -258,6 +258,16 @@ after the text div opened, adding a third source of vertical gap. Removed `.abou
 padding-top (the child's padding-top alone now matches the left/right/bottom padding exactly)
 and removed the stray `<br>`.
 
+## Mobile menu background glitch fix (commit pending on `dev`)
+User flagged a background glitch on the mobile menu (screen recording). Root cause: `.site-menu`
+carries a `transition: background-color, box-shadow, backdrop-filter` (0.4s each) meant for the
+desktop scroll-to-row effect. On mobile, toggling `.scrolled`/`.menu-open` changes several other
+properties that aren't animatable/transitioned (`padding`, `border-radius`, `flex-direction`) —
+those snap instantly while background-color/box-shadow tried to fade over 0.4s, producing a
+mismatched, glitchy-looking pop. Fixed by setting `transition: none` on `.site-menu` inside the
+mobile breakpoint, so the icon/dropdown toggle snaps cleanly instead. Desktop's scroll transition
+is untouched.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
