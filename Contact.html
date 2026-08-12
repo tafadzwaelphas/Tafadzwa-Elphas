@@ -28,6 +28,9 @@
     <script src="Theme.js?v=1" defer></script>
     <script src="ScrollBlur.js?v=3" defer></script>
     <script src="Movement.js?v=2" defer></script>
+    <script src="Compass.js?v=1" defer></script>
+    <script src="Sundial.js?v=1" defer></script>
+    <script src="LocalTimeCompare.js?v=1" defer></script>
 </head>
 
 <body>
@@ -76,38 +79,70 @@
                   Cairo 1, Nile House, <br>
                   Madina,  Accra Ghana. (Current Location)
                 </p>
-                <div class="local-time">
-                  <div class="local-time-clock">
-                    <svg id="clock" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
-                        <g id="face">
-                            <circle class="circle" cx="300" cy="300" r="253.9"/>
-                            <path class="hour-marks" d="M300.5 94V61M506 300.5h32M300.5 506v33M94 300.5H60M411.3 107.8l7.9-13.8M493 190.2l13-7.4M492.1 411.4l16.5 9.5M411 492.3l8.9 15.3M189 492.3l-9.2 15.9M107.7 411L93 419.5M107.5 189.3l-17.1-9.9M188.1 108.2l-9-15.6"/>
-                            <circle class="mid-circle" cx="300" cy="300" r="16.2"/>
-                        </g>
-                        <g id="hour">
-                            <path class="hour-arm" d="M300.5 298V142"/>
-                            <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
-                        </g>
-                        <g id="minute">
-                            <path class="minute-arm" d="M300.5 298V67"/>
-                            <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
-                        </g>
-                        <g id="second">
-                            <path class="second-arm" d="M300.5 350V55"/>
-                            <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
-                        </g>
-                    </svg>
-                  </div>
-                  <span class="local-time-label">Currently in Accra, Ghana</span>
-                </div>
           </div>
 
           <div class="contact-image reveal">
             <img src="Images/ROBOTIK.png" alt="illustrationbyeyezwidopen">
           </div>
         </div>
-      
-               
+
+        <div class="contact-tools reveal">
+          <div class="tool-item">
+            <div class="local-time-clock">
+              <svg id="clock" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+                  <g id="face">
+                      <circle class="circle" cx="300" cy="300" r="253.9"/>
+                      <path class="hour-marks" d="M300.5 94V61M506 300.5h32M300.5 506v33M94 300.5H60M411.3 107.8l7.9-13.8M493 190.2l13-7.4M492.1 411.4l16.5 9.5M411 492.3l8.9 15.3M189 492.3l-9.2 15.9M107.7 411L93 419.5M107.5 189.3l-17.1-9.9M188.1 108.2l-9-15.6"/>
+                      <circle class="mid-circle" cx="300" cy="300" r="16.2"/>
+                  </g>
+                  <g id="hour">
+                      <path class="hour-arm" d="M300.5 298V142"/>
+                      <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
+                  </g>
+                  <g id="minute">
+                      <path class="minute-arm" d="M300.5 298V67"/>
+                      <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
+                  </g>
+                  <g id="second">
+                      <path class="second-arm" d="M300.5 350V55"/>
+                      <circle class="sizing-box" cx="300" cy="300" r="253.9"/>
+                  </g>
+              </svg>
+            </div>
+            <span class="local-time-label">Currently in Accra, Ghana</span>
+          </div>
+
+          <div class="tool-item">
+            <div class="tool-compass" id="compass-widget" role="button" tabindex="0" aria-label="Enable live compass (uses your device's orientation sensor)">
+              <svg id="compass" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+                  <circle class="circle" cx="300" cy="300" r="253.9"/>
+                  <path class="hour-marks" d="M300 61V94M539 300H506M300 539V506M61 300H94M469 131L456 144M469 469L456 456M131 469L144 456M131 131L144 144"/>
+                  <g id="compass-needle">
+                    <polygon class="compass-needle-north" points="300,120 320,300 280,300"/>
+                    <polygon class="compass-needle-south" points="300,380 320,300 280,300"/>
+                  </g>
+                  <circle class="mid-circle" cx="300" cy="300" r="16.2"/>
+              </svg>
+            </div>
+            <span class="local-time-label" id="compass-label">True North</span>
+          </div>
+
+          <div class="tool-item">
+            <div class="tool-sundial">
+              <svg id="sundial" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+                  <path class="sundial-arc" d="M40,300 A260,240 0 0 1 560,300"/>
+                  <line class="sundial-horizon" x1="20" y1="300" x2="580" y2="300"/>
+                  <circle class="sundial-sun" id="sundial-sun" cx="40" cy="300" r="22"/>
+              </svg>
+            </div>
+            <span class="local-time-label" id="sundial-label">Locating the sun&hellip;</span>
+          </div>
+
+          <div class="tool-item">
+            <div class="tool-localtime-readout" id="local-time-readout">&ndash;&ndash;:&ndash;&ndash;</div>
+            <span class="local-time-label" id="local-time-offset-label">Your time</span>
+          </div>
+        </div>
 
 
 

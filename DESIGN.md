@@ -831,6 +831,15 @@ existing 2px-border convention) that widen outward and switch to the mint accent
   real bug. Confirmed fine for actual focused-tab users.
 - Screenshot tool occasionally appears to reset scroll position mid-session — a recurring
   tool quirk unrelated to the site itself; re-scrolling resolves it.
+- **New during the compass tool's dev (2026-08-13)**: `document.hidden = true` in this
+  automation environment doesn't just throttle rAF/transitions/scroll — `getComputedStyle()`
+  itself returned a stale value for a dynamically-added class (`.compass-needle-north`'s fill
+  after adding `.is-live`), even confirmed via manual CSS-cascade/specificity analysis and an
+  injected `!important` override rule that still didn't move the reported computed value. A
+  screenshot of the actual painted pixels showed the color WAS correct. So: for anything
+  involving a class/state change (not just animation), trust a screenshot/pixel check over
+  `getComputedStyle` in this environment if the two disagree — don't assume `getComputedStyle`
+  is automatically the more reliable of the two here, as earlier notes implied.
 
 ## Repo / deploy
 - Remote: `origin` → `https://github.com/tafadzwaelphas/Tafadzwa-Elphas.git`, branch `main`

@@ -186,6 +186,11 @@
         padding: var(--space-md) var(--space-sm);
       }
 
+      .contact-tools {
+        padding: var(--space-lg) var(--space-sm);
+        justify-content: center;
+      }
+
  }
 
 /* // `lg` applies to medium devices (tablets, less than 992px) */
