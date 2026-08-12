@@ -755,9 +755,9 @@ padding-top: var(--space-page);
 }
 
 .site-footer-cta p {
-  font-size: clamp(28px, 5vw, 56px);
+  font-size: clamp(22px, 3vw, 36px);
   font-weight: 400;
-  color: #1a1a1a;
+  color: rgb(112, 106, 98);
   margin-bottom: var(--space-xs);
 }
 

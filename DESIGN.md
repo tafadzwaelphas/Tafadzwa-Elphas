@@ -569,6 +569,13 @@ had been missing since that list was written before CoEdu existed as a project. 
 as HandWing/EYEZWIDOPEN/FRGHN Music already in that list (own creative/project work, not
 necessarily a paying-client relationship, listed the same way).
 
+## Footer CTA de-emphasized (commit pending on `dev`)
+"Let's build something together." was too visually loud relative to the rest of the site —
+reduced `.site-footer-cta p` from `clamp(28px, 5vw, 56px)` pure-ink `#1a1a1a` down to
+`clamp(22px, 3vw, 36px)` in the muted grey `rgb(112, 106, 98)` already used for secondary text
+elsewhere. Kept the Boldonse font for brand consistency with other headings — dialed back size
+and contrast instead of swapping fonts.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
