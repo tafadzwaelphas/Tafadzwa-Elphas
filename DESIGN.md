@@ -511,6 +511,24 @@ mockup, a logo-variations sheet (confirms real tagline "Culture In Motion" and "
   references. Confirmed via a full image-load check afterward: 40 images on the Portfolio page,
   0 broken.
 
+## CoEdu product mockups added (commit pending on `dev`)
+User confirmed adding the 7 new CoEdu files noticed earlier. Added 6 of them: a landing-page
+laptop mockup, two distinct desktop-workspace mockups (dashboard UI + marketing site — not
+duplicates despite the similar "_2x" naming, confirmed by actually comparing them), mobile
+homepage, mobile nav menu (phone in hand), and a t-shirt mockup. All resized from originals up
+to 12000×8000 down to 2400px long edge; converted to JPEG except the t-shirt mockup (real
+alpha transparency, kept PNG).
+
+**Held back the 7th file** (`CoEdu Business Cards II_2x.png`) — it shows a real person's name,
+personal cell number, and personal Gmail address (Courtney Letsa, apparently CoEdu's
+co-founder/CEO), not just the logo. Flagged to the user rather than publishing a third party's
+personal contact details on a public site without confirming first.
+
+Since the new mockups reveal CoEdu is a real product (web + mobile app, not just a static
+identity), updated the project tags from "Branding / Logo Design / Typography" to
+"Branding / UI/UX Design / Web Design" and expanded the description to mention web/app UI.
+Counter bumped "01 / 04" → "01 / 10".
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
