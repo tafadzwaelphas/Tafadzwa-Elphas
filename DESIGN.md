@@ -421,6 +421,20 @@ all switched to `#f6f5f2`.
 ## Clock sized up 2x (commit pending on `dev`)
 `.local-time-clock` doubled from 72×72px to 144×144px per direct request.
 
+## More HandWing project images (commit pending on `dev`)
+User provided 5 new real HandWing brand assets (dropped into `Images/` directly): a cover shot
+(logotype over a flock of birds), a dark cover with the logo mark, a custom typeface specimen,
+a brand color palette, and tote bag mockups. Two arrived at 8K resolution (26.7MB and 17.8MB) —
+resized both down to 2400px on the long edge and converted to JPEG (quality 85) since they're
+photographic, cutting them to ~650KB and ~265KB; a third (the font specimen, flat graphic
+content) was resized the same way but kept as PNG to preserve crisp text edges, down from 2.9MB
+to ~634KB. Originals deleted after resizing, not kept alongside.
+
+Added all 5 to the HandWing `.project-slider` on `Portfolio.html`: the cover shot as the new
+opening slide, the other 4 appended at the end. Slide count went from 9 to 14; counter text
+updated from "01 / 09" to "01 / 14". No CSS/JS changes needed — `Slider.js` already computes
+slide count from the DOM.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
