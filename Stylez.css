@@ -619,6 +619,10 @@ padding-top: var(--space-page);
 }
 
 .tool-localtime-readout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 144px;
   font-weight: 700;
   font-size: var(--text-project-title);
   letter-spacing: -0.01em;
