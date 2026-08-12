@@ -563,6 +563,12 @@ image-load check: 45 images on the Portfolio page, 0 broken.
 before restoring rather than assuming it's accidental — a deliberate removal and an accidental
 one look identical from git's perspective alone.
 
+## CoEdu added to About page clients list (commit pending on `dev`)
+Added "CoEdu" to the `.about-overview` "Clients I've worked with" column on `About.html` — it
+had been missing since that list was written before CoEdu existed as a project. Same treatment
+as HandWing/EYEZWIDOPEN/FRGHN Music already in that list (own creative/project work, not
+necessarily a paying-client relationship, listed the same way).
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
