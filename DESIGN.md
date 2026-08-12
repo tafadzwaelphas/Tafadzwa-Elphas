@@ -435,6 +435,24 @@ opening slide, the other 4 appended at the end. Slide count went from 9 to 14; c
 updated from "01 / 09" to "01 / 14". No CSS/JS changes needed — `Slider.js` already computes
 slide count from the DOM.
 
+## Slider hover controls, glass restyle, auto-slide (commit pending on `dev`)
+Three related changes to `.project-slider` per direct request:
+
+- **Hover-only counter/nav**: `.project-slider-counter`/`.project-slider-nav` now default to
+  `opacity: 0`, fading to `1` on `.project-slider:hover` — hidden by default instead of always
+  showing, so the image reads clean until the visitor interacts.
+- **Glass restyle matching the menu**: replaced the solid dark chip (from the earlier contrast
+  fix) with the exact same glass treatment as `.site-menu.scrolled` — light translucent
+  background (`rgba(246,245,242,0.55)`), `backdrop-filter: blur(14px)`, dark
+  `rgba(26,26,26,0.55)` text/icon color, matching box-shadow. Since it's hover-only now (not
+  always-on), the light-on-light contrast risk the earlier fix addressed applies less — a
+  visitor hovering is already looking directly at that spot.
+- **Auto-slide**: `Slider.js` now advances every 4s automatically (wrapping back to slide 0
+  after the last one), pausing on `mouseenter` and resuming on `mouseleave` — pairs naturally
+  with the hover-reveal above (hovering both shows the controls and stops the slide from moving
+  underneath you). Skipped for single-image sliders (Fakugesi, FRGHN) via a `slides.length <= 1`
+  guard, avoiding a pointless interval.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing

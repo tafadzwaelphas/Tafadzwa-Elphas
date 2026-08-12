@@ -27,4 +27,22 @@ document.querySelectorAll(".project-slider").forEach((slider) => {
   nextBtn?.addEventListener("click", () => goToSlide(currentIndex() + 1));
 
   updateCounter();
+
+  const AUTO_SLIDE_INTERVAL = 4000;
+  let autoSlideTimer = null;
+
+  const startAutoSlide = () => {
+    if (slides.length <= 1) return;
+    autoSlideTimer = setInterval(() => {
+      goToSlide((currentIndex() + 1) % slides.length);
+    }, AUTO_SLIDE_INTERVAL);
+  };
+
+  const stopAutoSlide = () => {
+    clearInterval(autoSlideTimer);
+  };
+
+  startAutoSlide();
+  slider.addEventListener("mouseenter", stopAutoSlide);
+  slider.addEventListener("mouseleave", startAutoSlide);
 });
