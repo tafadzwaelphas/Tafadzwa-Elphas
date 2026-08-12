@@ -628,7 +628,7 @@ Three changes:
   `Responsive.css`, `Menu.js`, or `Reveal.js` changes** — a quick way is
   `perl -pi -e 's/\?v=1/\?v=2/g' *.html` (adjust the numbers each time).
 
-## Clock spacing + footer transition smoothing (commit pending on `dev`)
+## Clock spacing + footer transition smoothing
 - **Contact page clock**: `.local-time` (the row holding the clock + "Currently in Accra"
   label) had no bottom padding, so on shorter viewports it butted directly against the footer
   with no breathing room. Added `padding-bottom: var(--space-lg)`.
@@ -643,6 +643,54 @@ Three changes:
   automation tool can't navigate to) — checked computed styles directly rather than relying on
   scroll-triggered `IntersectionObserver` firing, since that still doesn't fire in the
   backgrounded automation tab (see the known quirk below).
+
+## Footer CTA color (reverted an earlier decision)
+"Let's build something together." (`.site-footer-cta p`) previously had its own muted grey
+(`rgb(112, 106, 98)` light-mode / `rgb(160, 156, 150)` inverted) distinct from the nav/email
+links. Reverted per request: it now shares the exact link color rule
+(`.site-footer-cta p, .site-footer-cta a, .site-footer-links a` all `#1a1a1a` light-mode /
+`#f6f5f2` inverted) instead of its own separate color declaration. Copy itself was reviewed for
+on-brand tone (options offered: craft-forward, motion/culture-forward echoing HandWing's own
+"Culture In Motion" tagline) — user chose to keep the existing line as-is.
+- Verified the same way as above: since CSS transitions stick mid-fade in the backgrounded
+  automation tab, temporarily set `transition: none` on the footer + its text elements to
+  bypass that and confirm the underlying `.inverted` color rule is correct, rather than trying
+  to catch it via a real scroll/observer trigger.
+
+## Mobile open-menu divider (was a leftover vertical line)
+The divider between the nav links (Home/About/Contact/Portfolio) and social links
+(LinkedIn/Behance/GitHub/Instagram) in the mobile dropdown card was a `border-left` inherited
+unchanged from the desktop scrolled-pill layout, where nav and socials sit side by side
+horizontally. In the mobile card the two lists stack vertically instead, and since each list
+is its own right-aligned, shrink-to-fit flex box, the vertical line ended up floating near
+the nav column's width rather than tracking the (narrower) socials text below it — it read as
+misplaced, cutting across "Portfolio"/"Contact" instead of sitting next to "Instagram" etc.
+Fixed in the `max-width: 575.98px` block in `Responsive.css`: `.site-menu.scrolled.menu-open
+.site-nav-socials` now overrides the divider to a full-width `border-top` (`align-self:
+stretch` so it spans the card) instead of the desktop `border-left`, matching the same
+horizontal-divider-for-stacked-content pattern already used on the Contact page's clock.
+- **Testing note**: manually toggling `.scrolled`/`.menu-open` via JS gets undone by Menu.js's
+  own scroll listener (`setScrolledState` re-evaluates `scrollY` and strips the classes if
+  below the 24px threshold) — real repro needs an actual `window.scrollTo` past the threshold
+  first, then the menu-toggle click, done without any scroll afterward. Also hit a stale-bfcache
+  issue where re-navigating to the same local-server URL kept serving the pre-edit page/CSS
+  despite the bumped `?v=` — a real `location.reload()` was needed to pick up the change.
+
+## Bottom-edge scroll glitch on project sliders: tried, then removed
+Tried a chromatic-aberration/blur "glitch" on the project sliders as you scroll past them,
+inspired by a reference the user shared (gionatannese.com/projects), scoped to only the bottom
+edge of the viewport per their request. First pass (SVG filter isolating R/G/B channels,
+`feBlend mode="screen"`) had real bugs on a real focused tab — it glitched the slide counter/nav
+UI text along with the artwork, and produced hard neon color bars at the box edges instead of a
+soft fringe. Fixed both (retargeted the filter to just the image track, redesigned the filter to
+keep the sharp original as a base layer with a faint ghost on top) — but after seeing the fixed
+version, the user decided they didn't want the effect on the site at all and asked for it to be
+removed outright. Reverted completely: deleted `EdgeGlitch.js`, removed its `<script>` tag from
+`index.html` and `Portfolio.html`. No trace of it remains in the shipped site.
+- **Worth remembering**: this user is willing to greenlight an experimental/riskier visual
+  effect (unlike the earlier content-honesty caution, this was purely a stylistic call), but
+  also willing to cut it entirely once tried rather than settle for "fixed but not loved" —
+  don't read the earlier "yes let's go with it" as durable buy-in for effects in this vein.
 
 ## Known non-issues found during testing
 - GSAP animations appear "stuck" mid-fade when checked via browser automation — this is

@@ -789,10 +789,7 @@ padding-top: var(--space-page);
   background-color: #1a1a1a;
 }
 
-.site-footer.inverted .site-footer-cta p {
-  color: rgb(160, 156, 150);
-}
-
+.site-footer.inverted .site-footer-cta p,
 .site-footer.inverted .site-footer-cta a,
 .site-footer.inverted .site-footer-links a {
   color: #f6f5f2;
@@ -809,7 +806,7 @@ padding-top: var(--space-page);
 .site-footer-cta p {
   font-size: clamp(22px, 3vw, 36px);
   font-weight: 400;
-  color: rgb(112, 106, 98);
+  color: #1a1a1a;
   margin-bottom: var(--space-xs);
   transition: color 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
