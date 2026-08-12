@@ -377,6 +377,10 @@ h1 {
   padding-top: var(--space-page);
 }
 
+.about-home-text p {
+  font-size: var(--text-body-sm);
+}
+
 
 ul {
   font-style: normal;
