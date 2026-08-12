@@ -418,6 +418,9 @@ outline. `.circle` now has both `fill` and `stroke` at `#1a1a1a` (reads as one s
 visible seam at the edge); `.mid-circle`/`.hour-marks`/`.hour-arm`/`.minute-arm`/`.second-arm`
 all switched to `#f6f5f2`.
 
+## Clock sized up 2x (commit pending on `dev`)
+`.local-time-clock` doubled from 72×72px to 144×144px per direct request.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
