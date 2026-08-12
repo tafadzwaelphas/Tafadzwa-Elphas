@@ -428,11 +428,8 @@ padding-top: var(--space-page);
   text-decoration: none;
 }
 
-.project-slide--dark {
-  background-color: rgba(26, 26, 26, 0.75);
-}
-
-.project-slide img {
+.project-slide img,
+.project-slide video {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -573,29 +570,6 @@ padding-top: var(--space-page);
   padding-bottom: var(--space-lg);
   padding-top: var(--space-sm);
 }
-
-.handwing-video-grid {
-	--gap: 16px;
-	box-sizing: border-box;
-	padding: var(--gap);
-	padding-bottom: var(--space-lg);
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: var(--gap);
-}
-
-.handwing-video-grid video {
-	width: 100%;
-	height: 100%;
-	background: #000;
-}
-
-@media screen and (max-width: 1024px) {
-	.handwing-video-grid {
-		grid-template-columns: 1fr;
-	}
-}
-
 
 .fakugesi-title p {
   display: flex;

@@ -529,6 +529,29 @@ identity), updated the project tags from "Branding / Logo Design / Typography" t
 "Branding / UI/UX Design / Web Design" and expanded the description to mention web/app UI.
 Counter bumped "01 / 04" → "01 / 10".
 
+## Videos folded into the slider, GIF dark background removed (commit pending on `dev`)
+User flagged the separate `.handwing-video-grid` (3 raw, unstyled native `<video>` elements in
+a plain 3-column grid, right after the polished slider) as visually out of place — nothing else
+on the page uses unstyled native controls. Removed that section entirely and moved the 3
+videos into the main HandWing `.project-slider` as regular slides (inserted after the original
+image content, before the newer apparel photography additions), reusing the exact same
+full-bleed/hover-controls treatment as every other slide. Added `.project-slide video` to the
+existing `.project-slide img` sizing rule so both share identical `object-fit: contain`
+behavior. Removed the now-fully-dead `.handwing-video-grid` CSS. Slide count 23 → 26.
+
+Also removed the `.project-slide--dark` dark-background modifier from the two animated GIF
+slides per follow-up request, reverting them to the same default `#f6f5f2` background as every
+other slide, and deleted the now-unused CSS rule. **Note**: the White Animated GIF's wordmark
+renders in pure white — without a dark backdrop it'll be effectively invisible against the
+light slide background. Didn't restore it since removal was explicitly requested, but flagging
+in case that wasn't intentional.
+
+**Unrelated fix caught along the way**: `EWO LOGO BLCK.png` (EYEZWIDOPEN slider + hidden
+client-logos strip) had also gone missing from disk, this time with no replacement file
+anywhere — looked like an accidental deletion rather than a swap. Restored it from git history
+(`git checkout HEAD --`) rather than editing around the gap. Confirmed via a full image-load
+check: 46 images on the Portfolio page, 0 broken.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
