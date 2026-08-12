@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+  <script>
+  (function () {
+    var stored = localStorage.getItem('theme');
+    var theme = stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+  </script>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="Stylez.css?v=34">
   <link rel="stylesheet" href="Responsive.css?v=14">
@@ -18,6 +25,7 @@
     <script src="Reveal.js?v=1" defer></script>
     <script src="Lenis.js?v=1" defer></script>
     <script src="Menu.js?v=6" defer></script>
+    <script src="Theme.js?v=1" defer></script>
     <script src="ScrollBlur.js?v=3" defer></script>
 </head>
 
@@ -41,6 +49,17 @@
             <li><a href="https://www.behance.net/tafadzwachoga">Behance</a></li>
             <li><a href="https://github.com/tafadzwachoga">GitHub</a></li>
             <li><a href="https://www.instagram.com/handwing_/">Instagram</a></li>
+            <li class="theme-toggle-item">
+              <button class="theme-toggle" aria-label="Toggle dark mode">
+                <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4.5"></circle>
+                  <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path>
+                </svg>
+                <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 1 0 10.5 10.5Z"></path>
+                </svg>
+              </button>
+            </li>
           </ul>
         </div>
     <div class="about-content">

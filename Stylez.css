@@ -55,6 +55,44 @@
   --transition-slow: 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Dark theme -- overrides the color tokens only. Everything else (type,
+   spacing, radius, glass blur/shadow, motion, accent) is unchanged and
+   already reads fine on both backgrounds. --color-muted and
+   --color-muted-inverted swap values here, which is also what makes the
+   footer's existing .inverted mechanism (see "# Footer" below) keep working
+   correctly with no dark-mode-specific footer code: its "resting" state is
+   naturally dark in this theme, and its "inverted/docked" state naturally
+   flips to light, preserving the same contrast-pop in both themes. */
+:root[data-theme="dark"] {
+  --color-ink: #f2f1ee;
+  --color-page: #141311;
+  --color-muted: rgb(140, 136, 130);
+  --color-muted-inverted: rgb(112, 106, 98);
+  --color-ink-55: rgba(242, 241, 238, 0.55);
+  --color-ink-25: rgba(242, 241, 238, 0.25);
+  --color-ink-15: rgba(242, 241, 238, 0.15);
+  --color-ink-12: rgba(242, 241, 238, 0.12);
+  --color-page-97: rgba(20, 19, 17, 0.97);
+  --glass-bg: rgba(20, 19, 17, 0.55);
+}
+
+/* These three assets are black line art on transparent PNGs (the site logo,
+   the homepage hero illustration reused as the mobile menu icon, and the
+   homepage banner pattern) -- they'd go invisible on a dark background.
+   Inverting turns black -> near-white while keeping their transparency.
+   Deliberately NOT applied to portfolio project imagery or the About/Contact
+   photos/illustrations, which are finished creative work, not UI chrome. */
+:root[data-theme="dark"] .site-logo img,
+:root[data-theme="dark"] .home-image img,
+:root[data-theme="dark"] .site-menu-toggle img,
+:root[data-theme="dark"] .banner img {
+  filter: invert(1);
+}
+
+body {
+  transition: background-color var(--transition-slow), color var(--transition-slow);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -217,6 +255,46 @@ h1,
 
 .site-nav-socials a:hover::after {
   transform: scaleX(1);
+}
+
+.site-nav-socials li.theme-toggle-item {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.site-menu.scrolled .site-nav-socials li.theme-toggle-item {
+  justify-content: center;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: var(--color-ink-55);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  color: var(--color-ink);
+  transform: scale(1.06);
+}
+
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+  display: block;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
 }
 
 
