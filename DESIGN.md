@@ -410,6 +410,14 @@ site's mint-teal accent) per direct request to use a color from the existing pal
 introducing a new one. Confirmed legible at the widget's actual small size (72×72px) on the
 Contact page.
 
+## Clock recolored again — dark fill, light details (commit pending on `dev`)
+Follow-up to the accent-color clock change above: user asked for the face to be filled with the
+darkest palette color (`#1a1a1a`) and the watch details (tick marks, hands, center dot) to match
+the background color (`#f6f5f2`) instead — a photo-negative/inset look rather than an accent
+outline. `.circle` now has both `fill` and `stroke` at `#1a1a1a` (reads as one solid disc, no
+visible seam at the edge); `.mid-circle`/`.hour-marks`/`.hour-arm`/`.minute-arm`/`.second-arm`
+all switched to `#f6f5f2`.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
