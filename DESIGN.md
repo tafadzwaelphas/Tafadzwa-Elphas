@@ -552,6 +552,17 @@ anywhere — looked like an accidental deletion rather than a swap. Restored it 
 (`git checkout HEAD --`) rather than editing around the gap. Confirmed via a full image-load
 check: 46 images on the Portfolio page, 0 broken.
 
+## Correction: EWO LOGO BLCK.png removal was intentional (commit pending on `dev`)
+Last entry's "accidental deletion, restored from git history" call was wrong — user confirmed
+they'd deliberately removed this file. Re-deleted it and this time removed the references
+instead of the asset: dropped its slide from the EYEZWIDOPEN slider (9 → 8 slides, counter
+updated) and its `<img>` from the hidden homepage client-logos strip. Confirmed via a full
+image-load check: 45 images on the Portfolio page, 0 broken.
+
+**Lesson for next time**: when a tracked file goes missing with no obvious replacement, ask
+before restoring rather than assuming it's accidental — a deliberate removal and an accidental
+one look identical from git's perspective alone.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
