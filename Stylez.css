@@ -155,6 +155,7 @@ h1,
 
 .site-nav a,
 .site-nav-socials a {
+  position: relative;
   display: block;
   font-size: var(--text-label-sm);
   font-weight: 500;
@@ -165,11 +166,34 @@ h1,
   line-height: 1.8;
   text-align: right;
   white-space: nowrap;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.site-nav a::after,
+.site-nav-socials a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.2em;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-fast);
 }
 
 .site-nav a:hover,
 .site-nav a.active {
   color: var(--color-ink);
+}
+
+.site-nav a:hover {
+  transform: scale(1.06);
+}
+
+.site-nav a:hover::after {
+  transform: scaleX(1);
 }
 
 .site-nav-socials {
@@ -188,6 +212,11 @@ h1,
 
 .site-nav-socials a:hover {
   color: var(--color-ink);
+  transform: scale(1.06);
+}
+
+.site-nav-socials a:hover::after {
+  transform: scaleX(1);
 }
 
 
