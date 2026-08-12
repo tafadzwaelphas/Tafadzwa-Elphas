@@ -428,6 +428,10 @@ padding-top: var(--space-page);
   text-decoration: none;
 }
 
+.project-slide--dark {
+  background-color: rgba(26, 26, 26, 0.75);
+}
+
 .project-slide img {
   width: 100%;
   height: 100%;

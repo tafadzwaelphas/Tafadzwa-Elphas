@@ -476,6 +476,41 @@ Added as a new 5th project section on `Portfolio.html` (after FRGHN), following 
 slide to the homepage `.recent-projects` slider (`index.html`), linking to `Portfolio.html#coedu`
 using the cover image — counter bumped from "01 / 04" to "01 / 05".
 
+## More HandWing assets, reordered (commit pending on `dev`)
+User dropped 9 more real HandWing assets into `Images/`: app icon mockup, building sign
+mockup, a logo-variations sheet (confirms real tagline "Culture In Motion" and "Founded In
+2020"), a second tote photo, umbrella mockups, a white-tee photo, and 3 animated logotype GIFs
+(a small grey loop, plus black/white versions of a larger wordmark animation).
+
+- Resized/converted the static images (all 8K originals): opaque photographic mockups (App
+  Mockup, Building Sign, Tote 3, White Tee) → JPEG; the logo sheet (flat graphic/text) → PNG;
+  the umbrella mockup → PNG, since it's the one that actually has real transparency (verified
+  via alpha-channel check, not just RGBA mode — the others were RGBA but fully opaque, no need
+  to preserve a channel that wasn't doing anything). GIFs left untouched — already reasonably
+  sized (810KB/1MB/84KB) and animated-GIF resizing risks breaking frame timing.
+  - Checked GIF content by extracting frames with Pillow before deciding treatment: the "White
+    Animated" version's wordmark renders in pure white (`254,254,254`), which is invisible
+    against the slider's default light `#f6f5f2` slide background — confirms why a dark backdrop
+    was requested.
+- **Reordered the full 23-slide HandWing sequence** (14 existing + 9 new) into a clearer
+  narrative rather than just appending: cover → core product shots (unchanged from before) →
+  apparel/lifestyle photography (white tee, tote-worn photo, tote mockups, umbrella) → applied/
+  digital (app icon, building sign) → brand system reference (dark logo cover, logo-variations
+  sheet, type specimen, color palette) → motion as a closing flourish (small loop, then the two
+  larger animated wordmarks). Counter bumped "01 / 14" → "01 / 23".
+- **Dark background for the 2 larger animated GIFs**: new `.project-slide--dark` modifier
+  (`background-color: rgba(26, 26, 26, 0.75)`, matching the exact "dark colour, 75% opacity"
+  requested) applied to both the black and white animated wordmark slides — requested as a pair
+  for visual consistency between them, even though technically only the white version strictly
+  needs a dark backdrop to be visible.
+- **Unrelated but necessary fix caught along the way**: `HW Icon 2.png` (used in the HandWing
+  slider and the hidden homepage client-logos strip) had been deleted from disk and replaced
+  with a new `HW ICON Profile.png` — a 12000×12000px (144MP) profile-style icon on a dark
+  background. Both references would have 404'd. Resized to 1200×1200 and converted to JPEG
+  (fully opaque, no real transparency to preserve) as `HW ICON Profile.jpg`, updated both
+  references. Confirmed via a full image-load check afterward: 40 images on the Portfolio page,
+  0 broken.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
