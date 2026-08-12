@@ -324,6 +324,8 @@ padding-top: var(--space-page);
   align-items: center;
   gap: var(--space-sm);
   margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 2px solid rgba(26, 26, 26, 0.15);
 }
 
 .local-time-clock {
@@ -336,6 +338,15 @@ padding-top: var(--space-page);
   width: 100%;
   height: 100%;
   display: block;
+}
+
+.local-time-clock .circle {
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.local-time-clock:hover .circle {
+  fill: var(--color-accent);
+  stroke: var(--color-accent);
 }
 
 .local-time-label {

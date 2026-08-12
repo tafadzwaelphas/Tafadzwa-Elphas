@@ -576,6 +576,14 @@ reduced `.site-footer-cta p` from `clamp(28px, 5vw, 56px)` pure-ink `#1a1a1a` do
 elsewhere. Kept the Boldonse font for brand consistency with other headings — dialed back size
 and contrast instead of swapping fonts.
 
+## Clock divider + hover effect (commit pending on `dev`)
+Added a 2px top border to `.local-time` (`rgba(26,26,26,0.15)`, matching the tone used for the
+nav divider and the About-page overview list dividers) to visually separate the address copy
+from the clock widget. Added a hover effect matching the site's established accent-color hover
+pattern (used on nav links, footer links, services list, slider buttons): the clock face
+(`.circle`) transitions from `#1a1a1a` to `var(--color-accent)` on hover, with the light
+`#f6f5f2` hands/marks staying as-is (still reads clearly against the mint background).
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
