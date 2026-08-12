@@ -29,3 +29,17 @@ if (menuToggle) {
     menuToggle.setAttribute("aria-expanded", String(isOpen));
   });
 }
+
+const siteFooter = document.querySelector(".site-footer");
+
+if (siteFooter && "IntersectionObserver" in window) {
+  const footerObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        siteFooter.classList.toggle("inverted", entry.isIntersecting);
+      });
+    },
+    { threshold: 0.3 }
+  );
+  footerObserver.observe(siteFooter);
+}

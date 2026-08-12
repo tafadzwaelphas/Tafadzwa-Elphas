@@ -124,7 +124,7 @@ h1,
 .site-menu.scrolled .site-nav-socials {
   margin-top: 0;
   padding-left: var(--space-xs);
-  border-left: 3px solid rgba(26, 26, 26, 0.15);
+  border-left: 2px solid rgba(26, 26, 26, 0.15);
 }
 
 .site-nav-socials a {
@@ -352,7 +352,7 @@ padding-top: var(--space-page);
 .local-time-clock:hover .circle {
   fill: var(--color-accent);
   stroke: #1a1a1a;
-  stroke-width: 12;
+  stroke-width: 8.33;
 }
 
 .local-time-clock:hover .mid-circle {
@@ -780,6 +780,29 @@ padding-top: var(--space-page);
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
+  background-color: #f6f5f2;
+  transition: background-color 0.4s ease;
+}
+
+.site-footer.inverted {
+  background-color: #1a1a1a;
+}
+
+.site-footer.inverted .site-footer-cta p {
+  color: rgb(160, 156, 150);
+}
+
+.site-footer.inverted .site-footer-cta a,
+.site-footer.inverted .site-footer-links a {
+  color: #f6f5f2;
+}
+
+.site-footer.inverted .site-footer-links a:hover {
+  color: var(--color-accent);
+}
+
+.site-footer.inverted .site-footer-bottom p {
+  color: rgb(140, 136, 130);
 }
 
 .site-footer-cta p {
@@ -787,12 +810,14 @@ padding-top: var(--space-page);
   font-weight: 400;
   color: rgb(112, 106, 98);
   margin-bottom: var(--space-xs);
+  transition: color 0.4s ease;
 }
 
 .site-footer-cta a {
   font-size: 20px;
   color: #1a1a1a;
   text-decoration: underline;
+  transition: color 0.4s ease;
 }
 
 .site-footer-links {
@@ -807,6 +832,7 @@ padding-top: var(--space-page);
   letter-spacing: 0.05em;
   color: #1a1a1a;
   text-decoration: none;
+  transition: color 0.4s ease;
 }
 
 .site-footer-links a:hover {
@@ -816,6 +842,7 @@ padding-top: var(--space-page);
 .site-footer-bottom p {
   font-size: 12px;
   color: rgb(112, 106, 98);
+  transition: color 0.4s ease;
 }
 
 

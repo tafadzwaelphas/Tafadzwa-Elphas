@@ -592,6 +592,28 @@ low-contrast against the new mint face). Also gave the circle a visible dark bor
 that blended into the accent fill. Net effect: default state is dark-fill/light-details, hover
 state cleanly flips to mint-fill/dark-details with a defined edge.
 
+## Line-width consistency + footer color inversion (commit pending on `dev`)
+Three changes:
+
+- **Clock hover border → true 2px**: previous `stroke-width: 12` was in SVG user units, not
+  screen pixels — on the clock's 144px-displayed/600-viewBox SVG (scale 0.24), 12 user units
+  rendered as ~2.88px, not 12px and not quite 2px either. Computed the correct value:
+  `2px ÷ 0.24 scale = 8.33` user units, confirmed via `getBoundingClientRect`/`viewBox` math
+  that this renders at exactly ~2px on screen.
+- **Nav divider 3px → 2px**: brought back down from the earlier explicit "thicker" request to
+  match the site's now-established 2px standard (local-time divider, clock hover border) for
+  cross-site consistency.
+- **Footer color inversion at the bottom of the page**: `.site-footer` now gets an `.inverted`
+  class (dark `#1a1a1a` background, light text/links) via `IntersectionObserver` in `Menu.js`
+  watching the footer element (threshold 0.3) — toggles on when docked at the bottom, off when
+  scrolled away. All footer text/link colors got `transition: color 0.4s ease` (background
+  already had a transition) so the swap fades rather than snaps.
+  - **Debugging note**: same automation-tab quirk as before — `IntersectionObserver` callbacks
+    also don't fire in the backgrounded test tab (`document.hidden = true`), even though the
+    footer was ~97% visible in viewport. Confirmed correct behavior by toggling `.inverted`
+    manually and verifying computed styles + a transition-disabled screenshot. Works normally
+    for real, focused-tab users.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
