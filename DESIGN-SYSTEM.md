@@ -89,6 +89,26 @@ To reuse the recipe on a new element, add its selector to that grouped rule rath
 | `--transition-fade` | `.3s ease` | Slider counter/controls opacity fade-in on hover |
 | `--transition-slow` | `.7s cubic-bezier(.4, 0, .2, 1)` | Footer color inversion when docked at page bottom |
 
+## Theming (light / dark)
+
+Dark mode is a single token-override block, `:root[data-theme="dark"]`, redefining only the color tokens (type/spacing/radius/glass-blur/shadow/motion/accent are unchanged and read fine on both backgrounds):
+
+| Token | Dark value |
+|---|---|
+| `--color-ink` | `#f2f1ee` |
+| `--color-page` | `#141311` |
+| `--color-muted` | `rgb(140, 136, 130)` (swapped with `--color-muted-inverted`'s light value) |
+| `--color-muted-inverted` | `rgb(112, 106, 98)` (swapped with `--color-muted`'s light value) |
+| `--color-ink-55` / `-25` / `-15` / `-12` | Same alpha steps, re-blended against the dark ink value |
+| `--color-page-97` | `rgba(20, 19, 17, .97)` |
+| `--glass-bg` | `rgba(20, 19, 17, .55)` |
+
+Because `--color-muted`/`--color-muted-inverted` swap roles, the footer's existing `.inverted` mechanism (see below) keeps working with no dark-mode-specific footer code — its resting state is naturally dark, its docked/inverted state naturally flips to light, preserving the same contrast-pop in both themes.
+
+**Brand-mark assets**: the site logo, the homepage hero illustration (reused as the mobile menu icon), and the homepage banner pattern are black line art on transparent PNGs — they'd go invisible on a dark background, so they get `filter: invert(1)` scoped to `:root[data-theme="dark"] .site-logo img / .home-image img / .site-menu-toggle img / .banner img`. Deliberately *not* applied to portfolio project imagery or the About/Contact photos/illustrations — that's finished creative work, not UI chrome, and inverting it would corrupt it.
+
+**Resolution & toggle**: an inline (non-deferred) script at the very top of `<head>` in every page resolves `localStorage.getItem('theme')` or falls back to `matchMedia('(prefers-color-scheme: dark)')`, setting `data-theme` on `<html>` before first paint (no flash of the wrong theme). `Theme.js` (deferred, alongside the other small single-purpose scripts) handles the `.theme-toggle` button click — a sun/moon icon pair in `.site-nav-socials`, present in both nav layouts since it lives in that shared list — and keeps following the OS setting live via a `matchMedia` change listener for visitors who haven't made an explicit choice yet.
+
 ## Component patterns
 
 - **`.project-slider`** — the core reusable pattern for showing project images/video: full-bleed horizontal scroll-snap track (`.project-slider-track`), `object-fit: contain` against `--color-page` (not cropped), a slide counter and prev/next buttons that are hidden by default and fade in on hover using the glass-panel treatment above, auto-advance driven by `Slider.js`. Used per-project on `Portfolio.html` and for the homepage's Recent Projects section.
