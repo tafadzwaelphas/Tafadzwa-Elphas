@@ -6,7 +6,52 @@
   --space-lg: 5rem;
   --space-xl: 7rem;
   --space-page: 6rem;
+
+  /* Color */
   --color-accent: rgb(0, 255, 213);
+  --color-ink: #1a1a1a;
+  --color-page: #f6f5f2;
+  --color-muted: rgb(112, 106, 98);
+  --color-ink-55: rgba(26, 26, 26, 0.55);
+  --color-ink-25: rgba(26, 26, 26, 0.25);
+  --color-ink-15: rgba(26, 26, 26, 0.15);
+  --color-ink-12: rgba(26, 26, 26, 0.12);
+  --color-page-97: rgba(246, 245, 242, 0.97);
+
+  /* Type */
+  --font-display: 'Boldonse', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+  --text-display: clamp(60px, 14vw, 220px);
+  --text-h1: 100px;
+  --text-h1-mobile: 48px;
+  --text-h2: clamp(1.75rem, 4vw, 3rem);
+  --text-project-title: 32px;
+  --text-cta: clamp(22px, 3vw, 36px);
+  --text-services: clamp(1.5rem, 4vw, 2.75rem);
+  --text-body: 20px;
+  --text-body-lg: 18px;
+  --text-body-sm: 16px;
+  --text-label: 14px;
+  --text-label-sm: 13px;
+  --text-caption: 12px;
+  --text-caption-sm: 11px;
+
+  /* Radius */
+  --radius-pill: 999px;
+  --radius-circle: 50%;
+  --radius-card: 12px;
+
+  /* Glass panel recipe (nav-scrolled, slider counter, slider nav buttons) */
+  --glass-bg: rgba(246, 245, 242, 0.55);
+  --glass-blur: blur(14px);
+  --shadow-glass: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+  /* Motion */
+  --transition-fast: 0.2s ease;
+  --transition-hud: 0.25s ease;
+  --transition-fade: 0.3s ease;
+  --transition-slow: 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
