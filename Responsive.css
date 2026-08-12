@@ -80,16 +80,16 @@
         padding-left: 0;
         margin-top: var(--space-xs);
         padding-top: var(--space-sm);
-        border-top: 2px solid rgba(26, 26, 26, 0.15);
+        border-top: 2px solid var(--color-ink-15);
       }
 
       .site-menu.scrolled.menu-open {
         flex-direction: column;
         align-items: flex-end;
-        background-color: rgba(246, 245, 242, 0.97);
-        border-radius: 12px;
+        background-color: var(--color-page-97);
+        border-radius: var(--radius-card);
         padding: var(--space-sm) var(--space-md);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        box-shadow: var(--shadow-card);
       }
 
       .project-slide {
@@ -122,7 +122,7 @@
       }
 
       h1 {
-        font-size: 48px;
+        font-size: var(--text-h1-mobile);
         padding-bottom: var(--space-md);
       }
 
