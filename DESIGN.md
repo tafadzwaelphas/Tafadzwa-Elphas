@@ -584,6 +584,14 @@ pattern (used on nav links, footer links, services list, slider buttons): the cl
 (`.circle`) transitions from `#1a1a1a` to `var(--color-accent)` on hover, with the light
 `#f6f5f2` hands/marks staying as-is (still reads clearly against the mint background).
 
+## Clock hover: dark details + border (commit pending on `dev`)
+Follow-up to the clock hover effect above: hands (hour/minute/second), tick marks, and the
+center dot now switch to `#1a1a1a` on hover too (were staying light `#f6f5f2`, which read as
+low-contrast against the new mint face). Also gave the circle a visible dark border on hover
+(`stroke: #1a1a1a`, `stroke-width` bumped from 9 to 12) instead of the accent-colored stroke
+that blended into the accent fill. Net effect: default state is dark-fill/light-details, hover
+state cleanly flips to mint-fill/dark-details with a defined edge.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing

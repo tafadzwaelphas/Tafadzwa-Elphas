@@ -340,13 +340,30 @@ padding-top: var(--space-page);
   display: block;
 }
 
-.local-time-clock .circle {
+.local-time-clock .circle,
+.local-time-clock .mid-circle,
+.local-time-clock .hour-marks,
+.local-time-clock .hour-arm,
+.local-time-clock .minute-arm,
+.local-time-clock .second-arm {
   transition: fill 0.2s ease, stroke 0.2s ease;
 }
 
 .local-time-clock:hover .circle {
   fill: var(--color-accent);
-  stroke: var(--color-accent);
+  stroke: #1a1a1a;
+  stroke-width: 12;
+}
+
+.local-time-clock:hover .mid-circle {
+  fill: #1a1a1a;
+}
+
+.local-time-clock:hover .hour-marks,
+.local-time-clock:hover .hour-arm,
+.local-time-clock:hover .minute-arm,
+.local-time-clock:hover .second-arm {
+  stroke: #1a1a1a;
 }
 
 .local-time-label {
