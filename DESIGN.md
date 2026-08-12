@@ -404,6 +404,12 @@ links (LinkedIn/Behance/GitHub/Instagram) instead of relying on gap spacing alon
 scrolled row state only — doesn't apply to the default vertical stack, where a vertical divider
 wouldn't make sense. Thickness bumped from 1px to 3px per direct follow-up request.
 
+## Clock recolored to accent (commit pending on `dev`)
+Changed the clock's face/marks/hands from plain black (`#000`) to `var(--color-accent)` (the
+site's mint-teal accent) per direct request to use a color from the existing palette instead of
+introducing a new one. Confirmed legible at the widget's actual small size (72×72px) on the
+Contact page.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
