@@ -692,6 +692,137 @@ removed outright. Reverted completely: deleted `EdgeGlitch.js`, removed its `<sc
   also willing to cut it entirely once tried rather than settle for "fixed but not loved" —
   don't read the earlier "yes let's go with it" as durable buy-in for effects in this vein.
 
+## Footer scroll-blur (new file: `ScrollBlur.js`)
+Requested after the user shared two more screen recordings of gustaffurusten.se, pinned down on
+the second one: while scrolling, the footer copy (heading, contact list, TIME/DATE readout,
+copyright) gets a **directional** motion blur — vertical only, matching the scroll axis — that
+sharpens back to crisp the instant scrolling stops. Much simpler than the earlier
+chromatic-aberration attempt (no channel isolation, no color blending, just a blur), so lower
+risk of the hard-edge-artifact class of bug that sank that one.
+- `ScrollBlur.js` is a small reusable pattern, not footer-specific: it finds every element
+  with a `data-scroll-blur` attribute and applies one **shared** SVG filter (`feGaussianBlur`
+  with `stdDeviation="0 Y"` — 0 horizontal, Y vertical) to all of them via `filter:
+  url(#scroll-blur)`. A single shared filter is safe here (unlike the per-slider case in
+  `EdgeGlitch.js`) because intensity only ever depends on global scroll velocity, not each
+  element's individual position — there's no scenario where two `data-scroll-blur` elements
+  need different amounts at once. Currently applied to `.site-footer` (via the `data-scroll-blur`
+  attribute directly on the `<footer>`) on all 4 pages, but the pattern is reusable for any
+  future element by just adding the attribute — no per-instance JS needed.
+- Velocity → blur mapping and the decay-to-zero curve reuse the same scheme as the removed
+  glitch effect (0.85×/frame decay via `requestAnimationFrame`), but there's no `filter: ""`
+  on/off toggle needed this time — `stdDeviation="0 0"` is a genuine no-op blur, so the element
+  is provably identical to unfiltered at rest without needing the extra safeguard the color
+  version required.
+- Respects `prefers-reduced-motion: reduce`.
+- **Testing note**: same `requestAnimationFrame`-throttled-in-`document.hidden` situation as
+  before, but this time it wasn't fully suppressed — a manually-set `stdDeviation` value kept
+  getting reset back to `"0 0"` a second or two after being set, which briefly looked like a
+  bug. It wasn't: background-tab rAF is throttled to roughly once/second rather than fully
+  blocked, so the live script's own `tick()` was genuinely still running (just slowly), saw the
+  real internal `velocity` had already decayed near zero (since the manual DOM edit doesn't
+  touch that closured variable), and correctly zeroed the blur back out — which is actually
+  proof the "returns to sharp at rest" behavior works. To get a stable screenshot, patched
+  `window.requestAnimationFrame = () => {}` first so the loop couldn't fire and overwrite the
+  test value, then set `stdDeviation="0 6"` and screenshotted a footer heading — clean vertical
+  streaking, no horizontal smear, matching the reference exactly.
+
+## Footer scroll-blur: fixed a real velocity bug
+The user reported the effect wasn't showing on their real machine. Root cause found on review:
+`ScrollBlur.js` originally computed velocity from the delta between consecutive `scroll`
+*events*, but that was only ever tested with a single artificial 800px `scrollTo()` jump — not
+representative of real trackpad/mouse-wheel scrolling, which dispatches `scroll` events far more
+frequently with much smaller per-event deltas. In real use the velocity number likely never
+came close to the tuned threshold, leaving the blur firing at a near-invisible intensity rather
+than literally never firing.
+- **Fix**: switched from event-delta velocity to continuous per-frame position sampling — a
+  `requestAnimationFrame` loop that runs for the page's lifetime, reads `window.scrollY` each
+  frame, and diffs it against the previous frame's value. This is independent of how finely (or
+  coarsely) the browser happens to dispatch `scroll` events, which is the more standard and
+  robust way to drive a scroll-velocity effect. Also switched the decay formula to `currentBlur
+  = max(targetBlur, currentBlur * DECAY)` so a fresh burst of movement can jump the blur back up
+  immediately rather than fighting the previous frame's decay.
+- **Honesty about test coverage**: this fix could not be validated against genuine trackpad/
+  mouse-wheel scroll physics from the automation environment — there's no way to simulate real
+  momentum-scroll event timing here, only single artificial jumps. Confirmed the filter wiring
+  and at-rest no-op state still work post-rewrite, but the actual velocity-to-blur feel in real
+  use needs the user's own eyes on their real machine.
+
+## Footer scroll-blur: still not right — root cause was the scroll physics itself
+User reported (again) it still wasn't the effect they were after, but this time opened Chrome
+DevTools on the reference site (gustaffurusten.se) and inspected it directly rather than just
+recording it. Found the real answer: the site is built in Framer, and its `<html>` tag carries
+`class="lenis lenis-smooth"` — it uses **[Lenis](https://lenis.darkroom.engineering/)**, a
+smooth-scroll library that replaces native scrolling with eased, inertial virtual scrolling and
+exposes its own continuously-smoothed velocity value. That's the actual gap: every previous
+attempt computed "velocity" from raw native `scrollY`/`scroll`-event data, which is fundamentally
+jittery — no amount of constant-tuning was going to fix that, since the input signal itself was
+noisy, not just mis-scaled.
+
+**Decision**: confirmed with the user before proceeding, since this is a bigger change than a
+CSS/JS tweak — added Lenis as a real dependency (previously the site had none beyond GSAP/
+ScrollTrigger). This changes how scrolling *feels* site-wide (smooth/inertial instead of native),
+not just the footer blur.
+- Added via CDN (`https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js`, no `defer` —
+  loads synchronously before the deferred local scripts, matching how GSAP/ScrollTrigger are
+  already loaded) to all 4 pages.
+- New file `Lenis.js`: initializes `new Lenis()`, and wires the official Lenis+GSAP sync recipe
+  (`lenis.on("scroll", ScrollTrigger.update)`, drives `lenis.raf()` off `gsap.ticker` instead of
+  a separate rAF loop, `gsap.ticker.lagSmoothing(0)`) so ScrollTrigger-based animations
+  (`Reveal.js`'s `.reveal` fade-ins, the homepage name-reveal scrub) stay in sync with Lenis's
+  virtual scroll position instead of drifting. Exposes the instance as `window.lenis` for other
+  scripts to hook into. Script order: GSAP → ScrollTrigger → Lenis (CDN) → `Reveal.js` →
+  `Lenis.js` → `Menu.js` → `ScrollBlur.js` → page-specific scripts.
+- `ScrollBlur.js` rewritten again: instead of its own rAF polling loop, it now does
+  `window.lenis.on("scroll", ({ velocity }) => ...)`, reading Lenis's real smoothed velocity
+  directly rather than computing anything itself. Simpler code, and — assuming Lenis's own
+  easing is doing its job — should no longer need the manual decay logic at all, since Lenis's
+  velocity naturally eases toward 0 as the virtual scroll settles.
+- **Real regression caught and fixed before it shipped**: Lenis does **not** dispatch native
+  `window` `scroll` events (confirmed directly — attached a native listener, drove scroll via
+  `lenis.scrollTo()`, listener never fired even though `window.scrollY` updated correctly).
+  `Menu.js`'s nav-pill "scrolled" state was built entirely on a native `window.addEventListener
+  ("scroll", ...)` listener, so without a fix it would have silently stopped responding to
+  scroll site-wide the moment Lenis shipped — the pill would never leave its unscrolled resting
+  state. Fixed by making `Menu.js` use `window.lenis.on("scroll", setScrolledState)` when Lenis
+  is present (falling back to the native listener otherwise). Verified both directions
+  (`scrollTo(300)` → `.scrolled` true, `scrollTo(0)` → false) after the fix.
+- **Checked for other native-scroll dependents before considering this done**: `Slider.js`
+  listens for `scroll` on `.project-slider-track` (each project slider's own horizontally-
+  scrolling element), not `window` — Lenis only wraps window/document scroll by default, so this
+  is unaffected and needed no change. The footer's `IntersectionObserver`-based color-inversion
+  in `Menu.js` doesn't depend on scroll events at all (fires on real intersection regardless of
+  how scroll happened), also unaffected.
+- **Testing limits, stated plainly**: confirmed structurally that (1) Lenis initializes and
+  actually controls real scroll position, (2) GSAP ScrollTrigger stays correctly synced to it
+  (checked a trigger's live `.progress`/`.isActive` state directly rather than trusting visual
+  opacity, since GSAP tween *rendering* is subject to the same document.hidden throttling as
+  always — the trigger tracking itself was confirmed accurate), (3) the Menu.js fix works in
+  both directions. Could **not** verify the blur's actual feel: manually calling
+  `lenis.emit("scroll", {velocity: N})` to fake a value doesn't work — confirmed Lenis ignores
+  the payload and always passes its live instance (real velocity, which sits at 0 when nothing
+  is animating) to listeners, so there's no way to synthesize a fake velocity from outside
+  Lenis's own animation loop, and that loop doesn't run in a backgrounded automation tab. This
+  is now the third attempt at this specific effect — if it's still not right, the honest next
+  move is a real conversation about whether to keep iterating or drop it, not a fourth blind
+  guess.
+
+## HUD hover style for links/buttons (new reusable class: `.link-hud`)
+Follow-up to the earlier reference-video conversation about the "SHOW CASE" bracket-button
+hover on gustaffurusten.se. Decided against copying that literally (a split/slide-apart reveal
+animation) given how the two more elaborate scroll effects this session went — kept it simple
+and reliable instead: bracket corners (`[` `]`, built from `::before`/`::after` with the site's
+existing 2px-border convention) that widen outward and switch to the mint accent color on hover.
+- Where it's used: only the homepage "View all →" link (`.section-heading-link`) so far — that
+  was a plain color-change link before and the clearest candidate. Deliberately **not** applied
+  to the `.project-slider-nav` prev/next buttons, since those already have their own well-
+  integrated glassmorphic circular hover treatment matching the nav pill; layering a second,
+  different hover idiom onto them would read as inconsistent rather than additive.
+  - Add `.link-hud` alongside any element's existing classes to apply it — no per-instance
+    markup or JS needed, pure CSS.
+- Verified visually: brackets render correctly at rest (`[ VIEW ALL → ]`) and on hover widen by
+  5px and shift to `var(--color-accent)`, text color following via the link's own existing
+  `:hover` rule.
+
 ## Known non-issues found during testing
 - GSAP animations appear "stuck" mid-fade when checked via browser automation — this is
   `document.hidden = true` background-tab throttling in the automation environment, not a

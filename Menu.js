@@ -20,7 +20,11 @@ if (siteMenu) {
   };
 
   setScrolledState();
-  window.addEventListener("scroll", setScrolledState, { passive: true });
+  if (window.lenis) {
+    window.lenis.on("scroll", setScrolledState);
+  } else {
+    window.addEventListener("scroll", setScrolledState, { passive: true });
+  }
 }
 
 if (menuToggle) {

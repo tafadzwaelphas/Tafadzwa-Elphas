@@ -14,6 +14,24 @@ gsap.utils.toArray(".name-reveal-line").forEach((line) => {
   });
 });
 
+const bannerImg = document.querySelector(".banner img");
+if (bannerImg) {
+  gsap.fromTo(
+    bannerImg,
+    { yPercent: -10 },
+    {
+      yPercent: 10,
+      ease: "none",
+      scrollTrigger: {
+        trigger: bannerImg.closest(".banner"),
+        start: "top bottom",
+        end: "bottom top",
+        scrub: true,
+      },
+    }
+  );
+}
+
 gsap.utils.toArray(".reveal").forEach((el) => {
   gsap.fromTo(
     el,
