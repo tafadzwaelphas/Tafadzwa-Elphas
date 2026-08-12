@@ -1,5 +1,7 @@
 # Design Refresh Tracking
 
+For the current design tokens (color/type/spacing/radius/motion) and documented component patterns, see **`DESIGN-SYSTEM.md`**. This file is the chronological log of how those decisions were reached — read `DESIGN-SYSTEM.md` first for "what is the system today," come here for "why is it this way."
+
 Reference site: https://www.olivergareis.com/ (design inspiration only — no code, copy, or images copied from it)
 
 ## Reference site — what was liked
