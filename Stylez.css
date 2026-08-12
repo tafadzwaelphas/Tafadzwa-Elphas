@@ -465,7 +465,7 @@ display: flex;
 margin-inline: auto;
 padding-left: var(--space-lg);
 padding-top: var(--space-page);
-/* padding-bottom: var(--space-sm); */
+padding-bottom: var(--space-page);
 }
 
 .contact-content h1{
@@ -506,8 +506,7 @@ padding-top: var(--space-page);
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xl);
-  padding: var(--space-xl) var(--space-page);
-  border-top: 2px solid var(--color-ink-15);
+  padding: var(--space-page) var(--space-page) var(--space-xl);
 }
 
 .tool-item {
