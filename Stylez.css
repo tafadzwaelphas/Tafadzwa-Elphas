@@ -79,6 +79,19 @@ h1,
 }
 
 
+/* Shared "glass panel" recipe -- reused by the scrolled nav pill, the
+   project-slider counter, and the slider's prev/next buttons. Defined once
+   here via grouped selectors instead of copy-pasting the same 4 declarations
+   into each rule. */
+.site-menu.scrolled,
+.project-slider-counter,
+.project-slider-nav button {
+  background-color: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-glass);
+}
+
 /* Navigation */
 
 .site-menu {
@@ -101,10 +114,6 @@ h1,
   align-items: center;
   gap: var(--space-md);
   padding: var(--space-2xs) var(--space-sm);
-  background-color: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  box-shadow: var(--shadow-glass);
 }
 
 .site-logo {
@@ -536,10 +545,6 @@ padding-top: var(--space-page);
   font-weight: 500;
   letter-spacing: 0.08em;
   color: var(--color-ink-55);
-  background-color: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  box-shadow: var(--shadow-glass);
   padding: var(--space-2xs) var(--space-xs);
   border-radius: var(--radius-pill);
   opacity: 0;
@@ -567,10 +572,6 @@ padding-top: var(--space-page);
   height: 44px;
   border-radius: var(--radius-circle);
   border: 1px solid var(--color-ink-15);
-  background-color: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  box-shadow: var(--shadow-glass);
   color: var(--color-ink-55);
   font-size: 18px;
   line-height: 1;
