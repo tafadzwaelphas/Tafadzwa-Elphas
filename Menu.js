@@ -39,7 +39,7 @@ if (siteFooter && "IntersectionObserver" in window) {
         siteFooter.classList.toggle("inverted", entry.isIntersecting);
       });
     },
-    { threshold: 0.3 }
+    { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
   );
   footerObserver.observe(siteFooter);
 }

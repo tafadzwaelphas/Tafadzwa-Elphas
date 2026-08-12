@@ -628,6 +628,22 @@ Three changes:
   `Responsive.css`, `Menu.js`, or `Reveal.js` changes** — a quick way is
   `perl -pi -e 's/\?v=1/\?v=2/g' *.html` (adjust the numbers each time).
 
+## Clock spacing + footer transition smoothing (commit pending on `dev`)
+- **Contact page clock**: `.local-time` (the row holding the clock + "Currently in Accra"
+  label) had no bottom padding, so on shorter viewports it butted directly against the footer
+  with no breathing room. Added `padding-bottom: var(--space-lg)`.
+- **Footer dock/inversion feel**: the background-color and text-color transitions on
+  `.site-footer` and its children were `0.4s ease` — flagged as feeling abrupt. Lengthened to
+  `0.7s cubic-bezier(0.4, 0, 0.2, 1)` (ease-out-ish, no linear-feeling snap) across all of it.
+  Also gave the `IntersectionObserver` in `Menu.js` a `rootMargin: "0px 0px -10% 0px"` and
+  dropped the threshold to `0.1` so the `.inverted` toggle fires a bit before the footer is
+  fully flush with the viewport bottom, giving the longer fade room to finish by the time it's
+  fully docked instead of starting right at the boundary.
+- Verified via a local `python3 -m http.server` preview (not `file://`, which the browser
+  automation tool can't navigate to) — checked computed styles directly rather than relying on
+  scroll-triggered `IntersectionObserver` firing, since that still doesn't fire in the
+  backgrounded automation tab (see the known quirk below).
+
 ## Known non-issues found during testing
 - GSAP animations appear "stuck" mid-fade when checked via browser automation — this is
   `document.hidden = true` background-tab throttling in the automation environment, not a

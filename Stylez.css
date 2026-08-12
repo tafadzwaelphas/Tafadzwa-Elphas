@@ -325,6 +325,7 @@ padding-top: var(--space-page);
   gap: var(--space-sm);
   margin-top: var(--space-md);
   padding-top: var(--space-md);
+  padding-bottom: var(--space-lg);
   border-top: 2px solid rgba(26, 26, 26, 0.15);
 }
 
@@ -781,7 +782,7 @@ padding-top: var(--space-page);
   flex-direction: column;
   gap: var(--space-md);
   background-color: #f6f5f2;
-  transition: background-color 0.4s ease;
+  transition: background-color 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-footer.inverted {
@@ -810,14 +811,14 @@ padding-top: var(--space-page);
   font-weight: 400;
   color: rgb(112, 106, 98);
   margin-bottom: var(--space-xs);
-  transition: color 0.4s ease;
+  transition: color 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-footer-cta a {
   font-size: 20px;
   color: #1a1a1a;
   text-decoration: underline;
-  transition: color 0.4s ease;
+  transition: color 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-footer-links {
@@ -832,7 +833,7 @@ padding-top: var(--space-page);
   letter-spacing: 0.05em;
   color: #1a1a1a;
   text-decoration: none;
-  transition: color 0.4s ease;
+  transition: color 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-footer-links a:hover {
@@ -842,7 +843,7 @@ padding-top: var(--space-page);
 .site-footer-bottom p {
   font-size: 12px;
   color: rgb(112, 106, 98);
-  transition: color 0.4s ease;
+  transition: color 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
