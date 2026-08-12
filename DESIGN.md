@@ -472,6 +472,10 @@ Added as a new 5th project section on `Portfolio.html` (after FRGHN), following 
 - Added `id="coedu"` anchor (consistent with the other projects) and included CoEdu in the
   page's `<meta description>` list of projects.
 
+**Follow-up**: year confirmed as 2024, updated on `Portfolio.html`. Also added CoEdu as a 5th
+slide to the homepage `.recent-projects` slider (`index.html`), linking to `Portfolio.html#coedu`
+using the cover image — counter bumped from "01 / 04" to "01 / 05".
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
