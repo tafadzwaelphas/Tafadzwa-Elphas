@@ -453,6 +453,25 @@ Three related changes to `.project-slider` per direct request:
   underneath you). Skipped for single-image sliders (Fakugesi, FRGHN) via a `slides.length <= 1`
   guard, avoiding a pointless interval.
 
+## New project: CoEdu (commit pending on `dev`)
+User dropped 4 new brand-identity images into `Images/` for a new project, CoEdu — a cover
+shot, a logo-variations sheet, a typeface-pairing specimen (Kumbh Sans + Montserrat), and a
+color palette. All 4 arrived at 8K resolution (7680×4320); resized to 2400px on the long edge,
+kept as PNG (flat graphic/text content, not photography).
+
+Added as a new 5th project section on `Portfolio.html` (after FRGHN), following the same
+`.project-header` + `.project-header-description` + `.project-slider` pattern as the other 4:
+- **Title/tags**: "CoEdu", tagged Branding / Logo Design / Typography — grounded in what the
+  asset sheets actually show (the logo sheet's tagline "Knowledge Distribution" confirms what
+  the brand is; no separate written brief was provided).
+- **Description**: "Brand identity for CoEdu, a knowledge distribution platform — logo design,
+  color system, and typography" — describes only what's visible in the provided assets.
+- **Year**: explicit `[Add year]` placeholder, same convention as the About page Experience
+  entries — no date signal exists for this project (the image files were uploaded today, which
+  isn't evidence of when the actual design work happened). **User should fill this in.**
+- Added `id="coedu"` anchor (consistent with the other projects) and included CoEdu in the
+  page's `<meta description>` list of projects.
+
 ## Stack notes
 - No framework, no build step — same as the rest of the site. GSAP + ScrollTrigger and Google
   Fonts loaded via CDN `<script>`/`<link>` tags, same complexity level as the pre-existing
