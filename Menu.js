@@ -6,6 +6,7 @@ document.querySelectorAll(".site-nav a").forEach((link) => {
 });
 
 const siteMenu = document.querySelector(".site-menu");
+const siteLogo = document.querySelector(".site-logo");
 const menuToggle = document.querySelector(".site-menu-toggle");
 const SCROLL_THRESHOLD = 24;
 
@@ -13,6 +14,7 @@ if (siteMenu) {
   const setScrolledState = () => {
     const isScrolled = window.scrollY > SCROLL_THRESHOLD;
     siteMenu.classList.toggle("scrolled", isScrolled);
+    siteLogo?.classList.toggle("scrolled", isScrolled);
     if (!isScrolled) {
       siteMenu.classList.remove("menu-open");
       menuToggle?.setAttribute("aria-expanded", "false");

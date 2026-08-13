@@ -162,6 +162,15 @@ h1,
   top: 1.5rem;
   left: 1.5rem;
   z-index: 1000;
+  transition: top var(--transition-fast);
+}
+
+/* The logo mark's source image is tall (595x842), so at any given width it
+   renders taller than the scrolled nav's glass pill. Top-aligning both at
+   the same offset leaves the logo sitting visibly low against the pill --
+   nudge it up by the measured height difference so their centers match. */
+.site-logo.scrolled {
+  top: calc(1.5rem - 8.6px);
 }
 
 .site-menu-toggle {
@@ -171,6 +180,7 @@ h1,
 .site-logo img {
   width: 40px;
   display: block;
+  transition: width var(--transition-fast);
 }
 
 .site-nav ul,
@@ -219,7 +229,7 @@ h1,
   right: 0;
   bottom: 0.2em;
   height: 1px;
-  background-color: currentColor;
+  background-color: var(--color-accent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform var(--transition-fast);
@@ -1184,6 +1194,7 @@ padding-bottom: var(--space-page);
   justify-content: center;
   align-items: start;
   padding-top: var(--space-lg);
+  padding-bottom: var(--space-xl);
 }
 
 

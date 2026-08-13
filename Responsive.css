@@ -25,6 +25,22 @@
         left: var(--space-xs);
       }
 
+      .site-logo img {
+        width: 56px;
+      }
+
+      /* Scrolled state swaps the nav for the 56px hamburger toggle, so
+         shrink the logo back to its desktop size to match -- at that size
+         the two happen to land at almost the same height, so no separate
+         vertical offset is needed here the way the desktop pill needs one. */
+      .site-logo.scrolled {
+        top: var(--space-xs);
+      }
+
+      .site-logo.scrolled img {
+        width: 40px;
+      }
+
       .name-reveal {
         padding-top: 20rem;
       }
