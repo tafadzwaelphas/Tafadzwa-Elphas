@@ -395,6 +395,7 @@ h1 {
   font-weight: 400;
   font-size: var(--text-display);
   line-height: 0.95;
+  letter-spacing: 0.02em;
   margin: 0;
   opacity: 0;
   transform: translateY(40px);
