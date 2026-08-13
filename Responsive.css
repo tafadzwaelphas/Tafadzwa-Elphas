@@ -220,6 +220,10 @@
         justify-content: center;
       }
 
+      .site-footer {
+        padding: var(--space-lg) var(--space-sm) var(--space-sm);
+      }
+
  }
 
 /* // `lg` applies to medium devices (tablets, less than 992px) */
