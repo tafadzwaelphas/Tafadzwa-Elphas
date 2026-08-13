@@ -268,7 +268,7 @@ h1,
   margin-top: var(--space-sm);
 }
 
-.site-menu.scrolled .site-nav-socials li.theme-toggle-item {
+.site-menu.scrolled:not(.menu-open) .site-nav-socials li.theme-toggle-item {
   justify-content: center;
   margin-top: 0;
 }
@@ -279,11 +279,26 @@ h1,
   justify-content: center;
   background: none;
   border: none;
-  padding: 14px;
-  margin: -14px;
+  /* Right-edge-preserving hit area: the vertical nav stack right-aligns
+     this button against the same edge the text above it right-aligns to.
+     Symmetric padding would center the icon inside its own larger box,
+     insetting it from that shared edge. Expanding only left/top/bottom
+     keeps the icon's visual right edge exactly where it was. */
+  padding: 10px 0 10px 24px;
+  margin: -10px 0 -10px -24px;
   cursor: pointer;
   color: var(--color-ink-55);
   transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.site-menu.scrolled:not(.menu-open) .site-nav-socials .theme-toggle {
+  /* Scrolled horizontal pill only (desktop) -- a row layout, not
+     right-aligned against shared text, so symmetric padding is correct
+     here. Excludes .menu-open: the mobile dropdown also carries
+     .scrolled, but it's a vertical stack like the at-rest state, not
+     a row, so it needs the right-edge-preserving padding above instead. */
+  padding: 14px;
+  margin: -14px;
 }
 
 .theme-toggle svg {
