@@ -129,6 +129,14 @@
         font-size: 15px;
       }
 
+      .radio-dock-label {
+        display: none;
+      }
+
+      .radio-dock {
+        padding: var(--space-2xs);
+      }
+
 }
 
 /* // `md` applies to small devices (landscape phones, less than 768px) */

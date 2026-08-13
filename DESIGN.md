@@ -934,6 +934,44 @@ radio widget above, not a real embedding problem.
 repeat(2, 1fr)`) for FRGHN's 2 real tags (Cover Art, Music) — HandWing's original 3-column
 version is untouched and used for its own real 3 tags.
 
+## Docked radio mini-player (2026-08-13)
+Follow-up to the Contact page radio widget above: pressing play on Contact used to stop the
+moment the visitor navigated to any other page, since this is a plain multi-page site (real
+navigations, not client-side routing) and a page load always tears down the `<audio>` element.
+Discussed two ways to fix this with the user — true client-side routing (gapless, but a
+site-wide architecture change) vs. a lighter persistent-state approach — and went with the
+latter on their choice.
+
+`Radio.js` now drives up to two controls off one shared state machine: the existing full-size
+`#radio-widget` on Contact, and a new small floating `#radio-dock` pill (`.radio-dock`,
+bottom-left, reuses `.tool-radio`'s icon/pulse CSS at 48px rather than duplicating it) added to
+every other page. Play state is written to `localStorage` (`radioPlaying`); on every page load
+the script checks that flag and, if set, immediately shows the dock and attempts to reconnect
+the stream. Two things follow directly from this being a reconnect-per-page-load rather than one
+continuous stream, and both are handled explicitly rather than silently:
+- A short (~1s) gap on every navigation while the new page's `<audio>` element buffers.
+- The reconnect attempt isn't a user gesture, so the browser's autoplay policy can block it
+  (more likely for a visitor's first navigation than later ones). On rejection the dock stays
+  visible in a paused "Tap to resume · Groove Salad" state instead of disappearing or failing
+  silently — clicking it is a real user gesture and reliably starts playback.
+Pausing from either control (dock or widget) clears the flag and hides the dock again, so it
+never appears for a visitor who never pressed play, per the user's explicit requirement.
+
+Deliberately placed bottom-left rather than bottom-right: `.project-slider-nav`'s prev/next
+buttons already live bottom-right (`position: absolute` inside each slider, not viewport-fixed,
+so not a real collision, but close enough visually to avoid). Mobile (`<576px`) hides the dock's
+text label and keeps just the icon, matching the same breakpoint `.project-slider-nav` already
+uses for its own mobile sizing.
+
+Verified locally: dock renders and hides correctly (light + dark theme), `localStorage`-driven
+resume fires on page load, and the paused/"tap to resume" fallback state renders correctly on
+`play()` rejection. Could **not** verify actual continuous audio across a real navigation — same
+pre-existing automation-tab limitation noted for the original radio widget above (stream
+`readyState` never leaves 0 in this sandboxed tab; confirmed via `curl` back then that the stream
+itself is fine). The docking/state mechanism itself was verified directly by driving it with the
+real `localStorage` flag and calling `showRadioDock`/`hideRadioDock` from the console, independent
+of whether the stream can actually connect in this environment.
+
 ## Repo / deploy
 - Remote: `origin` → `https://github.com/tafadzwaelphas/Tafadzwa-Elphas.git`, branch `main`
 - GitHub Pages: enabled, source = GitHub Actions, workflow `.github/workflows/static.yml`

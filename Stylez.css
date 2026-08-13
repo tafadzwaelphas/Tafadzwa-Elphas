@@ -697,6 +697,49 @@ padding-bottom: var(--space-page);
   fill: var(--color-ink);
 }
 
+/* Docked mini radio player -- hidden until the visitor presses play on the
+   Contact page widget above. Once playing, it follows them to every other
+   page (see Radio.js) so navigating away doesn't silently kill the stream;
+   pressing it again pauses and hides it. Reuses .tool-radio's icon/pulse
+   styling at a smaller size rather than duplicating it. */
+.radio-dock {
+  position: fixed;
+  left: var(--space-sm);
+  bottom: var(--space-sm);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  padding: var(--space-2xs) var(--space-sm) var(--space-2xs) var(--space-2xs);
+  border-radius: var(--radius-pill);
+  background-color: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-glass);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--transition-fade), transform var(--transition-fade);
+  pointer-events: none;
+}
+
+.radio-dock.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.radio-dock .tool-radio {
+  width: 48px;
+  height: 48px;
+}
+
+.radio-dock-label {
+  font-size: var(--text-label-sm);
+  font-weight: 500;
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
 .tool-localtime-readout {
   display: flex;
   align-items: center;
