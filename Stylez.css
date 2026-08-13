@@ -13,7 +13,10 @@
   --color-page: #f6f5f2;
   --color-muted: rgb(112, 106, 98);
   --color-muted-inverted: rgb(140, 136, 130);
-  --color-ink-55: rgba(26, 26, 26, 0.55);
+  /* .65, not .55 -- .55 measured ~3.8:1 against --color-page, under WCAG
+     AA's 4.5:1 for normal text. .65 measures ~5.2:1. Kept the token name
+     as-is rather than renaming every usage for a cosmetic mismatch. */
+  --color-ink-55: rgba(26, 26, 26, 0.65);
   --color-ink-25: rgba(26, 26, 26, 0.25);
   --color-ink-15: rgba(26, 26, 26, 0.15);
   --color-ink-12: rgba(26, 26, 26, 0.12);
