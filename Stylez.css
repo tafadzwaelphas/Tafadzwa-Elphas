@@ -683,13 +683,28 @@ padding-bottom: var(--space-page);
 
 .project-spotlight-text p {
   font-size: var(--text-body-sm);
-  max-width: 400px;
+  max-width: 480px;
+}
+
+.project-spotlight-text .section-heading-link {
+  display: inline-block;
+  margin-top: var(--space-sm);
 }
 
 .project-spotlight-image {
   width: 400px;
   height: 400px;
+  overflow: hidden;
   margin-inline: auto;
+}
+
+.project-spotlight-image img {
+  display: block;
+}
+
+/* Placeholder state (no project chosen yet) -- kept for reuse on future
+   spotlights before their real image/copy is ready. */
+.project-spotlight-image.is-placeholder {
   display: flex;
   flex-direction: column;
   align-items: center;
