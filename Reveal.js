@@ -1,4 +1,5 @@
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 gsap.utils.toArray(".name-reveal-line").forEach((line) => {
   gsap.to(line, {
