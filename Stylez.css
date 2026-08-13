@@ -36,7 +36,6 @@
   --text-body: 20px;
   --text-body-lg: 18px;
   --text-body-sm: 16px;
-  --text-label: 14px;
   --text-label-sm: 13px;
   --text-caption: 12px;
   --text-caption-sm: 11px;
@@ -199,6 +198,7 @@ h1,
 .site-nav-socials a {
   position: relative;
   display: block;
+  padding: 0 20px;
   font-size: var(--text-label-sm);
   font-weight: 500;
   color: var(--color-ink-55);
@@ -420,38 +420,11 @@ ul {
 }
 
 
-ol {
-  font-style: normal;
-  font-size: 20px;
-  margin-left: 110px;
-  color: rgb(74, 68, 62);
-}
-
-
 ul li {
   list-style: none;
   display: inline-block;
   float: none;
   line-height: 100px;
-}
-
-
-ul li a {
-  /* display: block; */
-  text-decoration: none;
-  font-size: 14px;
-  color: #242323;
-  padding: 0 20px;
-}
-
-
-ul li a:hover {
-  color: var(--color-accent);
-}
-
-
-ul li a:active {
-  color: var(--color-accent);
 }
 
 
@@ -772,7 +745,7 @@ padding-bottom: var(--space-page);
 
 .project-header-year,
 .project-header-tags {
-  font-size: var(--text-label);
+  font-size: var(--text-label-sm);
   color: var(--color-muted);
   line-height: 1.6;
 }
@@ -967,17 +940,17 @@ padding-bottom: var(--space-page);
   align-items: baseline;
   gap: var(--space-sm);
   padding: var(--space-sm) 0;
-  border-top: 1px solid var(--color-ink-12);
+  border-top: 1px solid var(--color-ink-15);
   font-size: var(--text-services);
   font-weight: 500;
 }
 
 .services-list li:last-child {
-  border-bottom: 1px solid var(--color-ink-12);
+  border-bottom: 1px solid var(--color-ink-15);
 }
 
 .services-index {
-  font-size: var(--text-label);
+  font-size: var(--text-label-sm);
   font-weight: 500;
   color: var(--color-muted);
 }
@@ -1251,7 +1224,7 @@ padding-bottom: var(--space-page);
 }
 
 .site-footer-links a {
-  font-size: var(--text-label);
+  font-size: var(--text-label-sm);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-ink);
