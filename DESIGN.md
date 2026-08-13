@@ -884,6 +884,56 @@ All changes verified locally (local server + browser): no console errors, GSAP/S
 Lenis confirmed loaded and active despite `defer`, nav padding unchanged (`0px 20px`) after
 the CSS move, hairline color renders correctly in both themes, new media files all serve 200.
 
+## Contact page live radio widget (2026-08-13)
+Added a 5th `.tool-item` to `Contact.html`'s tool row (`Radio.js`, new CSS in `Stylez.css`):
+a genuinely live internet radio stream, not a looped playlist. Streams SomaFM's "Groove
+Salad" (ambient/downtempo) via direct Icecast MP3 URL, verified reachable and CORS-open by
+curling it directly before wiring it in. Click/Enter/Space toggles play/pause; label cycles
+Live ambient radio → Connecting… → Groove Salad · Ambient · SomaFM, with a "Stream
+unavailable" fallback on error.
+
+Initially built reusing the clock/compass/sundial dial styling (circle + tick marks), then
+redesigned on request to read as an actual player: tick marks removed, play/pause glyph
+enlarged to fill the space, and a CSS-only expanding "on-air" pulse ring added around the
+button while playing (`@keyframes radio-on-air` — the site's first keyframe animation).
+
+Known limitation hit while testing: in the browser-automation tab, the live stream's
+`readyState` stayed at 0 (no data) indefinitely after `play()` — confirmed via direct `curl`
+that the stream itself works fine, so this is the same backgrounded-tab
+(`document.hidden`/`visibilityState: hidden`) suppression noted elsewhere in this doc, not a
+site bug. Real, focused-tab visitors aren't affected.
+
+## FRGHN Music case study + player (2026-08-13)
+Second individual project page (after `HandWing.html`), following the same template:
+`FRGHN-Music.html`. Prompted by a client-scope correction — the existing Portfolio.html
+section was titled "FRGHN Music — Madube," implying Madube was the whole project, when
+Madube is actually just one release's cover art among the work done for the client FRGHN/
+Foreighn. Title changed to plain "FRGHN Music" everywhere (Portfolio.html + new page) so
+future covers for this artist have one place to live, and the second, previously-unused
+Madube cover concept (`ARTCVRMDBE2.png` — already in `Images/`, was never wired into any
+page) was added alongside the original (`MADUBEFNLCVR.jpg`) in both sliders.
+
+Artist facts (bio, label, genre, release date) sourced from the artist's real Audiomack
+profile (audiomack.com/foreighn97) rather than invented — confirmed via `WebFetch` and a
+direct `curl` of the track page: Foreighn, Zambian/Zimbabwean Afrosounds artist, Zed Arts
+Records, "Madube" released 2021-07-09. Matched against existing `Images/` filenames to check
+for other unidentified FRGHN cover art before writing copy — none of Foreighn's actual track
+titles (Katarina, Chair, Summer Nights, Grow Up, etc.) matched any other image filename in
+the repo, so no other cover art exists for this client yet; nothing invented.
+
+Added a "Listen" section with a real embedded player for "Madube" — found the correct embed
+URL the honest way (queried Audiomack's public oEmbed endpoint,
+`creators.audiomack.com/oembed?url=...`, rather than guessing the iframe path) and confirmed
+it via oEmbed's returned `html`: `https://audiomack.com/embed/song/foreighn97/madube`.
+Verified functional by opening that URL directly in a browser tab (waveform, play button,
+correct 2:42 duration) — separately, the iframe rendered blank when embedded inside
+`FRGHN-Music.html` in the automation test tab, same backgrounded-tab cause as the Contact
+radio widget above, not a real embedding problem.
+
+`.case-study-workflow` gained an `.is-two-col` modifier (`grid-template-columns:
+repeat(2, 1fr)`) for FRGHN's 2 real tags (Cover Art, Music) — HandWing's original 3-column
+version is untouched and used for its own real 3 tags.
+
 ## Repo / deploy
 - Remote: `origin` → `https://github.com/tafadzwaelphas/Tafadzwa-Elphas.git`, branch `main`
 - GitHub Pages: enabled, source = GitHub Actions, workflow `.github/workflows/static.yml`

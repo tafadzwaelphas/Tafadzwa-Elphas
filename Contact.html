@@ -10,7 +10,7 @@
   })();
   </script>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="Stylez.css?v=37">
+  <link rel="stylesheet" href="Stylez.css?v=40">
   <link rel="stylesheet" href="Responsive.css?v=15">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — Tafadzwa Choga</title>
@@ -42,6 +42,7 @@
     <script src="Compass.js?v=1" defer></script>
     <script src="Sundial.js?v=1" defer></script>
     <script src="LocalTimeCompare.js?v=1" defer></script>
+    <script src="Radio.js?v=1" defer></script>
 </head>
 
 <body>
@@ -154,6 +155,20 @@
           <div class="tool-item">
             <div class="tool-localtime-readout" id="local-time-readout">&ndash;&ndash;:&ndash;&ndash;</div>
             <span class="local-time-label" id="local-time-offset-label">Your time</span>
+          </div>
+
+          <div class="tool-item">
+            <div class="tool-radio" id="radio-widget" role="button" tabindex="0" aria-label="Play live ambient radio, Groove Salad from SomaFM">
+              <svg id="radio" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+                  <circle class="circle" cx="300" cy="300" r="253.9"/>
+                  <polygon class="radio-icon-play" points="245,185 245,415 425,300"/>
+                  <g class="radio-icon-pause">
+                    <rect x="232" y="185" width="50" height="230" rx="10"/>
+                    <rect x="318" y="185" width="50" height="230" rx="10"/>
+                  </g>
+              </svg>
+            </div>
+            <span class="local-time-label" id="radio-label">Live ambient radio &middot; SomaFM</span>
           </div>
         </div>
 
