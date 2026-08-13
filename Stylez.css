@@ -661,6 +661,45 @@ padding-bottom: var(--space-page);
   padding-top: var(--space-lg);
 }
 
+.project-spotlight {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-xl) 0;
+}
+
+.project-spotlight-text {
+  padding-left: var(--space-page);
+}
+
+.project-spotlight-text h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  font-size: var(--text-h2);
+  margin: var(--space-sm) 0;
+}
+
+.project-spotlight-text p {
+  font-size: var(--text-body-sm);
+  max-width: 400px;
+}
+
+.project-spotlight-image {
+  width: 400px;
+  height: 400px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  border: 2px dashed var(--color-ink-15);
+  border-radius: var(--radius-card);
+  color: var(--color-ink-25);
+}
+
 .project-header {
   display: flex;
   flex-wrap: wrap;
@@ -904,9 +943,40 @@ padding-bottom: var(--space-page);
   color: var(--color-accent);
 }
 
+.project-header-link {
+  padding: 0 var(--space-page) var(--space-md);
+}
+
 .handwing-project-grid{
   padding-bottom: var(--space-lg);
   padding-top: var(--space-sm);
+}
+
+.case-study-workflow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  padding: var(--space-lg) var(--space-page);
+  border-top: 1px solid var(--color-ink-15);
+  border-bottom: 1px solid var(--color-ink-15);
+}
+
+.case-study-workflow-col h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  font-size: var(--text-project-title);
+  margin-top: var(--space-2xs);
+}
+
+.case-study-goals {
+  padding-top: var(--space-lg);
+}
+
+.case-study-goals .local-time-label {
+  display: block;
+  padding: 0 var(--space-page);
+  margin-bottom: var(--space-sm);
 }
 
 .fakugesi-title p {

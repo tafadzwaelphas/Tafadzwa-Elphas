@@ -152,6 +152,35 @@
         margin-top: var(--space-sm);
       }
 
+      .project-spotlight {
+        display: block;
+        padding: var(--space-md) var(--space-sm);
+      }
+
+      .project-spotlight-text {
+        padding-left: 0;
+      }
+
+      .project-spotlight-image {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        margin-top: var(--space-sm);
+      }
+
+      .case-study-workflow {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+        padding: var(--space-md) var(--space-sm);
+      }
+
+      .case-study-goals .local-time-label,
+      .case-study-goals .project-header-description {
+        padding-left: var(--space-sm);
+        padding-right: var(--space-sm);
+      }
+
       .contact-content img {
         width: 100%;
         max-width: 400px;
