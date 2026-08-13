@@ -281,6 +281,8 @@ h1,
 .site-menu.scrolled:not(.menu-open) .site-nav-socials li.theme-toggle-item {
   justify-content: center;
   margin-top: 0;
+  padding-left: var(--space-xs);
+  border-left: 2px solid var(--color-ink-15);
 }
 
 .theme-toggle {
@@ -610,6 +612,32 @@ padding-bottom: var(--space-page);
   fill: var(--color-ink);
 }
 
+/* Same dark-mode fix as .tool-radio above: --color-ink flips light in dark
+   mode, which washes out against the accent circle. Pin these to the dark
+   background color instead so the hover state stays dark-on-mint. */
+:root[data-theme="dark"] .local-time-clock:hover .circle,
+:root[data-theme="dark"] .tool-compass:hover .circle {
+  stroke: var(--color-page);
+}
+
+:root[data-theme="dark"] .local-time-clock:hover .mid-circle,
+:root[data-theme="dark"] .tool-compass:hover .mid-circle {
+  fill: var(--color-page);
+}
+
+:root[data-theme="dark"] .local-time-clock:hover .hour-marks,
+:root[data-theme="dark"] .local-time-clock:hover .hour-arm,
+:root[data-theme="dark"] .local-time-clock:hover .minute-arm,
+:root[data-theme="dark"] .local-time-clock:hover .second-arm,
+:root[data-theme="dark"] .tool-compass:hover .hour-marks {
+  stroke: var(--color-page);
+}
+
+:root[data-theme="dark"] .tool-compass:hover .compass-needle-north,
+:root[data-theme="dark"] .tool-compass:hover .compass-needle-south {
+  fill: var(--color-page);
+}
+
 .sundial-arc {
   fill: none;
   stroke: var(--color-ink-25);
@@ -695,6 +723,21 @@ padding-bottom: var(--space-page);
 .tool-radio.is-playing .radio-icon-play,
 .tool-radio.is-playing .radio-icon-pause rect {
   fill: var(--color-ink);
+}
+
+/* --color-ink flips light in dark mode, which reads poorly against the
+   accent circle (mint is bright in both themes). Pin this one to the dark
+   background color instead so the icon/stroke stays dark-on-mint here too. */
+:root[data-theme="dark"] .tool-radio:hover .circle,
+:root[data-theme="dark"] .tool-radio.is-playing .circle {
+  stroke: var(--color-page);
+}
+
+:root[data-theme="dark"] .tool-radio:hover .radio-icon-play,
+:root[data-theme="dark"] .tool-radio:hover .radio-icon-pause rect,
+:root[data-theme="dark"] .tool-radio.is-playing .radio-icon-play,
+:root[data-theme="dark"] .tool-radio.is-playing .radio-icon-pause rect {
+  fill: var(--color-page);
 }
 
 /* Docked mini radio player -- hidden until the visitor presses play on the
