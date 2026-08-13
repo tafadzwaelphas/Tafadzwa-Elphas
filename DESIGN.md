@@ -858,6 +858,32 @@ was **not** removed — it also drives GSAP ScrollTrigger sync (`Reveal.js`'s `.
 fade-ins, the homepage name-reveal scrub) and site-wide smooth scroll, unrelated to the blur
 effect specifically.
 
+## Performance cleanup pass (2026-08-13)
+Follow-up to the SEO/accessibility audit — three independent pieces of work:
+- **Deferred CDN scripts**: GSAP, ScrollTrigger, and Lenis `<script>` tags (previously
+  synchronous, blocking parse) now load with `defer` on all 5 pages, matching the local
+  scripts. Verified safe: `defer` scripts execute in document order, so GSAP/ScrollTrigger/
+  Lenis still finish before `Reveal.js` (`gsap.registerPlugin(...)`) and `Lenis.js`
+  (`new Lenis()`) run.
+- **Re-exported oversized media**: 3 videos re-encoded via macOS `avconvert -p
+  PresetMediumQuality` (`HandWing 2023 PWN .mp4` 13.8MB→1.0MB, `Plenty Wish In The See.mp4`
+  3.2MB→0.87MB, `Hello.mp4` 436KB→157KB), visually verified via QuickLook thumbnails before
+  replacing the originals. 4 PNGs converted to JPEG q88 via `sips` (`GREY.png`,
+  `N03-White-front.png`, `N03-White-back (1).png`, `N03-Black-front.png` — 6.17MB→2.02MB
+  combined), HTML references updated on `HandWing.html`/`Portfolio.html`, old PNGs deleted.
+  `ARTCVRMDBE2.png` deliberately left as PNG — its fine paper-grain texture made JPEG larger
+  or barely smaller with visible artifacting at both q88 and q75.
+- **CSS cleanup** (see `DESIGN-SYSTEM.md`'s "Resolved inconsistencies" / "Removed dead code"
+  sections for full detail): hairline-opacity and label-size tokens consolidated; `ol {}`
+  deleted as genuinely dead; `ul li a {}` investigated and found to be the sole source of
+  `.site-nav a`/`.site-nav-socials a`'s horizontal padding — moved that one property onto the
+  specific selector before deleting the generic rule, rather than deleting it outright as
+  originally assumed dead.
+
+All changes verified locally (local server + browser): no console errors, GSAP/ScrollTrigger/
+Lenis confirmed loaded and active despite `defer`, nav padding unchanged (`0px 20px`) after
+the CSS move, hairline color renders correctly in both themes, new media files all serve 200.
+
 ## Repo / deploy
 - Remote: `origin` → `https://github.com/tafadzwaelphas/Tafadzwa-Elphas.git`, branch `main`
 - GitHub Pages: enabled, source = GitHub Actions, workflow `.github/workflows/static.yml`
