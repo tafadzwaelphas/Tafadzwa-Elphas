@@ -1224,7 +1224,7 @@ padding-bottom: var(--space-page);
 
 .about-overview {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: var(--space-md);
   padding: var(--space-xl) var(--space-page);
 }
