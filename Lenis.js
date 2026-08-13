@@ -1,10 +1,12 @@
-const lenis = new Lenis();
-window.lenis = lenis;
+if (matchMedia("(pointer: fine)").matches) {
+  const lenis = new Lenis();
+  window.lenis = lenis;
 
-lenis.on("scroll", ScrollTrigger.update);
+  lenis.on("scroll", ScrollTrigger.update);
 
-gsap.ticker.add((time) => {
-  lenis.raf(time * 1000);
-});
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
 
-gsap.ticker.lagSmoothing(0);
+  gsap.ticker.lagSmoothing(0);
+}
