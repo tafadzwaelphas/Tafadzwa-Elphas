@@ -286,6 +286,15 @@ h1,
   transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
+.theme-toggle svg {
+  /* Optical, not geometric, alignment: the icon's own bounding box already
+     centers exactly against the nav text's box, but all-caps text with no
+     descenders sits higher within its generous line-height than the box's
+     true center, so a geometrically-centered icon reads as sitting low
+     next to it. Nudged up to match by eye. */
+  transform: translateY(-3px);
+}
+
 .theme-toggle:hover {
   color: var(--color-ink);
   transform: scale(1.06);
