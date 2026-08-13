@@ -840,6 +840,23 @@ existing 2px-border convention) that widen outward and switch to the mint accent
   involving a class/state change (not just animation), trust a screenshot/pixel check over
   `getComputedStyle` in this environment if the two disagree — don't assume `getComputedStyle`
   is automatically the more reliable of the two here, as earlier notes implied.
+- Similar caching quirk (2026-08-13, footer scroll-blur removal): after editing `index.html`
+  to drop `data-scroll-blur` from the footer, a browser tab that had loaded the page earlier
+  in the same session still reported the old attribute/filter present via `getComputedStyle`
+  — a plain `location.reload(true)` cleared it. Confirmed via `curl` that the server was
+  already serving the corrected file; this was purely a browser-side cache artifact in the
+  automation tab, not a real bug or a sign the edit hadn't taken effect.
+
+## Footer scroll-blur: removed (2026-08-13)
+User asked to remove the directional scroll-blur effect on the footer entirely (see "Footer
+scroll-blur" and "Footer scroll-blur: fixed a real velocity bug" and "Footer scroll-blur:
+still not right" sections above for its full history — three attempts to get the feel right,
+Lenis added specifically to support it). Removed cleanly: `ScrollBlur.js` deleted, its
+`<script>` tag and the `data-scroll-blur` attribute removed from the footer on all 5 pages
+(`index.html`, `About.html`, `Contact.html`, `Portfolio.html`, `HandWing.html`). Lenis itself
+was **not** removed — it also drives GSAP ScrollTrigger sync (`Reveal.js`'s `.reveal`
+fade-ins, the homepage name-reveal scrub) and site-wide smooth scroll, unrelated to the blur
+effect specifically.
 
 ## Repo / deploy
 - Remote: `origin` → `https://github.com/tafadzwaelphas/Tafadzwa-Elphas.git`, branch `main`
