@@ -959,7 +959,6 @@ padding-bottom: var(--space-page);
   text-transform: uppercase;
   color: var(--color-muted);
   text-decoration: none;
-  white-space: nowrap;
 }
 
 .section-heading-link:hover {
