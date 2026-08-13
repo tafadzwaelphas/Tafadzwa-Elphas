@@ -125,13 +125,16 @@ Because `--color-muted`/`--color-muted-inverted` swap roles, the footer's existi
   - **`.case-study-workflow`** — a structured 3-column breakdown of the project's real tags (not invented per-category descriptions — just the existing tags, presented more clearly than the inline comma list).
   - **`.case-study-goals`** — an explicit `[Add project goals]` placeholder (matching the `[Add dates]` convention already used on the About page's Experience section), since no goals content exists yet for any project.
 
-## Known inconsistencies (not silently resolved)
+## Resolved inconsistencies
 
-A few near-duplicate values exist in the current CSS that look like unintentional drift rather than an intentional distinction. They were each preserved as their own token during this migration (so nothing's visual changed), but are worth an intentional look before adding more:
+- **Hairline opacity**: `--color-ink-15` (.15) and `--color-ink-12` (.12) both functioned as "subtle divider" in different places, with no deliberate distinction. Consolidated: all hairline dividers (including `.services-list li` borders, previously `.12`) now use `--color-ink-15`. `--color-ink-12` remains in use for exactly one, genuinely distinct purpose: `.tool-sundial.is-night .sundial-arc` — a dimmed-state stroke on Contact.html's sun-position dial, not a divider.
+- **Label sizing**: `--text-label` (14px) and `--text-label-sm` (13px) both read as "small metadata/label text." Consolidated onto `--text-label-sm` (13px) everywhere — `.project-header-year`/`.project-header-tags`, `.services-index`, and `.site-footer-links a` moved off the 14px token. The `--text-label` token declaration was removed since nothing referenced it afterward.
 
-- **Hairline opacity**: `--color-ink-15` (.15) and `--color-ink-12` (.12) both function as "subtle divider" — used in different places (nav-socials border, local-time border vs. services-list border) but it's not obvious the distinction is deliberate.
-- **Label sizing**: `--text-label` (14px) and `--text-label-sm` (13px) both read as "small metadata/label text" depending on context; may be worth consolidating to one.
+## Removed dead code (with one correction)
 
-## Out of scope / likely dead code
+A bare `ol { ... }` rule and `ul li a { ... }` in `Stylez.css` used colors (`rgb(74, 68, 62)`, `#242323`) and spacing that didn't match any token and looked like pre-redesign leftovers. On investigation before deleting:
 
-Two generic selectors in `Stylez.css` — a bare `ol { ... }` rule and `ul li a { ... }` — use colors (`rgb(74, 68, 62)`, `#242323`) and spacing (110px margins, 100px line-height) that don't match any token in this system and don't correspond to any current component class. They look like leftovers from before the redesign rather than active styling. Left untouched during this pass (not part of the active design system); worth confirming nothing on the live site still depends on them before deleting.
+- `ol {}` was confirmed fully dead — no `<ol>` element exists anywhere on the site — and was deleted outright.
+- `ul li a {}` turned out to be **not** fully dead: its `text-decoration`/`font-size`/`color` were redundant (already overridden by the more specific `.site-nav a, .site-nav-socials a` rule), but its `padding: 0 20px` was the *only* source of that padding for both the primary nav and social links (their own rule declared no padding). Fixed by moving `padding: 0 20px` explicitly onto `.site-nav a, .site-nav-socials a` before deleting the generic rule, so nav spacing is unchanged. The `:hover`/`:active` sub-rules were confirmed dead by specificity (both nav and socials already have their own, more specific `:hover` color rules) and were deleted along with the base rule.
+
+This is a useful reminder that a selector matching no *custom* class doesn't mean it matches no *elements* — `ul li a` matched the site's actual nav markup (`<nav class="site-nav"><ul><li><a>`) even though the class lived on the `<nav>`, not the `<ul>`.
