@@ -1077,6 +1077,18 @@ scrolling back up reverts cleanly to `#1a1a1a`. Also spot-checked with the OS th
 same toggle, just against dark theme's flipped (light-colored) ink token instead, confirming the
 color is genuinely token-driven rather than hardcoded.
 
+## Radio: 8 more SomaFM channels (2026-08-14)
+
+Shuffle pool grew from 4 to 12: added Heavyweight Reggae, Fluid, Bossa Beyond, Sonic Universe,
+Lush, Digitalis, Suburbs of Goa, and Underground 80s to `RADIO_CHANNELS` in `Radio.js`. Same
+pattern as the original four — no HTML/CSS changes needed, since the shuffle button, labels, and
+`aria-label`s all already read from whichever channel is current. Each `id` (SomaFM's real slug,
+not guessed) and its direct `https://ice1.somafm.com/{id}-128-mp3` stream were verified against
+SomaFM's public `channels.json` and a live HEAD request before adding.
+
+Verified locally: 60 consecutive shuffles hit all 12 channels at least once, and the visible
+label/`localStorage` stayed in sync with whichever one was current.
+
 ## Repo / deploy
 - Remote: `origin` → `https://github.com/tafadzwaelphas/Tafadzwa-Elphas.git`, branch `main`
 - GitHub Pages: enabled, source = GitHub Actions, workflow `.github/workflows/static.yml`

@@ -1,7 +1,9 @@
-// SomaFM channels -- ambient/downtempo etc, streamed live via Icecast.
-// Public direct stream URLs, permissive CORS (Access-Control-Allow-Origin: *).
-// Same four channels somafm.com's own site groups together; "Shuffle channel"
-// on the Contact page picks a random one of the other three.
+// SomaFM channels -- streamed live via Icecast, public direct stream URLs,
+// permissive CORS (Access-Control-Allow-Origin: *). "Shuffle channel" on the
+// Contact page picks a random one of the others. Adding a channel is just
+// adding an entry here (id must match SomaFM's real slug, e.g.
+// https://ice1.somafm.com/{id}-128-mp3) -- everything else (labels,
+// aria-labels, the dock) already reads from whichever channel is current.
 //
 // Two possible controls share this one script: the full-size widget on the
 // Contact page (#radio-widget) and a small docked mini-player every other
@@ -19,6 +21,14 @@ const RADIO_CHANNELS = [
   { id: "dronezone", name: "Drone Zone", genre: "Ambient" },
   { id: "secretagent", name: "Secret Agent", genre: "Lounge/jazz" },
   { id: "indiepop", name: "Indie Pop Rocks!", genre: "Indie pop/rock" },
+  { id: "reggae", name: "Heavyweight Reggae", genre: "Reggae/dub/ska" },
+  { id: "fluid", name: "Fluid", genre: "Instrumental hip hop/future soul" },
+  { id: "bossa", name: "Bossa Beyond", genre: "Bossa nova/samba" },
+  { id: "sonicuniverse", name: "Sonic Universe", genre: "Avant-garde jazz" },
+  { id: "lush", name: "Lush", genre: "Female-driven vocal downtempo" },
+  { id: "digitalis", name: "Digitalis", genre: "Indie rock/electronic" },
+  { id: "suburbsofgoa", name: "Suburbs of Goa", genre: "Desi/Arabic worldbeat" },
+  { id: "u80s", name: "Underground 80s", genre: "80s synthpop/new wave" },
 ];
 const RADIO_LABEL_CONNECTING = "Connecting…";
 const RADIO_LABEL_ERROR = "Stream unavailable";
