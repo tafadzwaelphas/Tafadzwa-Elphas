@@ -1147,3 +1147,16 @@ held up.
 - Live URL: https://tafadzwaelphas.github.io/Tafadzwa-Elphas/
 - Local git identity for this repo: `Tafadzwa Elphas <tafadzwchoga@gmail.com>` (matches the
   tafadzwaelphas GitHub account, set locally not globally)
+
+## About page portrait swapped (2026-08-14)
+
+Tafadzwa supplied a new portrait (`~/Desktop/Tafadzwa Choga - Image.png`, 1772×1771, 3MB PNG) to
+replace the About page's existing photo. Converted to JPG at quality 82 (`Images/Tafadzwa Choga
+Portrait.jpg`, 563KB) to stay in line with the rest of the site's image sizes rather than shipping
+a 3MB PNG — same lesson as the original pre-redesign "oversized unoptimized images" bug. Updated
+all three references in `About.html` (`<img src>`, `og:image`, `twitter:image`); alt text
+("Portrait of Tafadzwa Choga") didn't need to change.
+
+Deliberately left `Images/1W7A7296.JPG` (the old photo) in place and untouched — `Contact.html`
+still uses it for its own `og:image`/`twitter:image`, and the user's request was scoped to the
+About page picture specifically, not a site-wide portrait swap.
