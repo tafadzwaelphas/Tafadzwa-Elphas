@@ -15,6 +15,16 @@ gsap.utils.toArray(".name-reveal-line").forEach((line) => {
   });
 });
 
+const nameSurname = document.querySelector(".name-reveal-surname");
+if (nameSurname) {
+  ScrollTrigger.create({
+    trigger: ".name-reveal",
+    start: "bottom center",
+    onEnter: () => nameSurname.classList.add("is-scrolled-past"),
+    onLeaveBack: () => nameSurname.classList.remove("is-scrolled-past"),
+  });
+}
+
 const bannerImg = document.querySelector(".banner img");
 if (bannerImg) {
   gsap.fromTo(

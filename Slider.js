@@ -68,5 +68,24 @@ document.querySelectorAll(".project-slider").forEach((slider) => {
       isVideoPlaying = false;
       startAutoSlide();
     });
+
+    // No native controls on these (see markup) -- hover plays/loops the clip,
+    // moving away pauses and rewinds so the next hover starts fresh. Devices
+    // without real hover (touch) fall back to tap-to-toggle via `click`,
+    // which also fires after a tap.
+    video.addEventListener("mouseenter", () => {
+      video.play().catch(() => {});
+    });
+    video.addEventListener("mouseleave", () => {
+      video.pause();
+      video.currentTime = 0;
+    });
+    video.addEventListener("click", () => {
+      if (video.paused) {
+        video.play().catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
   });
 });

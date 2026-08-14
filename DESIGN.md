@@ -978,7 +978,7 @@ New convention: real feedback from other people (screenshots of chat/DMs, etc.) 
 a `Feedback/` folder at the repo root — one markdown file per feedback session
 (`Feedback/YYYY-MM-DD-name.md`), with the raw source screenshot alongside it and a status table
 checking each point against the actual current site rather than assuming it's already handled.
-First entry: `Feedback/2026-08-14-friend-feedback.md`, feedback from a friend on the site's identity,
+First entry: `Feedback/2026-08-14-bruno-were.md`, feedback from Bruno Were on the site's identity,
 missing portfolio pieces (Gadaha, Ingwe — not added, no assets exist yet), the FRGHN Music case
 study lacking a design backstory (not added, needs real input), the Contact page still reading
 "Nile House" (confirmed still present, needs the real current location from Tafadzwa), and the
@@ -1025,6 +1025,57 @@ Icecast stream hangs rather than resolving/rejecting in this sandboxed, backgrou
 verified the actual logic directly: 10 consecutive shuffles never repeated the same channel
 back-to-back and covered all 4 channels, and each call correctly updated the visible label, both
 triggers' `aria-label`, and the `localStorage` value together.
+
+## Slider videos: native controls removed, hover-to-play (2026-08-14)
+
+The three real videos in the HandWing slider (`Portfolio.html` + `HandWing.html`, same three
+files in both) lost their `controls` attribute and gained `muted loop playsinline` instead —
+now `.hover-preview-video`, matching the muted/loop/playsinline convention the FRGHN Music
+`3AM Animation.mp4` hero video already used, just gated by hover instead of always-on.
+
+`Slider.js` now plays each video on `mouseenter`, pauses and rewinds to 0 on `mouseleave` (so
+every hover starts the clip fresh, the usual product-preview pattern), and also toggles
+play/pause on `click` as a tap-to-play fallback for touch devices, which don't fire hover events
+at all — without it, removing `controls` would have made these videos completely unplayable on
+mobile. The existing play/pause-driven auto-slide-pause logic from the previous slider fix
+needed no changes: it listens to the video's native `play`/`pause` events regardless of what
+triggered them, so hover-triggered playback already pauses the slider's auto-advance the same
+way clicking play used to.
+
+One real tradeoff worth flagging: muting is required for hover-triggered autoplay to be reliable
+across browsers (unmuted `play()` calls not tied to a click/keydown are frequently blocked), and
+there's no control bar to unmute from anymore. These three clips are now silent previews only —
+say if a mute/unmute affordance is wanted back for any of them.
+
+Verified locally: confirmed via a real navigation (not the earlier sandboxed/backgrounded tab)
+that a dispatched `mouseenter` actually plays the video with `currentTime` advancing in real
+wall-clock time (readyState 4, no decode/network errors), `mouseleave` pauses and resets to 0,
+the slider's auto-advance stays fully paused for a complete 4.6s interval while "hovering", and
+two `click` events toggle paused → playing → paused as expected.
+
+## Hero name: title case + "Choga" accent-on-scroll (2026-08-14)
+
+The homepage hero name (`index.html`, `.name-reveal`) was hardcoded as literal all-caps text
+content ("TAFADZWA"/"CHOGA" — no `text-transform` involved, so there was no CSS-only fix); changed
+to real title case ("Tafadzwa"/"Choga") directly in the markup.
+
+The second line ("Choga") got a new `.name-reveal-surname` class wired to a `ScrollTrigger.create`
+in `Reveal.js` (`trigger: ".name-reveal", start: "bottom center"`): `onEnter` adds
+`.is-scrolled-past` (color flips to `var(--color-accent)`, the same mint used everywhere else),
+`onLeaveBack` removes it (reverts to inheriting `var(--color-ink)`, so it's automatically the
+correct color in both themes rather than a hardcoded dark value). This reuses the ScrollTrigger
+setup already in this file rather than adding a second raw-`scrollY` listener alongside the one
+`Menu.js` already runs for the nav-pill scrolled state — same effect, one mechanism. Because Lenis
+is already wired to call `ScrollTrigger.update()` on every scroll tick (`Lenis.js`), this reacts to
+the site's actual smooth-scroll correctly with no extra glue.
+
+Verified locally by driving `window.lenis.scrollTo()` directly (real Lenis scroll, not raw
+`window.scrollTo`, which fights the smooth-scroll library) in a single uninterrupted script: at
+rest the surname reads `#1a1a1a` (light theme ink), scrolling down past the hero flips it to the
+accent mint immediately (`.is-scrolled-past` added, transitioning via `--transition-fast`), and
+scrolling back up reverts cleanly to `#1a1a1a`. Also spot-checked with the OS theme forced dark:
+same toggle, just against dark theme's flipped (light-colored) ink token instead, confirming the
+color is genuinely token-driven rather than hardcoded.
 
 ## Repo / deploy
 - Remote: `origin` → `https://github.com/tafadzwaelphas/Tafadzwa-Elphas.git`, branch `main`
