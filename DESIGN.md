@@ -972,6 +972,60 @@ itself is fine). The docking/state mechanism itself was verified directly by dri
 real `localStorage` flag and calling `showRadioDock`/`hideRadioDock` from the console, independent
 of whether the stream can actually connect in this environment.
 
+## External feedback tracking + slider video-pause fix (2026-08-14)
+
+New convention: real feedback from other people (screenshots of chat/DMs, etc.) gets saved into
+a `Feedback/` folder at the repo root — one markdown file per feedback session
+(`Feedback/YYYY-MM-DD-name.md`), with the raw source screenshot alongside it and a status table
+checking each point against the actual current site rather than assuming it's already handled.
+First entry: `Feedback/2026-08-14-friend-feedback.md`, feedback from a friend on the site's identity,
+missing portfolio pieces (Gadaha, Ingwe — not added, no assets exist yet), the FRGHN Music case
+study lacking a design backstory (not added, needs real input), the Contact page still reading
+"Nile House" (confirmed still present, needs the real current location from Tafadzwa), and the
+HandWing slider auto-advancing over a playing video.
+
+That last item was fixed directly: `Slider.js` previously only paused its 4s auto-advance timer
+on `mouseenter`/resumed on `mouseleave`, so a visitor playing a video without keeping the mouse
+over the slider (or on a device with no real hover) would still get swiped away mid-playback. Now
+every `<video>` inside a `.project-slider` gets `play`/`pause`/`ended` listeners that stop/restart
+the same timer, tracked as a separate `isVideoPlaying` flag alongside the existing `isHovering`
+one so either condition alone can hold the timer off.
+
+Verified locally by patching `track.scrollTo` to count invocations rather than reading
+`scrollLeft` directly — this sandboxed tab has `document.hidden === true`, which (per the known
+automation-tab quirk noted earlier in this doc) silently no-ops `scrollTo({behavior:'smooth'})`,
+so `scrollLeft` alone would have given a false negative. Dispatching a synthetic `play` event held
+scroll calls at 0 for a full 4.6s interval; dispatching `pause` produced exactly 1 call in the next
+4.6s window; re-checking hover pause/resume the same way confirmed no regression there.
+
+## Radio channel shuffle (2026-08-14)
+
+Feedback (see the new `Feedback/` convention above) asked whether visitors could switch what's
+playing rather than being locked to Groove Salad. `Radio.js` now holds a small curated list of
+four SomaFM channels — Groove Salad, Drone Zone, Secret Agent, Indie Pop Rocks! — matching the
+grouping SomaFM's own site uses for these four, verified against the real `https://ice1.somafm.com/
+{id}-128-mp3` stream URLs (checked each with a HEAD request; same direct-stream pattern the
+existing Groove Salad URL already relied on) and channel names/genres from SomaFM's public
+`channels.json`. The chosen channel is remembered in `localStorage` (`radioChannel`) alongside the
+existing play-state flag, so it persists across page loads the same way play/pause does.
+
+A "Shuffle channel" button (`#radio-shuffle`, `.section-heading-link.link-hud` — the same reusable
+HUD-bracket hover treatment as other text links, not a new visual idiom) was added only to the
+full-size Contact page widget, not the small docked mini-player on other pages — the dock already
+hides its text label under 576px and exists just to keep the visitor's chosen stream connected
+while they browse, not to be a full control surface. Clicking it picks a random channel other than
+the current one; if something is already playing, the old stream is torn down and the new one
+starts immediately in its place, if idle it just updates the remembered choice for next play.
+Labels (`playingLabel`/`idleLabel`/`resumeLabel`) and both triggers' `aria-label`s are now
+generated from whichever channel is current instead of being hardcoded to Groove Salad.
+
+Verified locally: real audio playback couldn't be exercised end-to-end (same pre-existing
+automation-tab limitation as the original radio widget and mini-player — `audio.play()` on a real
+Icecast stream hangs rather than resolving/rejecting in this sandboxed, backgrounded tab). Instead
+verified the actual logic directly: 10 consecutive shuffles never repeated the same channel
+back-to-back and covered all 4 channels, and each call correctly updated the visible label, both
+triggers' `aria-label`, and the `localStorage` value together.
+
 ## Repo / deploy
 - Remote: `origin` → `https://github.com/tafadzwaelphas/Tafadzwa-Elphas.git`, branch `main`
 - GitHub Pages: enabled, source = GitHub Actions, workflow `.github/workflows/static.yml`

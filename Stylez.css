@@ -776,6 +776,13 @@ padding-bottom: var(--space-page);
   height: 48px;
 }
 
+.radio-shuffle {
+  border: none;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
 .radio-dock-label {
   font-size: var(--text-label-sm);
   font-weight: 500;

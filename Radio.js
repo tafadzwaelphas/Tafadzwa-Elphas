@@ -1,5 +1,7 @@
-// SomaFM "Groove Salad" -- ambient/downtempo, streamed live via Icecast.
-// Public direct stream URL, permissive CORS (Access-Control-Allow-Origin: *).
+// SomaFM channels -- ambient/downtempo etc, streamed live via Icecast.
+// Public direct stream URLs, permissive CORS (Access-Control-Allow-Origin: *).
+// Same four channels somafm.com's own site groups together; "Shuffle channel"
+// on the Contact page picks a random one of the other three.
 //
 // Two possible controls share this one script: the full-size widget on the
 // Contact page (#radio-widget) and a small docked mini-player every other
@@ -12,15 +14,19 @@
 // may also be blocked by the browser's autoplay policy until the visitor has
 // interacted with that page; when that happens the dock is left visible in
 // its paused state as a "tap to resume" control rather than failing silently.
-const RADIO_STREAM_URL = "https://ice1.somafm.com/groovesalad-128-mp3";
-const RADIO_LABEL_IDLE = "Live ambient radio · SomaFM";
-const RADIO_LABEL_PLAYING = "Groove Salad · Ambient · SomaFM";
+const RADIO_CHANNELS = [
+  { id: "groovesalad", name: "Groove Salad", genre: "Ambient/downtempo" },
+  { id: "dronezone", name: "Drone Zone", genre: "Ambient" },
+  { id: "secretagent", name: "Secret Agent", genre: "Lounge/jazz" },
+  { id: "indiepop", name: "Indie Pop Rocks!", genre: "Indie pop/rock" },
+];
 const RADIO_LABEL_CONNECTING = "Connecting…";
-const RADIO_LABEL_RESUME = "Tap to resume · Groove Salad";
 const RADIO_LABEL_ERROR = "Stream unavailable";
 const RADIO_STORAGE_KEY = "radioPlaying";
+const RADIO_CHANNEL_STORAGE_KEY = "radioChannel";
 
 const radioDockWrap = document.getElementById("radio-dock-wrap");
+const radioShuffleBtn = document.getElementById("radio-shuffle");
 
 const radioControls = [
   { trigger: document.getElementById("radio-widget"), label: document.getElementById("radio-label") },
@@ -28,10 +34,34 @@ const radioControls = [
 ].filter((control) => control.trigger);
 
 let radioAudio = null;
+let currentChannel =
+  RADIO_CHANNELS.find((c) => c.id === localStorage.getItem(RADIO_CHANNEL_STORAGE_KEY)) || RADIO_CHANNELS[0];
+
+function streamUrlFor(channel) {
+  return `https://ice1.somafm.com/${channel.id}-128-mp3`;
+}
+
+function idleLabel() {
+  return `${currentChannel.name} · SomaFM`;
+}
+
+function playingLabel() {
+  return `${currentChannel.name} · ${currentChannel.genre} · SomaFM`;
+}
+
+function resumeLabel() {
+  return `Tap to resume · ${currentChannel.name}`;
+}
 
 function setRadioLabel(text) {
   radioControls.forEach((control) => {
     if (control.label) control.label.textContent = text;
+  });
+}
+
+function updateRadioAria() {
+  radioControls.forEach((control) => {
+    control.trigger.setAttribute("aria-label", `Play live radio, ${currentChannel.name} from SomaFM`);
   });
 }
 
@@ -55,10 +85,10 @@ function hideRadioDock() {
 
 function getRadioAudio() {
   if (!radioAudio) {
-    radioAudio = new Audio(RADIO_STREAM_URL);
+    radioAudio = new Audio(streamUrlFor(currentChannel));
     radioAudio.preload = "none";
     radioAudio.addEventListener("waiting", () => setRadioLabel(RADIO_LABEL_CONNECTING));
-    radioAudio.addEventListener("playing", () => setRadioLabel(RADIO_LABEL_PLAYING));
+    radioAudio.addEventListener("playing", () => setRadioLabel(playingLabel()));
     radioAudio.addEventListener("error", () => {
       setRadioPlayingState(false);
       setRadioLabel(RADIO_LABEL_ERROR);
@@ -80,7 +110,7 @@ function playRadio({ isResume } = {}) {
     })
     .catch(() => {
       setRadioPlayingState(false);
-      setRadioLabel(isResume ? RADIO_LABEL_RESUME : RADIO_LABEL_ERROR);
+      setRadioLabel(isResume ? resumeLabel() : RADIO_LABEL_ERROR);
       if (!isResume) localStorage.removeItem(RADIO_STORAGE_KEY);
     });
 }
@@ -88,7 +118,7 @@ function playRadio({ isResume } = {}) {
 function pauseRadio() {
   if (radioAudio) radioAudio.pause();
   setRadioPlayingState(false);
-  setRadioLabel(RADIO_LABEL_IDLE);
+  setRadioLabel(idleLabel());
   localStorage.removeItem(RADIO_STORAGE_KEY);
   hideRadioDock();
 }
@@ -102,6 +132,32 @@ function toggleRadio() {
   }
 }
 
+// Switches the live stream to a different SomaFM channel. If nothing is
+// currently playing this just remembers the choice (label/aria update,
+// nothing connects until the visitor presses play); if it's mid-playback the
+// old stream is torn down and the new one starts immediately in its place.
+function switchToChannel(channel, { keepPlaying } = {}) {
+  currentChannel = channel;
+  localStorage.setItem(RADIO_CHANNEL_STORAGE_KEY, channel.id);
+  updateRadioAria();
+  if (radioAudio) {
+    radioAudio.pause();
+    radioAudio.src = streamUrlFor(channel);
+  }
+  if (keepPlaying) {
+    playRadio();
+  } else {
+    setRadioLabel(idleLabel());
+  }
+}
+
+function shuffleRadio() {
+  const isPlaying = radioControls.some((control) => control.trigger.classList.contains("is-playing"));
+  const alternatives = RADIO_CHANNELS.filter((channel) => channel.id !== currentChannel.id);
+  const next = alternatives[Math.floor(Math.random() * alternatives.length)];
+  switchToChannel(next, { keepPlaying: isPlaying });
+}
+
 radioControls.forEach((control) => {
   control.trigger.addEventListener("click", toggleRadio);
   control.trigger.addEventListener("keydown", (event) => {
@@ -112,6 +168,13 @@ radioControls.forEach((control) => {
   });
 });
 
-if (radioControls.length && localStorage.getItem(RADIO_STORAGE_KEY) === "true") {
-  playRadio({ isResume: true });
+radioShuffleBtn?.addEventListener("click", shuffleRadio);
+
+if (radioControls.length) {
+  updateRadioAria();
+  if (localStorage.getItem(RADIO_STORAGE_KEY) === "true") {
+    playRadio({ isResume: true });
+  } else {
+    setRadioLabel(idleLabel());
+  }
 }

@@ -30,19 +30,43 @@ document.querySelectorAll(".project-slider").forEach((slider) => {
 
   const AUTO_SLIDE_INTERVAL = 4000;
   let autoSlideTimer = null;
+  let isHovering = false;
+  let isVideoPlaying = false;
+
+  const stopAutoSlide = () => {
+    clearInterval(autoSlideTimer);
+    autoSlideTimer = null;
+  };
 
   const startAutoSlide = () => {
-    if (slides.length <= 1) return;
+    if (slides.length <= 1 || isHovering || isVideoPlaying || autoSlideTimer) return;
     autoSlideTimer = setInterval(() => {
       goToSlide((currentIndex() + 1) % slides.length);
     }, AUTO_SLIDE_INTERVAL);
   };
 
-  const stopAutoSlide = () => {
-    clearInterval(autoSlideTimer);
-  };
-
   startAutoSlide();
-  slider.addEventListener("mouseenter", stopAutoSlide);
-  slider.addEventListener("mouseleave", startAutoSlide);
+  slider.addEventListener("mouseenter", () => {
+    isHovering = true;
+    stopAutoSlide();
+  });
+  slider.addEventListener("mouseleave", () => {
+    isHovering = false;
+    startAutoSlide();
+  });
+
+  track.querySelectorAll("video").forEach((video) => {
+    video.addEventListener("play", () => {
+      isVideoPlaying = true;
+      stopAutoSlide();
+    });
+    video.addEventListener("pause", () => {
+      isVideoPlaying = false;
+      startAutoSlide();
+    });
+    video.addEventListener("ended", () => {
+      isVideoPlaying = false;
+      startAutoSlide();
+    });
+  });
 });
