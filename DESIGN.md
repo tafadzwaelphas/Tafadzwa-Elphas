@@ -1089,6 +1089,48 @@ SomaFM's public `channels.json` and a live HEAD request before adding.
 Verified locally: 60 consecutive shuffles hit all 12 channels at least once, and the visible
 label/`localStorage` stayed in sync with whichever one was current.
 
+## Gadaha case study added (2026-08-14)
+
+Added `Gadaha.html` (full case study, matching the `HandWing.html` template) plus a
+`#gadaha` entry on `Portfolio.html`, closing item #2 from the 2026-08-14 friend feedback
+(`Feedback/2026-08-14-friend-feedback.md`) — Gadaha had no assets or copy in the repo before this.
+
+Gadaha is a fitness and wellness app concept for women in the Gulf region (Saudi Arabia, Kuwait,
+Qatar), built with a founding team; Tafadzwa's confirmed role was Marketing/Design Lead (per the
+team's own pitch deck), and the app was never launched. Nine images were sourced and added to
+`Images/`: the brand cover and one app screen per major flow (splash, sign up, workouts, meals,
+community, account) exported directly from the team's Figma file, plus two pitch-deck slides
+(Problem Statement, Value Proposition) exported from the team's Canva deck — chosen because they
+carry sourced, factual content (an obesity/CVD stat cited to the National Library of Medicine) and
+show product-strategy thinking, not just UI. A third pitch-deck slide ("Meet WYCO," the team page)
+was deliberately **not** used since it has teammates' photos, and publishing those isn't Tafadzwa's
+call to make.
+
+Per the content-honesty rule (see `feedback_tafadzwa_content_honesty` memory), the page's `Goals`
+section only states facts already sourced from the deck — no invented design-process narrative,
+since none was documented. Two fields were left as bracketed placeholders for Tafadzwa to fill in
+directly, same convention as the pre-existing `[Add project goals]` placeholder on `FRGHN-Music.html`,
+and were both resolved same-day once he supplied them:
+- **Year**: Tafadzwa confirmed **2023**; set on both `Gadaha.html` and the `Portfolio.html` entry.
+- **Process note**: Tafadzwa asked for a short note drafted from what the assistant had already
+  seen in the source files, not invented from scratch. Added to the end of the Goals paragraph,
+  grounded in two concrete artifacts: the Figma file's moodboard page (competitor screens, gym
+  photography, color/iconography direction) and the Canva deck's Go-to-Market Strategy slide
+  (influencer collabs on Instagram, TikTok, Snapchat). Tafadzwa should still re-read this line —
+  it describes the process at the level the assistant could actually observe, not from his own
+  first-hand account.
+
+Also added a `.gadaha-project-grid` rule to `Stylez.css` (identical to `.handwing-project-grid`,
+same one-class-per-project convention already in use) and appended "and Gadaha" to `Portfolio.html`'s
+meta/OG/Twitter description strings so the new project shows up in the existing project list there.
+
+**Cover swapped (2026-08-14)**: Tafadzwa supplied a higher-resolution version of the deck's actual
+title slide (`Gadaha Cover Image.png` from Downloads) to replace the plain logo-on-purple cover
+originally exported from Figma. `Images/Gadaha Cover.jpg` → `Images/Gadaha Cover.png`; every
+reference updated across `Gadaha.html` (og:image, twitter:image, first slider slide) and
+`Portfolio.html` (spotlight slider), alt text rewritten to match the new image (model in a hijab
+and jacket beside the logo/wordmark, not just the logo).
+
 ## Repo / deploy
 - Remote: `origin` → `https://github.com/tafadzwaelphas/Tafadzwa-Elphas.git`, branch `main`
 - GitHub Pages: enabled, source = GitHub Actions, workflow `.github/workflows/static.yml`

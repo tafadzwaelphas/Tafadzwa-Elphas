@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script>
+  (function () {
+    var stored = localStorage.getItem('theme');
+    var theme = stored || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+  </script>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="Stylez.css?v=48" type="text/css" media="all">
+  <link rel="stylesheet" href="Responsive.css?v=16">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gadaha — Tafadzwa Choga</title>
+  <meta name="description" content="Gadaha case study: a fitness and wellness app concept for women in the Gulf region, by Tafadzwa Choga — UI/UX design, brand identity, and pitch strategy.">
+  <link rel="canonical" href="https://tafadzwaelphas.github.io/Tafadzwa-Elphas/Gadaha.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tafadzwaelphas.github.io/Tafadzwa-Elphas/Gadaha.html">
+  <meta property="og:title" content="Gadaha — Tafadzwa Choga">
+  <meta property="og:description" content="Gadaha case study: a fitness and wellness app concept for women in the Gulf region, by Tafadzwa Choga — UI/UX design, brand identity, and pitch strategy.">
+  <meta property="og:image" content="https://tafadzwaelphas.github.io/Tafadzwa-Elphas/Images/Gadaha%20Cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gadaha — Tafadzwa Choga">
+  <meta name="twitter:description" content="Gadaha case study: a fitness and wellness app concept for women in the Gulf region, by Tafadzwa Choga — UI/UX design, brand identity, and pitch strategy.">
+  <meta name="twitter:image" content="https://tafadzwaelphas.github.io/Tafadzwa-Elphas/Images/Gadaha%20Cover.png">
+  <link rel="icon" href="Images/Tafadzwa-Choga-LOGO.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Boldonse&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+    <script src="Reveal.js?v=3" defer></script>
+    <script src="Lenis.js?v=2" defer></script>
+    <script src="Menu.js?v=7" defer></script>
+    <script src="Theme.js?v=1" defer></script>
+    <script src="Slider.js?v=2" defer></script>
+    <script src="Radio.js?v=2" defer></script>
+</head>
+       <body>
+              <a href="./index.html" class="site-logo">
+                <img src="Images/Tafadzwa-Choga-LOGO.png" alt="Tafadzwa Choga logo">
+              </a>
+              <div class="site-menu">
+                <button class="site-menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                  <img src="Images/Number 7.png" alt="">
+                </button>
+          <nav class="site-nav">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="About.html">About</a></li>
+              <li><a href="Contact.html">Contact</a></li>
+              <li><a href="Portfolio.html" class="active">Portfolio</a></li>            </ul>
+          </nav>
+          <ul class="site-nav-socials">
+            <li><a href="https://www.linkedin.com/in/tafadzwa-choga-b62993195/">LinkedIn</a></li>
+            <li><a href="https://www.behance.net/tafadzwachoga">Behance</a></li>
+            <li><a href="https://github.com/tafadzwachoga">GitHub</a></li>
+            <li><a href="https://www.instagram.com/handwing_/">Instagram</a></li>
+            <li class="theme-toggle-item">
+              <button class="theme-toggle" aria-label="Toggle dark mode">
+                <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4.5"></circle>
+                  <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"></path>
+                </svg>
+                <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 1 0 10.5 10.5Z"></path>
+                </svg>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+            <div class="portfolio-text reveal">
+              <a href="Portfolio.html#gadaha" class="section-heading-link link-hud">&larr; Back to Portfolio</a>
+            </div>
+
+            <div class="project-header reveal">
+              <h1 class="project-header-title">Gadaha</h1>
+              <div class="project-header-year">2023</div>
+              <div class="project-header-tags">UI/UX Design<br>Brand Identity<br>Product Strategy</div>
+            </div>
+            <p class="project-header-description reveal">
+              A fitness and wellness app concept for women in the Gulf region — product design, brand identity, and pitch strategy, built as Marketing/Design Lead on a founding team. Unlaunched concept.
+            </p>
+
+            <section class="case-study-workflow reveal">
+              <div class="case-study-workflow-col">
+                <span class="local-time-label">01</span>
+                <h2>UI/UX Design</h2>
+              </div>
+              <div class="case-study-workflow-col">
+                <span class="local-time-label">02</span>
+                <h2>Brand Identity</h2>
+              </div>
+              <div class="case-study-workflow-col">
+                <span class="local-time-label">03</span>
+                <h2>Product Strategy</h2>
+              </div>
+            </section>
+
+            <section class="case-study-goals reveal">
+              <span class="local-time-label">Goals</span>
+              <p class="project-header-description">In Saudi Arabia, Kuwait, and Qatar, about 55% of women struggle with obesity — among the highest rates globally — and cardiovascular disease is the leading cause of death across the Gulf (source: National Library of Medicine). Gadaha set out to build a fitness app for that gap: one designed around hijab and modest dress rather than against it, pairing an AI-guided virtual trainer, meal tracking with in-app healthy food ordering, and workout communities. The process started with a moodboard — competitor screens, gym photography, and a color and iconography direction — before moving into the app itself, structured flow by flow: onboarding, workouts, meals, community, account. Alongside the UI, I worked with the team on positioning and go-to-market thinking — who the app was for, and how to reach them through influencer partnerships on Instagram, TikTok, and Snapchat.</p>
+            </section>
+
+            <div class="gadaha-project-grid">
+              <div class="project-slider reveal">
+                <div class="project-slider-track">
+                  <div class="project-slide"><img loading="lazy" src="Images/Gadaha Cover.png" alt="Gadaha cover: a model in a hijab and jacket beside the Gadaha logo and wordmark on a purple background"></div>
+                  <div class="project-slide"><img loading="lazy" src="Images/Gadaha Problem Statement.jpg" alt="Gadaha pitch deck slide citing that 55% of women in Saudi Arabia, Kuwait, and Qatar struggle with obesity"></div>
+                  <div class="project-slide"><img loading="lazy" src="Images/Gadaha Value Proposition.jpg" alt="Gadaha pitch deck slide outlining the app's value proposition: an AI virtual trainer, food recommendations, in-app healthy food purchases, and community"></div>
+                  <div class="project-slide"><img loading="lazy" src="Images/Gadaha Splash Screen.jpg" alt="Gadaha app splash screen, 'Your Health Is A Priority'"></div>
+                  <div class="project-slide"><img loading="lazy" src="Images/Gadaha Sign Up Screen.jpg" alt="Gadaha app sign up screen"></div>
+                  <div class="project-slide"><img loading="lazy" src="Images/Gadaha Workouts Screen.png" alt="Gadaha app home screen showing popular workouts and personalized recommendations"></div>
+                  <div class="project-slide"><img loading="lazy" src="Images/Gadaha Meals Screen.png" alt="Gadaha app meals screen with daily nutrition progress and meal recommendations"></div>
+                  <div class="project-slide"><img loading="lazy" src="Images/Gadaha Community Screen.png" alt="Gadaha app community screen showing fitness groups to join"></div>
+                  <div class="project-slide"><img loading="lazy" src="Images/Gadaha Account Screen.png" alt="Gadaha app account screen with health details and settings"></div>
+                </div>
+                <div class="project-slider-counter">01 / 09</div>
+                <div class="project-slider-nav">
+                  <button class="project-slider-prev" aria-label="Previous image">&larr;</button>
+                  <button class="project-slider-next" aria-label="Next image">&rarr;</button>
+                </div>
+              </div>
+            </div>
+
+            <footer class="site-footer reveal">
+          <div class="site-footer-cta">
+            <p>Let's build something together.</p>
+            <a href="mailto:tafadzwchoga@gmail.com">tafadzwchoga@gmail.com</a>
+          </div>
+          <div class="site-footer-links">
+            <a href="https://www.linkedin.com/in/tafadzwa-choga-b62993195/">LinkedIn</a>
+            <a href="https://www.behance.net/tafadzwachoga">Behance</a>
+            <a href="https://github.com/tafadzwachoga">GitHub</a>
+            <a href="https://www.instagram.com/handwing_/">Instagram</a>
+          </div>
+          <div class="site-footer-bottom">
+            <p>&copy; Copyright 2026 Tafadzwa Choga. All Rights Reserved</p>
+          </div>
+        </footer>
+
+    <div class="radio-dock" id="radio-dock-wrap" hidden>
+      <div class="tool-radio" id="radio-dock" role="button" tabindex="0" aria-label="Live ambient radio, Groove Salad from SomaFM">
+        <svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" aria-hidden="true">
+          <circle class="circle" cx="300" cy="300" r="253.9"/>
+          <polygon class="radio-icon-play" points="245,185 245,415 425,300"/>
+          <g class="radio-icon-pause">
+            <rect x="232" y="185" width="50" height="230" rx="10"/>
+            <rect x="318" y="185" width="50" height="230" rx="10"/>
+          </g>
+        </svg>
+      </div>
+      <span class="radio-dock-label" id="radio-dock-label">Live ambient radio &middot; SomaFM</span>
+    </div>
+
+        </body>
+</html>

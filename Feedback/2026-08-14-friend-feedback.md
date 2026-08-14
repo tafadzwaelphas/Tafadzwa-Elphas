@@ -18,12 +18,13 @@ only, with the person's name left out for the same reason.
 | # | Item | Status | Notes |
 |---|------|--------|-------|
 | 1 | Identity maintained | ✅ N/A (compliment) | No action needed. |
-| 2 | Add Gadaha / Ingwe as portfolio pieces | ❌ Not done | No mention of either in `Portfolio.html` or `DESIGN.md`. No assets for these currently in `Images/`. Needs source assets + description from Tafadzwa before they can be added (see content-honesty rule — don't fabricate). |
+| 2 | Add Gadaha / Ingwe as portfolio pieces | 🟡 Gadaha done 2026-08-14, Ingwe still open | Gadaha added as a full case study (`Gadaha.html` + `Portfolio.html#gadaha`) using real assets sourced from the team's Figma and Canva files — see `DESIGN.md` "Gadaha case study added". Year (2023) and a process note confirmed/supplied by Tafadzwa same day; both placeholders now filled. Ingwe still has no assets or description in the repo. |
 | 3 | Add backstory/thought-process to FRGHN Music (foreign artwork) | ❌ Not done | `FRGHN-Music.html` has only a one-line description and a `[Add project goals]` placeholder — no design-process narrative. Needs real input from Tafadzwa on how the two cover concepts came about. |
 | 4 | Contact page still says "Nile House" | ❌ Not done | Confirmed still present verbatim: `Contact.html:91` — `Cairo 1, Nile House, <br>`. Sunrise/true-north/current-time widgets are already live and working; only the address line is stale. |
 | 5 | HandWing slider auto-advances over a playing video | ✅ Fixed 2026-08-14 | `Slider.js` now tracks `play`/`pause`/`ended` on every `<video>` in the slider and stops the auto-advance timer while any video is playing, independent of mouse hover. Verified locally: 0 auto-advance attempts while a video's `play` event is active, resumes within one interval after `pause`; existing hover-pause behavior unaffected (regression-checked). |
 
 ## Open items for Tafadzwa
-- Confirm whether Gadaha/Ingwe should be added, and provide real project assets/description if so.
+- Re-read `Gadaha.html`'s new process-note sentence (drafted from what the assistant saw in the Figma/Canva files, not Tafadzwa's own account) and edit if it doesn't match how it actually happened, before it goes live on `main`.
+- Confirm whether Ingwe should be added, and provide real project assets/description if so.
 - Provide the actual thought-process/backstory for the FRGHN Music (Madube) cover concepts.
 - Confirm the real current location to replace "Nile House" on the Contact page.

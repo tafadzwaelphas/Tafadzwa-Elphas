@@ -1165,7 +1165,8 @@ padding-bottom: var(--space-page);
   padding: 0 var(--space-page) var(--space-md);
 }
 
-.handwing-project-grid{
+.handwing-project-grid,
+.gadaha-project-grid{
   padding-bottom: var(--space-lg);
   padding-top: var(--space-sm);
 }
