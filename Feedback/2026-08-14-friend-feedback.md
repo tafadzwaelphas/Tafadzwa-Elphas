@@ -1,6 +1,8 @@
 # Feedback — a friend, 2026-08-14
 
-Source: screenshot of a chat conversation, saved as `2026-08-14-friend-feedback-1.png` in this folder.
+Source: screenshot of a chat conversation. Kept outside this (public) repo — in
+`Design Experiments/Portfolio-Feedback/2026-08-14-friend-feedback-1.png` — since it's a third party's
+private chat messages, not something to publish. This file has the transcribed text only.
 
 ## Raw feedback (transcribed)
 
