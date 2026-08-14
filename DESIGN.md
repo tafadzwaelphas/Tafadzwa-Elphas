@@ -1131,6 +1131,16 @@ reference updated across `Gadaha.html` (og:image, twitter:image, first slider sl
 `Portfolio.html` (spotlight slider), alt text rewritten to match the new image (model in a hijab
 and jacket beside the logo/wordmark, not just the logo).
 
+**Account screen fixed (2026-08-14)**: the account screen originally exported was the wrong
+variant — a dark-mode frame under the moodboard's "Account Screen 1.0" wrapper, with the name
+"Arwa Yousif," inconsistent with the "Khadija Yousif" persona used everywhere else in the app
+(Workouts, Meals, Communities). Tafadzwa flagged it with a screenshot of the correct one. Replaced
+`Images/Gadaha Account Screen.png` with the actual frame named "Account Screen 1.0" inside the
+Figma file's separate "Profile/Account" section — light purple, "Khadija Yousif" — matching every
+other screen in the case study. Same filename, so no HTML reference changes needed; alt text
+("Gadaha app account screen with health details and settings") didn't name anyone, so it already
+held up.
+
 ## Repo / deploy
 - Remote: `origin` → `https://github.com/tafadzwaelphas/Tafadzwa-Elphas.git`, branch `main`
 - GitHub Pages: enabled, source = GitHub Actions, workflow `.github/workflows/static.yml`
