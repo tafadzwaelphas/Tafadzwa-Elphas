@@ -671,6 +671,86 @@ padding-bottom: var(--space-page);
   opacity: 0;
 }
 
+.tool-moondial {
+  width: 144px;
+  height: 144px;
+  flex-shrink: 0;
+}
+
+.tool-moondial svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.moondial-moon {
+  fill: var(--color-ink-25);
+  transition: opacity var(--transition-fast), cy var(--transition-slow), cx var(--transition-slow);
+}
+
+.tool-moondial.is-below-horizon .moondial-moon {
+  opacity: 0;
+}
+
+.tool-weather {
+  width: 144px;
+  height: 144px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.tool-weather svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.tool-weather .weather-icon-clear,
+.tool-weather .weather-icon-partly-cloudy,
+.tool-weather .weather-icon-cloudy,
+.tool-weather .weather-icon-fog,
+.tool-weather .weather-icon-rain,
+.tool-weather .weather-icon-snow,
+.tool-weather .weather-icon-storm,
+.tool-weather .weather-icon-rain-drops,
+.tool-weather .weather-icon-snow-dots,
+.tool-weather .weather-icon-fog-lines,
+.tool-weather .weather-icon-bolt {
+  display: none;
+}
+
+.tool-weather.is-clear .weather-icon-clear,
+.tool-weather.is-partly-cloudy .weather-icon-partly-cloudy,
+.tool-weather.is-cloudy .weather-icon-cloudy,
+.tool-weather.is-fog .weather-icon-fog,
+.tool-weather.is-rain .weather-icon-rain,
+.tool-weather.is-snow .weather-icon-snow,
+.tool-weather.is-storm .weather-icon-storm,
+.tool-weather.is-rain .weather-icon-rain-drops,
+.tool-weather.is-snow .weather-icon-snow-dots,
+.tool-weather.is-fog .weather-icon-fog-lines,
+.tool-weather.is-storm .weather-icon-bolt {
+  display: block;
+}
+
+.tool-weather .weather-icon-fill,
+.tool-weather .weather-icon-cloud-shape,
+.tool-weather .weather-icon-bolt {
+  fill: var(--color-page);
+}
+
+.tool-weather .weather-icon-rays,
+.tool-weather .weather-icon-rain-drops,
+.tool-weather .weather-icon-fog-lines {
+  stroke: var(--color-page);
+  stroke-width: 14;
+  stroke-linecap: round;
+}
+
+.tool-weather .weather-icon-snow-dots {
+  fill: var(--color-page);
+}
+
 .tool-radio {
   cursor: pointer;
   position: relative;

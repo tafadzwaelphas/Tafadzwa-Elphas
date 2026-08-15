@@ -1160,3 +1160,39 @@ all three references in `About.html` (`<img src>`, `og:image`, `twitter:image`);
 Deliberately left `Images/1W7A7296.JPG` (the old photo) in place and untouched — `Contact.html`
 still uses it for its own `og:image`/`twitter:image`, and the user's request was scoped to the
 About page picture specifically, not a site-wide portrait swap.
+
+## Moon + weather widgets added to the Contact tools grid (2026-08-15)
+
+Extended the existing `.contact-tools` widget suite (clock, compass, sundial, local-time readout,
+radio) with two more: a moonrise/moonset dial and a live weather readout, both on `Contact.html`.
+
+**Moon widget (`Moon.js`)** follows the exact same philosophy as `Sundial.js` — a self-contained,
+offline astronomical calculation, no API, pinned to Accra's coordinates (5.6037, -0.187). Uses the
+low-precision lunar position formula from Montenbruck & Pfleger (accurate to roughly a degree,
+same tolerance the sundial's solar formulas already accept), converts ecliptic to equatorial to
+horizontal coordinates, and scans a 48-hour window in 10-minute steps to find horizon crossings —
+unlike the sun, the moon can rise or set at any hour and drifts ~50 minutes later each day, so a
+same-day-only search (like the sundial's) isn't reliable. Also derives a moon-phase name (New,
+Waxing Crescent, etc.) from the sun-moon ecliptic elongation, shown in the widget's label text
+rather than as a separate graphic, to keep scope matched to what was asked for.
+
+Reused the sundial's arc/horizon SVG geometry directly (`.tool-moondial` mirrors `.tool-sundial`'s
+markup) so the two read as a matched pair.
+
+**Weather widget (`Weather.js`)** is a different category of widget: actual weather isn't
+computable, only sun/moon geometry is, so this is the site's first live network JSON call (every
+other widget, including the moon one, is offline/deterministic — see `Radio.js` for the only prior
+network use, an audio stream rather than a data fetch). Confirmed with the user before adding it.
+Uses Open-Meteo's free, keyless, CORS-friendly `/v1/forecast` endpoint for Accra's coordinates —
+appropriate for a static GitHub Pages site with no backend to hide an API key behind. Maps Open-
+Meteo's WMO weather codes to one of seven hand-drawn flat SVG icon states (clear, partly cloudy,
+cloudy, fog, rain, snow, storm) using the same toggle-a-class-then-CSS-display technique already
+used for `.tool-radio`'s play/pause icons. Refreshes every 15 minutes; falls back to a "Weather
+unavailable" label on fetch failure rather than throwing.
+
+Verified locally (Python http.server): both widgets render correct live Accra data (moonset time +
+phase, current temp/condition/high-low) in light and dark theme, no console errors, after fixing a
+same-file-scope global function name collision (`Moon.js` and `Sundial.js` both plain `<script>`
+tags sharing one global scope — both had defined `formatAccraHour`, so loading Moon.js after
+Sundial.js silently overwrote the sundial's version with one that expected a `Date` instead of a
+decimal-hours number; renamed Moon.js's to `formatMoonHour`).
