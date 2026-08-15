@@ -4,14 +4,22 @@ document.querySelectorAll(".project-slider").forEach((slider) => {
   const counter = slider.querySelector(".project-slider-counter");
   const prevBtn = slider.querySelector(".project-slider-prev");
   const nextBtn = slider.querySelector(".project-slider-next");
+  const groupLabel = slider.previousElementSibling?.matches("[data-slider-group-label]")
+    ? slider.previousElementSibling
+    : null;
 
   const currentIndex = () => Math.round(track.scrollLeft / track.clientWidth);
 
   const updateCounter = () => {
-    if (!counter) return;
     const index = Math.min(Math.max(currentIndex(), 0), slides.length - 1);
-    const pad = (n) => String(n).padStart(2, "0");
-    counter.textContent = `${pad(index + 1)} / ${pad(slides.length)}`;
+    if (counter) {
+      const pad = (n) => String(n).padStart(2, "0");
+      counter.textContent = `${pad(index + 1)} / ${pad(slides.length)}`;
+    }
+    if (groupLabel) {
+      const group = slides[index].dataset.group;
+      if (group) groupLabel.textContent = group;
+    }
   };
 
   const goToSlide = (index) => {

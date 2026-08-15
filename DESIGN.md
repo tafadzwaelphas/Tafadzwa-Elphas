@@ -1278,4 +1278,80 @@ Funding Ask.jpg` from `Images/` rather than leaving a dead asset in the repo.
 Added `.coedu-project-grid` alongside `.handwing-project-grid`/`.gadaha-project-grid` in
 `Stylez.css` (identical padding rule, just a new selector) and bumped `Stylez.css?v=48` →
 `?v=49` across all seven HTML files for cache-busting, per the established convention.
-placeholders left in the repo.
+
+## FRGHN Music copy fix — meta-commentary removed (2026-08-15)
+
+Tafadzwa flagged two sentences on `FRGHN-Music.html` that "read wrong": the header description's
+"everything done for this client lives under this one case study" and the Goals paragraph's "so
+there's no design process to document beyond what's shown here." Both were leftover from the
+2026-08-13 client-scope correction (see above) — written to explain the page's own scope/structure
+to the reader rather than to describe the actual work, which reads as an editing note that never
+got cleaned into real copy. Fixed by dropping both trailing clauses:
+
+- Description now ends at: `...Two cover concepts were explored for his 2021 single "Madube."`
+- Goals now reads: `A single-deliverable cover art commission — two concept directions explored
+  for one single, rather than a multi-stage brand project.`
+
+Grepped the file afterward for similar phrasing (`case study`, `lives now under`, `beyond what's
+shown`) — no other instances found. Noted for future copy passes: don't write sentences that
+explain to the reader what's absent or how the page is organized — describe the work itself.
+
+## FRGHN Music slider mislabeled its own image count, plus two misattributed images (2026-08-15)
+
+Follow-up to the copy fix above. Tafadzwa flagged that the slider showed 4 images while the copy
+said "two concepts" — the real bug: the 2026-08-13 "Add new slides to FRGHN Music" commit
+(`25bef9a`) added `3AM Animation.mp4` and `FRGHNFNL@2x.png` as slides 3–4 without ever updating
+the surrounding copy, so all four images read as if they were Madube concepts.
+
+Investigating further with Tafadzwa surfaced two more misattributions, neither guessed — both
+confirmed directly:
+- `3AM Animation.mp4` is cover art for a real 2023 Foreighn single, "3AM" (not publicly listed on
+  his Audiomack profile yet — confirmed by Tafadzwa directly, not sourced externally).
+- `FRGHNFNL@2x.png` (the space-portrait illustration) is actually for a separate **untitled 2023**
+  Foreighn project, not "3AM" — my first pass had wrongly grouped it with the 3AM video.
+- `ARTCVRMDBE2.png` (the purple/orange illustration) was never a Madube concept at all — it's the
+  same file already correctly used on `Portfolio.html` line 163 as EYEZWIDOPEN cover art. It had
+  been living a double life: mislabeled as an "alternate Madube concept" on both `FRGHN-Music.html`
+  and `Portfolio.html`'s FRGHN mini-slider, while also correctly labeled EYEZWIDOPEN elsewhere in
+  the same file. Removed it from both FRGHN sliders; its one legitimate use under EYEZWIDOPEN was
+  untouched.
+
+**Real breakdown is now**: Madube (2021, 1 image) → 3AM (2023, 1 video) → Untitled (2023, 1
+image), three separate pieces for the same client, not one two-concept commission.
+
+**New scalable grouping mechanism**, since Tafadzwa confirmed the page is meant to keep collecting
+cover art for this artist over time and asked for a way to do that without spawning a separate
+slider per release: added a `data-group="<Release> (<Year>)"` attribute to each `.project-slide`,
+plus a `<span class="local-time-label project-slider-group-label" data-slider-group-label>` sitting
+just above the `.project-slider` (same block-label convention as `.case-study-goals
+.local-time-label`, always visible rather than hover-gated like the counter — this label changes
+what the images mean, unlike the counter, so it shouldn't be hidden until hover). `Slider.js`'s
+existing `updateCounter` now also looks for a `[data-slider-group-label]` immediately preceding the
+`.project-slider` (`slider.previousElementSibling`) and, if present, sets its text to the current
+slide's `data-group` on every scroll/nav/auto-advance. Adding a 4th release later is just another
+slide with a new `data-group` value — no new component. Verified the sync logic directly (stepping
+through all 3 indices) since the real `nextBtn`/scroll-triggered path is suppressed in the
+backgrounded automation tab, the same known limitation noted elsewhere in this doc.
+
+Also corrected while in this copy (per Tafadzwa's direct corrections, not sourced externally):
+Foreighn's bio now reads "an independent Zimbabwean and Zambian-based Afrosounds artist released
+via Zed Arts Records" (was "a Zambian/Zimbabwean Afrosounds artist on Zed Arts Records" — wrong
+nationality framing, and missing that he's independent) — updated on both `FRGHN-Music.html` and
+`Portfolio.html`.
+
+`Portfolio.html`'s FRGHN mini-slider now drops to a single Madube slide (its only other slide was
+the misattributed EYEZWIDOPEN image) — removed its now-pointless counter/nav elements, matching the
+existing single-image-slider convention already used for Fakugesi. Both pages' project-header-year
+bumped from `2021` to `2021–2023` to reflect the full client relationship now documented.
+
+**Resolved same day**: Tafadzwa confirmed he wanted FRGHN Music moved. Placed it directly after
+CoEdu (2024) and before Fakugesi/Gadaha (both 2023) — new `Portfolio.html` order: HandWing
+(ongoing) → EYEZWIDOPEN (ongoing) → CoEdu (2024) → **FRGHN Music (2021–2023)** → Fakugesi (2023) →
+Gadaha (2023). Moved the whole section (header/description/link/slider) as one block via `id="frghn"`,
+no anchor links elsewhere in the repo needed updating since the id was preserved. Verified in
+browser: section order and rendering both correct after the move.
+
+Left untouched: the homepage's `index.html` "Recent Projects" carousel, which lists projects in a
+different, hand-picked order (HandWing, EYEZWIDOPEN, Fakugesi, FRGHN, CoEdu — and omits Gadaha
+entirely) rather than mirroring Portfolio.html's chronological sort. Treated as a separate curated
+highlight reel, not something this reorder should touch.

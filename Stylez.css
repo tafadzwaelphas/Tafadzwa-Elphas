@@ -1252,6 +1252,12 @@ padding-bottom: var(--space-page);
   padding-top: var(--space-sm);
 }
 
+.project-slider-group-label {
+  display: block;
+  padding: 0 var(--space-page);
+  margin-bottom: var(--space-sm);
+}
+
 .case-study-workflow {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
