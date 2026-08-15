@@ -1196,3 +1196,46 @@ same-file-scope global function name collision (`Moon.js` and `Sundial.js` both 
 tags sharing one global scope — both had defined `formatAccraHour`, so loading Moon.js after
 Sundial.js silently overwrote the sundial's version with one that expected a `Date` instead of a
 decimal-hours number; renamed Moon.js's to `formatMoonHour`).
+
+## Portfolio.html reordered by year; ongoing projects marked; two case studies resolved (2026-08-15)
+
+Tafadzwa asked for the `Portfolio.html` project list to be ordered by year, for HandWing and
+EYEZWIDOPEN to be marked as ongoing, and for the two lingering `[Add project goals]` placeholders
+(HandWing, FRGHN Music) to be dealt with — pointing out that FRGHN Music (the Madube cover art)
+doesn't really have a "case study" worth of process to document, unlike HandWing which already had
+a full 26-slide asset library sitting behind an empty placeholder. Checked with him before touching
+anything, since this is a content-honesty site (see `feedback_tafadzwa_content_honesty` memory) and
+several of these were judgment calls, not mechanical edits:
+
+- **Sort order**: newest-first, confirmed.
+- **HandWing's year was inconsistent** in the repo: About.html and the Portfolio spotlight text
+  both already said "founded in 2020," but the project-header-year field said "2021–2023."
+  Tafadzwa confirmed 2020 is correct. Now reads **2020–Present** everywhere (Portfolio.html *and*
+  HandWing.html — previously out of sync with each other too).
+- **EYEZWIDOPEN**: end year changed from 2022 to **Present** (start year 2021 left as-is, no
+  conflicting source elsewhere to reconcile).
+- **HandWing's Goals section**: Tafadzwa asked for a draft grounded only in what's already
+  documented on the site (About.html, the spotlight copy, and the asset alt text/filenames — extruded
+  wordmark, creature mark, "Culture In Motion" tagline, black-and-mint palette, apparel/totes/
+  signage/motion), same approach as Gadaha's assistant-drafted process note. Written deliberately as
+  a description of the system's actual scope rather than an invented brief/motivation, since no
+  written goals document exists for what is Tafadzwa's own brand. **He should still re-read this
+  paragraph** before it's treated as final, same caveat as Gadaha's.
+- **FRGHN Music's Goals section**: Tafadzwa agreed this project doesn't fit the case-study pattern
+  (a single cover-art commission, two concepts, one client) — replaced the placeholder with a short
+  honest note saying so, rather than fabricating a design process that didn't happen or leaving a
+  stale placeholder live on the site.
+
+New `Portfolio.html` order (id anchors unchanged, so no external links break): HandWing (ongoing) →
+EYEZWIDOPEN (ongoing) → CoEdu (2024) → Fakugesi Poster Competition (2023) → Gadaha (2023) → FRGHN
+Music (2021). Fakugesi/Gadaha (both 2023) kept their original relative order as a stable-sort
+tie-break, since neither has a documented month. CoEdu's "ongoing" status wasn't touched — Tafadzwa
+only named HandWing and EYEZWIDOPEN, and CoEdu's Portfolio.html entry has no Goals section or
+placeholder to begin with.
+
+Confirmed `Slider.js` operates per-`.project-slider` independent of DOM order, so reordering the
+project blocks wholesale doesn't affect slider/counter/autoplay behavior. Verified in browser
+(local http.server, hard-reloaded to bust cache): all six sections render in the new order with
+correct year labels, and both edited Goals sections display the new copy correctly in dark theme.
+Placeholder audit (`grep -no '\[Add [^]]*\]' *.html`) now returns nothing — zero outstanding
+placeholders left in the repo.
