@@ -1374,3 +1374,12 @@ MVP slide after it. Applied to both sliders that carry this content, `CoEdu.html
 
 Verified in browser: slide order is Cover → Our Promise → MVP → Logos → ... , new "Our Promise"
 image renders at full quality with no layout issues.
+
+## FRGHN Music Goals line reworded (2026-08-15)
+
+Tafadzwa flagged the Goals sentence on `FRGHN-Music.html` as awkward: "Single-deliverable cover art
+commissions — not a multi-stage brand project, but standalone artwork revisited each time this
+client has new work to release." Redundant ("single-deliverable" and "standalone" say the same
+thing twice) and "revisited" could misread as the artwork itself being revised rather than the
+commissioning relationship recurring. Reworded to: `One-off cover art commissions, not a
+multi-stage brand project — new artwork each time this client has something new to release.`
