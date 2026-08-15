@@ -1355,3 +1355,22 @@ Left untouched: the homepage's `index.html` "Recent Projects" carousel, which li
 different, hand-picked order (HandWing, EYEZWIDOPEN, Fakugesi, FRGHN, CoEdu — and omits Gadaha
 entirely) rather than mirroring Portfolio.html's chronological sort. Treated as a separate curated
 highlight reel, not something this reorder should touch.
+
+## CoEdu slider: swapped Value Proposition slide, added MVP slide (2026-08-15)
+
+Tafadzwa supplied two new pitch-deck exports — `CoEdu Our Promise.png` and `CoEdu MVP.png` — and
+asked to replace the existing "Our Promise" slide with the higher-quality version and add the new
+MVP slide after it. Applied to both sliders that carry this content, `CoEdu.html` and
+`Portfolio.html`'s CoEdu spotlight (kept in sync per existing convention):
+
+- Swapped `CoEdu Value Proposition.jpg` → `CoEdu Our Promise.png` (same "Our Promise" slide
+  content — WhatsApp/Telegram access, automated inquiries — just the sharper export Tafadzwa
+  provided this time, replacing the original zoomed-browser-screenshot version).
+- Added `CoEdu MVP.png` immediately after it — the pitch deck's "CoEdu is a learning management
+  platform..." slide with the dashboard-on-laptop mockup.
+- Slider count: 11 → 12 slides on both pages; counters updated to match.
+- Deleted the now-dead `CoEdu Value Proposition.jpg` from `Images/` — verified no remaining
+  references first (only this doc's historical log entry, left as-is).
+
+Verified in browser: slide order is Cover → Our Promise → MVP → Logos → ... , new "Our Promise"
+image renders at full quality with no layout issues.
