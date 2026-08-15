@@ -1238,4 +1238,44 @@ project blocks wholesale doesn't affect slider/counter/autoplay behavior. Verifi
 (local http.server, hard-reloaded to bust cache): all six sections render in the new order with
 correct year labels, and both edited Goals sections display the new copy correctly in dark theme.
 Placeholder audit (`grep -no '\[Add [^]]*\]' *.html`) now returns nothing — zero outstanding
+
+## CoEdu case study added (2026-08-15)
+
+Tafadzwa shared CoEdu's real 2024 funding pitch deck (Figma Slides, "CoEdu Funding Pitch Deck
+2024," 53 slides) as source material and asked for a `CoEdu.html` case study, following the
+HandWing/Gadaha pattern — previously CoEdu only had a brief anchor section on `Portfolio.html`
+with no dedicated page. Read through the deck (skipping the legal/regulatory and competitive-
+analysis appendix slides, which aren't case-study material) and pulled only facts actually stated
+in it, per this site's content-honesty rule:
+
+- **Problem/value prop**, quoted close to CoEdu's own wording: tech-limited learners struggle to
+  navigate educational platforms, so CoEdu meets them on WhatsApp/Telegram instead, with automated
+  handling of common student inquiries.
+- **Tafadzwa's role**: the deck's own team slide lists him as **Product Lead** (5+ years as a
+  Multimedia Designer) on a five-person founding team — this is the first confirmed, sourced job
+  title for a Tafadzwa project beyond "designer," so it's used verbatim in the new page's intro.
+- **The ask**: $100,000 for a 24-month runway (15% marketing / 55% product development / 30%
+  operations), and early traction (introduced to 11 institutions, 7 early adopters) at pitch time.
+- **Deliberately left out**: the team-photo slide (other named people's photos, same exclusion
+  rule as Gadaha's team slide), the pitch's named third-party testimonial quote (another person's
+  words/name, not confirmed for public reuse), and the entire legal/regulatory appendix (out of
+  scope for a design case study).
+
+Exported two clean, photo-free deck slides as new images — `CoEdu Value Proposition.jpg` ("Our
+Promise") and `CoEdu Funding Ask.jpg` ("Our Ask") — via a zoomed browser screenshot of the Figma
+canvas (Figma's own "Copy as PNG" only puts the image on the clipboard, with no direct save-to-
+file path available through browser automation), converted PNG→JPG with `sips`. `CoEdu Value
+Proposition.jpg` was added to both `CoEdu.html`'s slider and `Portfolio.html`'s existing CoEdu
+slider (now 11 slides, was 10). `Portfolio.html`'s CoEdu section gained a "View full case study →"
+link to `CoEdu.html`, matching Gadaha/FRGHN Music/HandWing.
+
+Tafadzwa asked for the "Our Ask" ($100,000 funding ask) slide image removed from `CoEdu.html`
+shortly after — confirmed he meant just the slide, keeping the Goals-text sentence that states the
+same figure in prose. Removed the slide from `CoEdu.html`'s slider (12 → 11 slides, counter
+updated), and since `Portfolio.html` never referenced that file, deleted the now-unused `CoEdu
+Funding Ask.jpg` from `Images/` rather than leaving a dead asset in the repo.
+
+Added `.coedu-project-grid` alongside `.handwing-project-grid`/`.gadaha-project-grid` in
+`Stylez.css` (identical padding rule, just a new selector) and bumped `Stylez.css?v=48` →
+`?v=49` across all seven HTML files for cache-busting, per the established convention.
 placeholders left in the repo.
