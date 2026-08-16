@@ -38,12 +38,13 @@
     <script src="Lenis.js?v=2" defer></script>
     <script src="Menu.js?v=7" defer></script>
     <script src="Theme.js?v=1" defer></script>
-    <script src="Movement.js?v=2" defer></script>
+    <script src="Location.js?v=1" defer></script>
+    <script src="Movement.js?v=3" defer></script>
     <script src="Compass.js?v=1" defer></script>
-    <script src="Sundial.js?v=1" defer></script>
-    <script src="Moon.js?v=1" defer></script>
-    <script src="Weather.js?v=1" defer></script>
-    <script src="LocalTimeCompare.js?v=1" defer></script>
+    <script src="Sundial.js?v=2" defer></script>
+    <script src="Moon.js?v=2" defer></script>
+    <script src="Weather.js?v=2" defer></script>
+    <script src="LocalTimeCompare.js?v=2" defer></script>
     <script src="Radio.js?v=2" defer></script>
 </head>
 
@@ -90,8 +91,7 @@
                   <a href="mailto:tafadzwchoga@gmail.com">tafadzwchoga@gmail.com</a><br>
                   <br>+27 67 983 1142 <br>
                   <br>
-                  Cairo 1, Nile House, <br>
-                  Madina,  Accra Ghana. (Current Location)
+                  Open for freelance and full-time work.
                 </p>
           </div>
 
@@ -125,7 +125,7 @@
                   </g>
               </svg>
             </div>
-            <span class="local-time-label">Currently in Accra, Ghana</span>
+            <span class="local-time-label" data-location-label="Currently in {city}, {country}">Currently in Accra, Ghana</span>
           </div>
 
           <div class="tool-item">
@@ -171,7 +171,7 @@
           </div>
 
           <div class="tool-item">
-            <div class="tool-weather" aria-label="Current weather in Accra">
+            <div class="tool-weather" aria-label="Current weather">
               <svg id="weather" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
                   <circle class="circle" cx="300" cy="300" r="253.9"/>
 
@@ -229,7 +229,7 @@
                   </g>
               </svg>
             </div>
-            <span class="local-time-label" id="weather-label">Loading Accra weather&hellip;</span>
+            <span class="local-time-label" id="weather-label">Loading weather&hellip;</span>
           </div>
 
           <div class="tool-item">

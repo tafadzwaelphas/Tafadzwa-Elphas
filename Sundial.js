@@ -1,6 +1,5 @@
-// Accra's real coordinates (Ghana is UTC+0 year-round -- see Movement.js).
-const SUNDIAL_LAT = 5.6037;
-const SUNDIAL_LON = -0.187;
+const SUNDIAL_LAT = LOCATION.lat;
+const SUNDIAL_LON = LOCATION.lon;
 
 const sundialWidget = document.querySelector(".tool-sundial");
 const sundialSun = document.getElementById("sundial-sun");
@@ -48,8 +47,8 @@ function solarNumbers(date) {
   };
 }
 
-function formatAccraHour(hoursDecimal) {
-  let h = ((hoursDecimal % 24) + 24) % 24;
+function formatSundialHour(hoursDecimalUTC) {
+  let h = ((hoursDecimalUTC + LOCATION.utcOffsetHours) % 24 + 24) % 24;
   const totalMinutes = Math.round(h * 60);
   let hour = Math.floor(totalMinutes / 60);
   const minute = totalMinutes % 60;
@@ -71,9 +70,9 @@ function updateSundial() {
     const cy = 300 - 240 * Math.sin(phi);
     sundialSun.setAttribute("cx", cx.toFixed(1));
     sundialSun.setAttribute("cy", cy.toFixed(1));
-    sundialLabel.textContent = "Sunset in Accra · " + formatAccraHour(sunsetUTC);
+    sundialLabel.textContent = "Sunset in " + LOCATION.city + " · " + formatSundialHour(sunsetUTC);
   } else {
-    sundialLabel.textContent = "Sunrise in Accra · " + formatAccraHour(sunriseUTC);
+    sundialLabel.textContent = "Sunrise in " + LOCATION.city + " · " + formatSundialHour(sunriseUTC);
   }
 }
 

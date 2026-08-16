@@ -1,6 +1,5 @@
-// Accra's real coordinates (Ghana is UTC+0 year-round -- see Movement.js).
-const MOON_LAT = 5.6037;
-const MOON_LON = -0.187;
+const MOON_LAT = LOCATION.lat;
+const MOON_LON = LOCATION.lon;
 
 const moonWidget = document.querySelector(".tool-moondial");
 const moonDisc = document.getElementById("moondial-moon");
@@ -61,7 +60,7 @@ function greenwichSiderealTime(d) {
   return norm360(280.46061837 + 360.98564736629 * d);
 }
 
-// Altitude of the moon above Accra's horizon, in degrees, at a given date.
+// Altitude of the moon above the horizon at LOCATION, in degrees, at a given date.
 function moonAltitude(date) {
   const d = daysSinceJ2000(date);
   const { longitude, latitude } = moonEclipticPosition(d);
@@ -125,7 +124,7 @@ function moonPhaseName(date) {
 }
 
 function formatMoonHour(date) {
-  let hour = date.getUTCHours();
+  let hour = (date.getUTCHours() + LOCATION.utcOffsetHours + 24) % 24;
   const minute = date.getUTCMinutes();
   const suffix = hour >= 12 ? "PM" : "AM";
   hour = hour % 12;
@@ -155,12 +154,12 @@ function updateMoondial() {
     }
 
     moonLabel.textContent = nextSet
-      ? "Moonset in Accra · " + formatMoonHour(nextSet.time) + " · " + phase
-      : "Moon up over Accra · " + phase;
+      ? "Moonset in " + LOCATION.city + " · " + formatMoonHour(nextSet.time) + " · " + phase
+      : "Moon up over " + LOCATION.city + " · " + phase;
   } else {
     const nextRise = events.find((e) => e.type === "rise" && e.time > now);
     moonLabel.textContent = nextRise
-      ? "Moonrise in Accra · " + formatMoonHour(nextRise.time) + " · " + phase
+      ? "Moonrise in " + LOCATION.city + " · " + formatMoonHour(nextRise.time) + " · " + phase
       : "Moon below the horizon · " + phase;
   }
 }

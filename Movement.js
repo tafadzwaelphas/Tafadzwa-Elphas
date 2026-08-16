@@ -4,8 +4,7 @@ const SECONDHAND = document.querySelector("#second");
 
 function setClock() {
   const date = new Date();
-  // Ghana is UTC+0 year-round (no DST), so UTC time is Accra local time.
-  const hr = date.getUTCHours();
+  const hr = (date.getUTCHours() + LOCATION.utcOffsetHours + 24) % 24;
   const min = date.getUTCMinutes();
   const sec = date.getUTCSeconds();
 

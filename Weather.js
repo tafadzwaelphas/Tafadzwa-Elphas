@@ -1,12 +1,12 @@
-// Accra's real coordinates (Ghana is UTC+0 year-round -- see Movement.js).
-const WEATHER_LAT = 5.6037;
-const WEATHER_LON = -0.187;
+const WEATHER_LAT = LOCATION.lat;
+const WEATHER_LON = LOCATION.lon;
 const WEATHER_URL =
   "https://api.open-meteo.com/v1/forecast?latitude=" +
   WEATHER_LAT +
   "&longitude=" +
   WEATHER_LON +
-  "&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=UTC";
+  "&current=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=" +
+  encodeURIComponent(LOCATION.ianaTimeZone);
 
 const weatherWidget = document.querySelector(".tool-weather");
 const weatherLabel = document.getElementById("weather-label");
@@ -61,7 +61,8 @@ async function updateWeather() {
 
     WEATHER_ICON_STATES.forEach((state) => weatherWidget.classList.toggle("is-" + state, state === condition.icon));
 
-    weatherLabel.textContent = "Accra · " + temp + "°C, " + condition.label + " · H" + high + "° L" + low + "°";
+    weatherWidget.setAttribute("aria-label", "Current weather in " + LOCATION.city);
+    weatherLabel.textContent = LOCATION.city + " · " + temp + "°C, " + condition.label + " · H" + high + "° L" + low + "°";
   } catch (err) {
     weatherLabel.textContent = "Weather unavailable";
   }

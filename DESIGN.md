@@ -1425,3 +1425,48 @@ square, white star burst) on an iPhone home screen against the brand purple, ang
 than a feature screen, so placed right after the Cover slide (not with the other product-screen
 mockups) on both `Gadaha.html`'s case-study slider (8 → 9 slides) and `Portfolio.html`'s Gadaha
 spotlight slider (4 → 5 slides); both counters updated.
+
+## Contact page location centralized, updated to Cape Town (2026-08-16)
+
+Tafadzwa said he's currently in Cape Town, and asked whether updating the Contact page's location
+widgets could be automated. It can't detect his real-world location automatically (a static site
+has no way to know where *he* is — the browser Geolocation API only ever sees the *visitor's*
+location, which is why a separate visitor-vs-Accra time comparison widget already existed
+deliberately kept distinct). What was doable: stop hardcoding "Accra" independently in five
+different files.
+
+Added `Location.js` — a single `LOCATION` config (city, country, lat/lon, UTC offset, IANA time
+zone) that `Movement.js` (clock), `Sundial.js`, `Moon.js`, `Weather.js`, and `LocalTimeCompare.js`
+all now read from instead of their own hardcoded Accra coordinates/offset. `Contact.html`'s
+"Currently in Accra, Ghana" label is now populated from `LOCATION` via a `data-location-label`
+attribute (template with `{city}`/`{country}` placeholders), so it no longer needs manual editing
+either. The weather widget's `aria-label` and label text are also set by `Weather.js` from
+`LOCATION.city` rather than being hardcoded in the HTML. Next time he travels, updating
+`LOCATION` in `Location.js` is the only edit needed — nothing else touches the word "Accra" anymore
+except as the current config value.
+
+Set `LOCATION` to Cape Town, South Africa (lat -33.9249, lon 18.4241, UTC+2/SAST, IANA
+`Africa/Johannesburg`). Verified live in browser: clock, sunset, moonset, weather (live Open-Meteo
+fetch), and the visitor-time-compare widget all correctly read "Cape Town."
+
+Deliberately left untouched: the mailing address block above the tools grid ("Cairo 1, Nile House,
+Madina, Accra Ghana") — that's his permanent postal address, not a "currently here" indicator, and
+a temporary trip shouldn't overwrite it. Also untouched: `About.html`'s "MEST Africa, Accra"
+(historical education fact) and `CoEdu.html`'s "Ghana and neighboring markets" (where that company
+operates) — both are biographical/project facts unrelated to his present location.
+
+Bumped cache-busting versions for the five edited scripts (`Movement.js?v=2→3`, `Sundial.js`,
+`Moon.js`, `Weather.js`, `LocalTimeCompare.js` all `?v=1→2`) and added `Location.js?v=1`, all loaded
+only on `Contact.html`.
+
+## Mailing address block removed (2026-08-16)
+
+Follow-up to the above: Tafadzwa clarified Cape Town is actually his new address, not a temporary
+trip — but rather than give a new street address to publish, he asked to drop the physical address
+line entirely and replace it with something non-location-related. Landed on an availability status
+line: `Contact.html`'s address block (`Cairo 1, Nile House, Madina, Accra Ghana. (Current
+Location)`) replaced with `Open for freelance and full-time work.`, plain text under the
+email/phone links. No other file referenced that address (grepped for "Cairo 1"/"Nile
+House"/"Madina" repo-wide, only the one hit). Verified live in browser — the live location widgets
+below it (clock/sundial/moondial/weather) are unaffected and still correctly read Cape Town from
+`Location.js`.

@@ -5,16 +5,16 @@ function updateLocalTimeCompare() {
   const now = new Date();
   localTimeReadout.textContent = now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
 
-  // Accra is UTC+0, so the visitor's own UTC offset is their offset from Accra.
-  const offsetHours = -now.getTimezoneOffset() / 60;
+  const visitorOffsetHours = -now.getTimezoneOffset() / 60;
+  const diffFromLocation = visitorOffsetHours - LOCATION.utcOffsetHours;
 
   let diffText;
-  if (offsetHours === 0) {
-    diffText = "Same time as Accra";
+  if (diffFromLocation === 0) {
+    diffText = "Same time as " + LOCATION.city;
   } else {
-    const abs = Math.abs(offsetHours);
+    const abs = Math.abs(diffFromLocation);
     const hoursLabel = Number.isInteger(abs) ? abs : abs.toFixed(1);
-    diffText = hoursLabel + "h " + (offsetHours > 0 ? "ahead of" : "behind") + " Accra";
+    diffText = hoursLabel + "h " + (diffFromLocation > 0 ? "ahead of" : "behind") + " " + LOCATION.city;
   }
 
   localTimeOffsetLabel.textContent = "Your time · " + diffText;
