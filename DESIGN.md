@@ -1383,3 +1383,45 @@ client has new work to release." Redundant ("single-deliverable" and "standalone
 thing twice) and "revisited" could misread as the artwork itself being revised rather than the
 commissioning relationship recurring. Reworded to: `One-off cover art commissions, not a
 multi-stage brand project — new artwork each time this client has something new to release.`
+
+## Gadaha screenshots replaced with polished mockups (2026-08-16)
+
+Tafadzwa supplied `Gadaha - Mockup.zip` (five phone/watch mockup renders on branded backgrounds,
+from the team's Figma file) to replace the six plain device screenshots that had been standing in
+for individual app screens. Deleted from `Images/`: `Gadaha Splash Screen.jpg`, `Gadaha Sign Up
+Screen.jpg`, `Gadaha Workouts Screen.png`, `Gadaha Meals Screen.png`, `Gadaha Community Screen.png`,
+`Gadaha Account Screen.png`.
+
+Added, converted PNG→JPEG q85 via `sips` to match the site's image-size convention (5MB/3.5MB/4.1MB
+PNGs → ~1MB JPEGs each; the two source JPGs were already reasonably sized):
+- `Gadaha Authentication Mockup.jpg` — three-phone spread covering sign-in, splash ("Your Health
+  Is A Priority"), and sign-up, replacing the old separate Splash/Sign Up screenshots.
+- `Gadaha Community Mockup.jpg` — three-phone spread (group chat, community detail, communities
+  home list), replacing the old single Community screenshot.
+- `Gadaha Meals and Workouts Mockup.jpg` — two-phone spread (home/nutrition progress, home/popular
+  workouts), replacing the old separate Meals and Workouts screenshots.
+- `Gadaha Virtual Trainer Mockup.jpg` — single phone, video workout player mid-session. New content;
+  no prior screenshot equivalent.
+- `Gadaha Watch Mockup.jpg` — companion Apple Watch screen (calorie burn rate, active time, steps).
+  New content; no prior screenshot equivalent.
+
+No new mockup replaces the old Account/settings screenshot specifically — it was dropped rather
+than swapped, since the supplied set didn't include one.
+
+`Gadaha.html`'s case-study slider: the 6 removed slides were replaced 1:1 in position by the 5 new
+ones (slide count 9 → 8, counter updated). `Portfolio.html`'s Gadaha spotlight slider used 3 of the
+6 removed images (Workouts, Meals, Community screens); replaced with just 2 slides (`Meals and
+Workouts Mockup.jpg`, `Community Mockup.jpg`) since the new Meals/Workouts mockup already combines
+what used to be two separate slides (slide count 5 → 4, counter updated). Alt text rewritten for
+all new slides to describe what's actually shown (multi-phone spreads, not single screens).
+
+Changes are staged on `dev`, pending Tafadzwa's local review per the standing workflow.
+
+## Gadaha app icon mockup added (2026-08-16)
+
+Tafadzwa supplied one more image, `Gadaha - App.jpg` — a close-up of the Gadaha app icon (orange
+square, white star burst) on an iPhone home screen against the brand purple, angled shot. Added as
+`Images/Gadaha App Icon Mockup.jpg` (438KB JPEG, no conversion needed). Treated as branding rather
+than a feature screen, so placed right after the Cover slide (not with the other product-screen
+mockups) on both `Gadaha.html`'s case-study slider (8 → 9 slides) and `Portfolio.html`'s Gadaha
+spotlight slider (4 → 5 slides); both counters updated.
