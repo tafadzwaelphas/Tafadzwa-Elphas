@@ -1470,3 +1470,51 @@ email/phone links. No other file referenced that address (grepped for "Cairo 1"/
 House"/"Madina" repo-wide, only the one hit). Verified live in browser — the live location widgets
 below it (clock/sundial/moondial/weather) are unaffected and still correctly read Cape Town from
 `Location.js`.
+
+## HandWing Goals section rewritten (2026-08-21)
+
+Tafadzwa supplied a new brand statement for HandWing, repositioning it from a personal streetwear
+line to "a creative movement hub and studio rooted in contemporary African culture and global
+dialogue." `HandWing.html`'s `.case-study-goals` section (labelled "Goals") replaced with that
+statement verbatim, split into four paragraphs (positioning, what they make, the community
+angle, closing line) to match the section's existing multi-paragraph styling. The old copy
+("started in 2020 as a personal streetwear brand...") is gone — founding year (2020) and the
+"Culture In Motion" tagline live elsewhere on the page (project header year, Portfolio.html
+spotlight) and weren't touched. `Portfolio.html`'s HandWing spotlight blurb still uses the old
+positioning language ("streetwear and apparel identity") — left as-is since only the Goals
+section was in scope; worth revisiting if Tafadzwa wants the repositioning reflected there too.
+
+Follow-up (same day): repositioning carried through to the other two places that used the old
+"streetwear" framing. `Portfolio.html`'s HandWing spotlight blurb rewritten to lead with "a
+creative movement hub and studio rooted in contemporary African culture" while keeping the real
+facts (founded 2020, "Culture In Motion" tagline, black-and-mint palette). `About.html`'s bio
+paragraph ("HandWing, an apparel and streetwear brand I founded in 2020...") updated the same way.
+Grepped the whole repo for "streetwear" afterward — zero hits left. Deliberately left untouched:
+the short `project-header-description` line ("Apparel and brand design for HandWing — typography,
+product photography, and identity work.", shared by `HandWing.html` and `Portfolio.html`) and
+`HandWing.html`'s meta/OG/Twitter description tags — those describe Tafadzwa's deliverables on the
+case study page, not HandWing's own positioning, and aren't in tension with the new brand
+statement. Discipline tags ("Apparel Design / Branding / Typography") also left alone for the same
+reason.
+
+## HandWing Goals section rewritten again to match case-study voice (2026-08-21)
+
+Tafadzwa flagged that the Goals section didn't fit — it was the raw brand manifesto text pasted in
+as four short paragraphs in HandWing's own "we" voice, while every other case study (`Gadaha.html`,
+`CoEdu.html`) uses one consolidated paragraph narrated by Tafadzwa in first person, naming what the
+project set out to do and his specific role. Rewrote `HandWing.html`'s `.case-study-goals` paragraph
+to match that pattern: HandWing's purpose (folding in the repositioning from the earlier rewrite),
+then "I founded HandWing in 2020 and have led the identity system since..." naming his role, the
+way Gadaha/CoEdu name design/positioning contributions.
+
+Also added a real fact Tafadzwa supplied: the creature mark is bat-inspired (confirmed by looking
+at `Images/HW ICON Profile.jpg` and `HW Cover.png` directly — round ears, a bat-like face, angular
+wing shapes), and the HandWing name derives from Chiroptera, the scientific order bats belong to
+(Ancient Greek *kheír* "hand" + *pterón* "wing"). This was previously just called a "creature mark"
+with no explanation of the name/mark connection — a real gap, not an invented detail. Threaded into
+the Goals paragraph, into `Portfolio.html`'s spotlight blurb ("a bat-inspired creature mark — a nod
+to the name's roots in Chiroptera..."), and into the `alt` text of the two `HW ICON Profile.jpg`
+occurrences (`Portfolio.html`, `HandWing.html` — the spotlight image and the matching slider slide)
+in both files, changed from generic "icon"/"stylized creature" to "bat-inspired creature mark".
+Left `HW Cover.png`'s alt ("HandWing logo mark on a dark cover") alone — already generic enough not
+to conflict, and not explicitly asked about.
