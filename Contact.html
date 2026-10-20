@@ -10,8 +10,8 @@
   })();
   </script>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="Stylez.css?v=50">
-  <link rel="stylesheet" href="Responsive.css?v=16">
+  <link rel="stylesheet" href="Stylez.css?v=51">
+  <link rel="stylesheet" href="Responsive.css?v=17">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — Tafadzwa Choga</title>
   <meta name="description" content="Get in touch with Tafadzwa Choga — multimedia designer and artist.">
@@ -45,7 +45,7 @@
     <script src="Moon.js?v=2" defer></script>
     <script src="Weather.js?v=2" defer></script>
     <script src="LocalTimeCompare.js?v=2" defer></script>
-    <script src="Radio.js?v=2" defer></script>
+    <script src="Radio.js?v=3" defer></script>
 </head>
 
 <body>
@@ -233,18 +233,11 @@
           </div>
 
           <div class="tool-item">
-            <div class="tool-radio" id="radio-widget" role="button" tabindex="0" aria-label="Play live ambient radio, Groove Salad from SomaFM">
-              <svg id="radio" xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
-                  <circle class="circle" cx="300" cy="300" r="253.9"/>
-                  <polygon class="radio-icon-play" points="245,185 245,415 425,300"/>
-                  <g class="radio-icon-pause">
-                    <rect x="232" y="185" width="50" height="230" rx="10"/>
-                    <rect x="318" y="185" width="50" height="230" rx="10"/>
-                  </g>
-              </svg>
+            <div class="tool-radio-player">
+              <iframe id="radio-player" src="https://www.youtube-nocookie.com/embed/5yx6BWlEVcY?rel=0" title="Chillhop Radio by Chillhop Music, live on YouTube" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
-            <span class="local-time-label" id="radio-label">Live ambient radio &middot; SomaFM</span>
-            <button type="button" class="radio-shuffle section-heading-link link-hud" id="radio-shuffle" aria-label="Switch to a different SomaFM channel">Shuffle channel</button>
+            <span class="local-time-label" id="radio-label">Chillhop Radio &middot; Chillhop Music &middot; YouTube</span>
+            <button type="button" class="radio-shuffle section-heading-link link-hud" id="radio-shuffle" aria-label="Switch to a different live music stream">Shuffle channel</button>
           </div>
         </div>
 

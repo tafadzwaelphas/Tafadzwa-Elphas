@@ -1518,3 +1518,40 @@ occurrences (`Portfolio.html`, `HandWing.html` — the spotlight image and the m
 in both files, changed from generic "icon"/"stylized creature" to "bat-inspired creature mark".
 Left `HW Cover.png`'s alt ("HandWing logo mark on a dark cover") alone — already generic enough not
 to conflict, and not explicitly asked about.
+
+## Contact radio moved from SomaFM to embedded YouTube livestreams (2026-10-20)
+The Contact page radio had started showing "Stream unavailable" on every channel. Not a site bug:
+SomaFM's Icecast servers now answer requests whose `Referer` is this site with a 403 (confirmed
+with `curl`: the same stream returns 206 with no referrer, with `somafm.com`, or with an unrelated
+site as referrer, and 403 only with `tafadzwaelphas.github.io`). Their homepage (4-Sep-2026) says
+their Terms of Service no longer grant permission for third-party clients, "This includes apps,
+games, website embedding". Stripping the referrer would technically get past the block, but it's a
+deliberate block backed by their terms, so we didn't. SomaFM has no official embed player either —
+their "Link to us" page only offers text/banner links.
+
+Searched for a station that explicitly permits website embedding of its raw stream and couldn't
+confirm one (Radio Paradise, KEXP, NTS, Mixcloud Live all either silent or explicitly no). Settled
+on official YouTube embeds of 24/7 music livestreams instead, where permission comes from the
+platform: each channel owner has embedding on, verified via YouTube's oEmbed endpoint and the watch
+page's `playableInEmbed: true` / `isLiveNow: true`. Tafadzwa picked four:
+Chillhop Radio and Lofi Hip Hop Radio (Chillhop Music), Dark Ambient Radio and Synthwave Radio
+(Lofi Girl).
+
+What changed as a result:
+- `Contact.html`'s play-button widget is now a 16:9 `youtube-nocookie.com` iframe card
+  (`.tool-radio-player`, 356x200, rounded like the Audiomack embed, shrinks on phones). YouTube's
+  terms require a visible player, so the custom audio-only play/pause button and its on-air pulse
+  CSS are gone. "Shuffle channel" stays and swaps the iframe to a random other stream; the chosen
+  stream is remembered in `localStorage` (`radioChannel`, same key as before).
+- The docked mini-player (2026-08-13 entry above) is removed from every other page, along with
+  their `Radio.js` include — a hidden YouTube player would break YouTube's terms and a visible one
+  on every page would be clutter. `Radio.js` now only loads on Contact.
+- Livestream video ids are hardcoded in `Radio.js`. Channels occasionally end a stream and restart
+  it under a new id (Lofi Girl's main "beats to relax/study to" id `jfKfPfyJRdk` was not live at the
+  time and was left out for that reason) — if a stream goes dead, update its id there.
+
+Verified locally with headless Chrome against a local static server (a `file://` page can't load
+YouTube embeds): the player renders and loads the Chillhop embed in light and dark themes at 1440px
+and at 520px. Headless Chrome won't lay out narrower than ~500px, so a true 375px phone width
+couldn't be screenshotted; the width cap (`calc(100vw - 2 * var(--space-sm))`, matching
+`.contact-tools`' mobile side padding) handles that case on paper.

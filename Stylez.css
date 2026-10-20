@@ -544,8 +544,7 @@ padding-bottom: var(--space-page);
 
 .local-time-clock,
 .tool-compass,
-.tool-sundial,
-.tool-radio {
+.tool-sundial {
   width: 144px;
   height: 144px;
   flex-shrink: 0;
@@ -553,8 +552,7 @@ padding-bottom: var(--space-page);
 
 .local-time-clock svg,
 .tool-compass svg,
-.tool-sundial svg,
-.tool-radio svg {
+.tool-sundial svg {
   width: 100%;
   height: 100%;
   display: block;
@@ -620,7 +618,7 @@ padding-bottom: var(--space-page);
   fill: var(--color-ink);
 }
 
-/* Same dark-mode fix as .tool-radio above: --color-ink flips light in dark
+/* --color-ink flips light in dark
    mode, which washes out against the accent circle. Pin these to the dark
    background color instead so the hover state stays dark-on-mint. */
 :root[data-theme="dark"] .local-time-clock:hover .circle,
@@ -751,117 +749,25 @@ padding-bottom: var(--space-page);
   fill: var(--color-page);
 }
 
-.tool-radio {
-  cursor: pointer;
-  position: relative;
+/* Live music player -- YouTube's official embed of a 24/7 livestream (see
+   Radio.js). YouTube requires the player to stay visible, so this is a 16:9
+   card rather than an icon like the other tools -- 356x200 on desktop,
+   shrinking to fit the page on narrow phone screens. Same
+   rounded-card treatment as the Audiomack embed (.case-study-listen-player). */
+.tool-radio-player {
+  width: 356px;
+  max-width: calc(100vw - 2 * var(--space-sm));
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background-color: var(--color-ink);
 }
 
-.tool-radio::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-circle);
-  border: 2px solid var(--color-accent);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.tool-radio.is-playing::after {
-  animation: radio-on-air 1.8s ease-out infinite;
-}
-
-@keyframes radio-on-air {
-  0% {
-    transform: scale(1);
-    opacity: 0.7;
-  }
-  100% {
-    transform: scale(1.35);
-    opacity: 0;
-  }
-}
-
-.radio-icon-play,
-.radio-icon-pause rect {
-  fill: var(--color-page);
-  transition: fill var(--transition-fast);
-}
-
-.radio-icon-pause {
-  display: none;
-}
-
-.tool-radio.is-playing .radio-icon-play {
-  display: none;
-}
-
-.tool-radio.is-playing .radio-icon-pause {
+.tool-radio-player iframe {
   display: block;
-}
-
-.tool-radio:hover .circle,
-.tool-radio.is-playing .circle {
-  fill: var(--color-accent);
-  stroke: var(--color-ink);
-  stroke-width: 8.33;
-}
-
-.tool-radio:hover .radio-icon-play,
-.tool-radio:hover .radio-icon-pause rect,
-.tool-radio.is-playing .radio-icon-play,
-.tool-radio.is-playing .radio-icon-pause rect {
-  fill: var(--color-ink);
-}
-
-/* --color-ink flips light in dark mode, which reads poorly against the
-   accent circle (mint is bright in both themes). Pin this one to the dark
-   background color instead so the icon/stroke stays dark-on-mint here too. */
-:root[data-theme="dark"] .tool-radio:hover .circle,
-:root[data-theme="dark"] .tool-radio.is-playing .circle {
-  stroke: var(--color-page);
-}
-
-:root[data-theme="dark"] .tool-radio:hover .radio-icon-play,
-:root[data-theme="dark"] .tool-radio:hover .radio-icon-pause rect,
-:root[data-theme="dark"] .tool-radio.is-playing .radio-icon-play,
-:root[data-theme="dark"] .tool-radio.is-playing .radio-icon-pause rect {
-  fill: var(--color-page);
-}
-
-/* Docked mini radio player -- hidden until the visitor presses play on the
-   Contact page widget above. Once playing, it follows them to every other
-   page (see Radio.js) so navigating away doesn't silently kill the stream;
-   pressing it again pauses and hides it. Reuses .tool-radio's icon/pulse
-   styling at a smaller size rather than duplicating it. */
-.radio-dock {
-  position: fixed;
-  left: var(--space-sm);
-  bottom: var(--space-sm);
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  gap: var(--space-2xs);
-  padding: var(--space-2xs) var(--space-sm) var(--space-2xs) var(--space-2xs);
-  border-radius: var(--radius-pill);
-  background-color: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  box-shadow: var(--shadow-glass);
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity var(--transition-fade), transform var(--transition-fade);
-  pointer-events: none;
-}
-
-.radio-dock.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.radio-dock .tool-radio {
-  width: 48px;
-  height: 48px;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 .radio-shuffle {
@@ -869,13 +775,6 @@ padding-bottom: var(--space-page);
   background: none;
   font-family: inherit;
   cursor: pointer;
-}
-
-.radio-dock-label {
-  font-size: var(--text-label-sm);
-  font-weight: 500;
-  color: var(--color-ink);
-  white-space: nowrap;
 }
 
 .tool-localtime-readout {
