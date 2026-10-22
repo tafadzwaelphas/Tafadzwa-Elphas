@@ -1555,3 +1555,11 @@ YouTube embeds): the player renders and loads the Chillhop embed in light and da
 and at 520px. Headless Chrome won't lay out narrower than ~500px, so a true 375px phone width
 couldn't be screenshotted; the width cap (`calc(100vw - 2 * var(--space-sm))`, matching
 `.contact-tools`' mobile side padding) handles that case on paper.
+
+## Contact radio removed (2026-10-22)
+Removed the YouTube livestream player from `Contact.html` entirely, along with `Radio.js` and its
+`.tool-radio-player` / `.radio-shuffle` CSS. The embed didn't feel part of the site visually and
+YouTube plays ads before/within streams, which isn't the experience Tafadzwa wants for visitors.
+No replacement: SomaFM is off the table (see entry above) and no station was found that permits raw
+stream embedding. The Contact tools row is back to its non-audio widgets. The `radioChannel`
+`localStorage` key is now unused; stale values in visitors' browsers are harmless.

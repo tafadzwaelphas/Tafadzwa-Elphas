@@ -749,34 +749,6 @@ padding-bottom: var(--space-page);
   fill: var(--color-page);
 }
 
-/* Live music player -- YouTube's official embed of a 24/7 livestream (see
-   Radio.js). YouTube requires the player to stay visible, so this is a 16:9
-   card rather than an icon like the other tools -- 356x200 on desktop,
-   shrinking to fit the page on narrow phone screens. Same
-   rounded-card treatment as the Audiomack embed (.case-study-listen-player). */
-.tool-radio-player {
-  width: 356px;
-  max-width: calc(100vw - 2 * var(--space-sm));
-  aspect-ratio: 16 / 9;
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  background-color: var(--color-ink);
-}
-
-.tool-radio-player iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.radio-shuffle {
-  border: none;
-  background: none;
-  font-family: inherit;
-  cursor: pointer;
-}
-
 .tool-localtime-readout {
   display: flex;
   align-items: center;
